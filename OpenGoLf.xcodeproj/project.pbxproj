@@ -1,0 +1,210 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BDF7020115A470F800C5ED4F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7020015A470F800C5ED4F /* main.cpp */; };
+		BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDF7020215A470F800C5ED4F /* OpenGoLf.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BDF701FA15A470F800C5ED4F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BDF701FC15A470F800C5ED4F /* OpenGoLf */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGoLf; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF7020015A470F800C5ED4F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BDF7020215A470F800C5ED4F /* OpenGoLf.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OpenGoLf.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDF701F915A470F800C5ED4F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDF701F115A470F800C5ED4F = {
+			isa = PBXGroup;
+			children = (
+				BDF701FF15A470F800C5ED4F /* OpenGoLf */,
+				BDF701FD15A470F800C5ED4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDF701FD15A470F800C5ED4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDF701FC15A470F800C5ED4F /* OpenGoLf */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDF701FF15A470F800C5ED4F /* OpenGoLf */ = {
+			isa = PBXGroup;
+			children = (
+				BDF7020015A470F800C5ED4F /* main.cpp */,
+				BDF7020215A470F800C5ED4F /* OpenGoLf.1 */,
+			);
+			path = OpenGoLf;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDF701FB15A470F800C5ED4F /* OpenGoLf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDF7020615A470F800C5ED4F /* Build configuration list for PBXNativeTarget "OpenGoLf" */;
+			buildPhases = (
+				BDF701F815A470F800C5ED4F /* Sources */,
+				BDF701F915A470F800C5ED4F /* Frameworks */,
+				BDF701FA15A470F800C5ED4F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenGoLf;
+			productName = OpenGoLf;
+			productReference = BDF701FC15A470F800C5ED4F /* OpenGoLf */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDF701F315A470F800C5ED4F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = BDF701F615A470F800C5ED4F /* Build configuration list for PBXProject "OpenGoLf" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BDF701F115A470F800C5ED4F;
+			productRefGroup = BDF701FD15A470F800C5ED4F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDF701FB15A470F800C5ED4F /* OpenGoLf */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDF701F815A470F800C5ED4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDF7020115A470F800C5ED4F /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BDF7020415A470F800C5ED4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BDF7020515A470F800C5ED4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BDF7020715A470F800C5ED4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BDF7020815A470F800C5ED4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDF701F615A470F800C5ED4F /* Build configuration list for PBXProject "OpenGoLf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF7020415A470F800C5ED4F /* Debug */,
+				BDF7020515A470F800C5ED4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDF7020615A470F800C5ED4F /* Build configuration list for PBXNativeTarget "OpenGoLf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDF7020715A470F800C5ED4F /* Debug */,
+				BDF7020815A470F800C5ED4F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDF701F315A470F800C5ED4F /* Project object */;
+}
