@@ -10,15 +10,25 @@
 #define OpenGoLf_OGLevel_h
 
 #include "OGAmbient.h"
+#include "string.h"
+#include "stdlib.h"
 
 class OGLevel : public OGAmbient {
     
 public:
     
+    OGLevel();
+    void init(string);
+    void draw();
+    
+    void mousePassiveMotionFunction(int, int);
+    void static wrapperMousePassiveMotionFunction(int, int);
     
 private:
+    static OGLevel* activeLevel;
+    OGTerrain *terrain;
     
-    
+    Vector3d oldMousePos;
 };
 
 

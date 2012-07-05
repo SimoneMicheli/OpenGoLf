@@ -12,8 +12,8 @@
 		BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020915A4710600C5ED4F /* OpenGL.framework */; };
 		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
 		BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */; };
-		BDF7021E15A493BF00C5ED4F /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021D15A493BF00C5ED4F /* OGPov.cpp */; };
 		BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */; };
+		FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAD41B815A5F60000600336 /* OGPov.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,8 +44,8 @@
 		BDF7021915A47BEB00C5ED4F /* OGClub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGClub.h; sourceTree = "<group>"; };
 		BDF7021A15A47D1600C5ED4F /* OGTerrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
 		BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
-		BDF7021D15A493BF00C5ED4F /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OGPov.cpp; path = ../../OGPov.cpp; sourceTree = "<group>"; };
 		BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLevel.cpp; sourceTree = "<group>"; };
+		FCAD41B815A5F60000600336 /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPov.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +102,8 @@
 		BDF7021315A473D200C5ED4F /* obj */ = {
 			isa = PBXGroup;
 			children = (
+				FCAD41B815A5F60000600336 /* OGPov.cpp */,
 				BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */,
-				BDF7021D15A493BF00C5ED4F /* OGPov.cpp */,
 				BDF7021415A473E200C5ED4F /* OGAmbient.h */,
 				BDF7021515A473FC00C5ED4F /* OGRoom.h */,
 				BDF7021615A4745200C5ED4F /* OGLevel.h */,
@@ -169,8 +169,8 @@
 			files = (
 				BDF7020115A470F800C5ED4F /* main.cpp in Sources */,
 				BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */,
-				BDF7021E15A493BF00C5ED4F /* OGPov.cpp in Sources */,
 				BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */,
+				FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +257,7 @@
 				BDF7020815A470F800C5ED4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

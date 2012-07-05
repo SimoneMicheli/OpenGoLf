@@ -37,6 +37,10 @@
     
 }*/
 
+//----------global var---------------------
+OGLevel *level;
+//-----------------------------------------
+
 void init();
 void display();
 
@@ -83,6 +87,12 @@ void init(){
     
     //anable wireframe
     //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    
+    //-----------------------------------------------------
+    level = new OGLevel();
+    level->init("/Volumes/Personal/xcode/terreno/terrain_small.bmp");
+    glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
+    
 }
 
 void display(){
@@ -90,21 +100,14 @@ void display(){
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    OGTerrain *terrain = new OGTerrain("/Volumes/Personal/xcode/terreno/terrain_small.bmp");
-    
     glLoadIdentity();
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
     
-    OGPov *pov = new OGPov(Vector3d(0,0,0));
-    pov->addRotation(0, 0);
-    pov->lookAt();
-    /*gluLookAt(0.0f, 5.0f, 0.0f, 
-              2.0f, 0.0f, 0.0f, 
-              0.0f, 1.0f, 0.0f);*/
+
     
     glColor3b(0,0,0);
 
-    terrain->draw();
+    level->draw();
     
     glutSwapBuffers();
 }
