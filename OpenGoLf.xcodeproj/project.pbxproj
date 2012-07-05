@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		BDF7020115A470F800C5ED4F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7020015A470F800C5ED4F /* main.cpp */; };
 		BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDF7020215A470F800C5ED4F /* OpenGoLf.1 */; };
+		BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020915A4710600C5ED4F /* OpenGL.framework */; };
+		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
+		BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */; };
+		BDF7021E15A493BF00C5ED4F /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021D15A493BF00C5ED4F /* OGPov.cpp */; };
+		BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +33,19 @@
 		BDF701FC15A470F800C5ED4F /* OpenGoLf */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGoLf; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF7020015A470F800C5ED4F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BDF7020215A470F800C5ED4F /* OpenGoLf.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = OpenGoLf.1; sourceTree = "<group>"; };
+		BDF7020915A4710600C5ED4F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BDF7020B15A4710D00C5ED4F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		BDF7021015A471FA00C5ED4F /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
+		BDF7021415A473E200C5ED4F /* OGAmbient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGAmbient.h; sourceTree = "<group>"; };
+		BDF7021515A473FC00C5ED4F /* OGRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGRoom.h; sourceTree = "<group>"; };
+		BDF7021615A4745200C5ED4F /* OGLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLevel.h; sourceTree = "<group>"; };
+		BDF7021715A4761800C5ED4F /* OGPov.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGPov.h; sourceTree = "<group>"; };
+		BDF7021815A47A1400C5ED4F /* OGBall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGBall.h; sourceTree = "<group>"; };
+		BDF7021915A47BEB00C5ED4F /* OGClub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGClub.h; sourceTree = "<group>"; };
+		BDF7021A15A47D1600C5ED4F /* OGTerrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
+		BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
+		BDF7021D15A493BF00C5ED4F /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OGPov.cpp; path = ../../OGPov.cpp; sourceTree = "<group>"; };
+		BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLevel.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */,
+				BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +64,10 @@
 		BDF701F115A470F800C5ED4F = {
 			isa = PBXGroup;
 			children = (
+				BDF7021315A473D200C5ED4F /* obj */,
+				BDF7020F15A471FA00C5ED4F /* lib */,
+				BDF7020B15A4710D00C5ED4F /* GLUT.framework */,
+				BDF7020915A4710600C5ED4F /* OpenGL.framework */,
 				BDF701FF15A470F800C5ED4F /* OpenGoLf */,
 				BDF701FD15A470F800C5ED4F /* Products */,
 			);
@@ -64,6 +88,33 @@
 				BDF7020215A470F800C5ED4F /* OpenGoLf.1 */,
 			);
 			path = OpenGoLf;
+			sourceTree = "<group>";
+		};
+		BDF7020F15A471FA00C5ED4F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				BDF7021015A471FA00C5ED4F /* Vector3d.h */,
+			);
+			name = lib;
+			path = OpenGoLf/lib;
+			sourceTree = "<group>";
+		};
+		BDF7021315A473D200C5ED4F /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */,
+				BDF7021D15A493BF00C5ED4F /* OGPov.cpp */,
+				BDF7021415A473E200C5ED4F /* OGAmbient.h */,
+				BDF7021515A473FC00C5ED4F /* OGRoom.h */,
+				BDF7021615A4745200C5ED4F /* OGLevel.h */,
+				BDF7021715A4761800C5ED4F /* OGPov.h */,
+				BDF7021815A47A1400C5ED4F /* OGBall.h */,
+				BDF7021915A47BEB00C5ED4F /* OGClub.h */,
+				BDF7021A15A47D1600C5ED4F /* OGTerrain.h */,
+				BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */,
+			);
+			name = obj;
+			path = OpenGoLf/obj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +168,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDF7020115A470F800C5ED4F /* main.cpp in Sources */,
+				BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */,
+				BDF7021E15A493BF00C5ED4F /* OGPov.cpp in Sources */,
+				BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
