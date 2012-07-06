@@ -1,11 +1,12 @@
 #ifndef OpenGoLf_OGPov_h
 #define OpenGoLf_OGPov_h
 
+#include "OGObject.h"
 #include "Vector3d.h"
 #include <math.h>
 
 
-class OGPov{
+class OGPov : public OGObject{
     
 private:
     double alpha, beta; 

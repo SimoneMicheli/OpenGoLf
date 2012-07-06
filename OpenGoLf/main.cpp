@@ -74,7 +74,8 @@ void init(){
 	glEnable(GL_DEPTH_TEST);
     
     //enable lghting
-    //glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
 	
     //set perspective mode

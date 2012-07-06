@@ -9,21 +9,6 @@
 #include <iostream>
 #include "OGPov.h"
 
-#ifdef WIN32
-
-#include <GL/gl.h>
-#include <GL/glu.h>
-
-#include <GL/glut.h>
-
-#else
-
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-
-#include <GLUT/glut.h>
-#endif
-
 OGPov::OGPov(){
     alpha = 0;
     beta = 0;

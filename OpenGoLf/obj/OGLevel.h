@@ -10,8 +10,10 @@
 #define OpenGoLf_OGLevel_h
 
 #include "OGAmbient.h"
-#include "string.h"
-#include "stdlib.h"
+#include <string.h>
+#include <stdlib.h>
+#include "OGLight.h"
+#include <vector>
 
 class OGLevel : public OGAmbient {
     
@@ -27,6 +29,7 @@ public:
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
+    vector<OGLight*> lights;
     
     Vector3d oldMousePos;
 };

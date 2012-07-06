@@ -9,36 +9,17 @@
 #ifndef OpenGoLf_OGTerrain_h
 #define OpenGoLf_OGTerrain_h
 
-#ifdef WIN32
-
-#include <GL/gl.h>
-#include <GL/glu.h>
-
-#include <GL/glut.h>
-
-#else
-
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
-
-#include <GLUT/glut.h>
-typedef uint8_t  CHAR;
-typedef uint16_t WORD;
-typedef uint32_t DWORD;
-
-typedef int8_t  BYTE;
-typedef int16_t SHORT;
-typedef int32_t LONG;
-#endif
-
-#include "Vector3d.h"
+#include "OGObject.h"
 #include <fstream.h>
 #include <stdlib.h>
 #include <string.h>
+#include "OGTexture.h"
+#include <vector>
+#include "../texture/TXgrass.h"
 
 using namespace std;
 
-class OGTerrain {
+class OGTerrain : public OGObject{
 private:
     struct BMPHeader{
         DWORD   fsize;
@@ -64,9 +45,13 @@ private:
     Vector3d *vertex, *normals;
     BMPHeader header;
     
+    //vector<OGTexture*> texture;
+    GLuint texture0;
+    
     int terrainFromImage(const char *filename, BMPHeader &header ,Vector3d* &vertex, Vector3d* &normals);
     GLuint createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d* &normals);
     void computeNormals(BMPHeader &header, Vector3d* &vertex, Vector3d* &normals);
+    void initTexture();
     
 public:
     

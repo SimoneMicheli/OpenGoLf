@@ -9,10 +9,11 @@
 #ifndef OpenGoLf_OGAmbient_h
 #define OpenGoLf_OGAmbient_h
 
+#include "OGObject.h"
 #include "OGPov.h"
 #include "OGTerrain.h"
 
-class OGAmbient{
+class OGAmbient : public OGObject{
 public:
     
     OGPov* pov; //

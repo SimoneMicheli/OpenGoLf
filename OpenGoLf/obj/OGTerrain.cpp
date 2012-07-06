@@ -11,7 +11,7 @@
 
 OGTerrain::OGTerrain(string path){
     H_SCALE = 10;
-    V_SCALE = 50;
+    V_SCALE = 80;
     
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
@@ -125,13 +125,20 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     GLuint terrainDL;
     Vector3d v1,v2,n1,n2;
     
+    
     //crate dl id
     terrainDL = glGenLists(1);
     //crate DL
     glNewList(terrainDL,GL_COMPILE);
     
-    //light_global();
     glColor3f(0, 0, 0);
+    initTexture();
+    glBindTexture(GL_TEXTURE_2D, texture0);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    
+    float c_step = 1.0 / ((float)header.width / 15.0);
+    float r_step = 1.0 / ((float)header.height / 15.0);
+    cout<<"step: "<<c_step<<" "<<r_step<<"\n";
     
     //crate n stip one for each image line
     for (int r=0; r < header.height - 1; r++) {
@@ -139,14 +146,20 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glBegin(GL_TRIANGLE_STRIP);
         
         for (int c=0; c < header.width; c++) {
+            float s = c * c_step;
+            float t = r * r_step;
+                    
+            cout<<s<<" "<<t<<"\n";
             
             v1 = vertex[ (r * header.width) + c];
             v2 = vertex[ ((r+1) * header.width) + c];
             n1 = normals [ (r * header.width) + c];
             n2 = normals [ ((r+1) * header.width) + c];
             
+            glTexCoord2f(s, t);
             glNormal3d(n1.x, n1.y, n1.z);
             glVertex3d(v1.x, v1.y, v1.z);
+            glTexCoord2f(s, (r + 1) * r_step);
             glNormal3f(n2.x, n2.y, n2.z);
             glVertex3d(v2.x, v2.y, v2.z);
         }
@@ -158,4 +171,15 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     glEndList();
     
     return terrainDL;
+}
+
+void OGTerrain::initTexture(){
+    glGenTextures(1, &texture0);
+    glBindTexture(GL_TEXTURE_2D, texture0);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1); 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, TXgrass.width, TXgrass.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXgrass.pixel_data);
 }

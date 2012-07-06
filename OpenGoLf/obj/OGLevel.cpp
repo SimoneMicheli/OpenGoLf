@@ -13,6 +13,10 @@ void OGLevel::init(string path){
     terrain = new OGTerrain(path);
     pov = new OGPov(0,5,0); //initial pov
     pov->setRotation(-30, -45);
+    
+    OGLight *light0 = new OGLight();
+    lights.push_back(light0);
+    light0->set();
 }
 
 //-----------------------mouse functions-----------------------
@@ -22,7 +26,7 @@ void OGLevel::wrapperMousePassiveMotionFunction(int x, int y){
 }
 
 void OGLevel::mousePassiveMotionFunction(int x, int y){
-     std::cout<<oldMousePos.x<<"/"<<oldMousePos.y<<"\n";
+     //std::cout<<oldMousePos.x<<"/"<<oldMousePos.y<<"\n";
     //recupera la posizione del mouse all'inizo dopo il primo movimento
     if (oldMousePos.x != 0 || oldMousePos.y != 0) {
         double a = (oldMousePos.y - (double) y) / 5;

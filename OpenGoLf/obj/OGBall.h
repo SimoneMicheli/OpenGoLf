@@ -9,9 +9,10 @@
 #ifndef OpenGoLf_OGBall_h
 #define OpenGoLf_OGBall_h
 
+#include "OGObject.h"
 #include "Vector3d.h"
 
-class OGBall{
+class OGBall : public OGObject{
 private:
     double radius,mass;
     Vector3d position, speed;
