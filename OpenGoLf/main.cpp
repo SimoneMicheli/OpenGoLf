@@ -28,9 +28,7 @@
 #include "OGRoom.h"
 #include "OGLevel.h"
 #include "OGTerrain.h"
-
-#define W_WIDTH 800
-#define W_HEIGHT  600
+#include "OGGlobal.h"
 
 /*int main(int argc, const char * argv[]){
 
@@ -54,7 +52,7 @@ int main(int argc, char** argv){
     
     init();
     
-    glutDisplayFunc(display);
+    //glutDisplayFunc(display);
     //glutReshapeFunc(resize);
     //glutKeyboardFunc(getKey);
     //glutMotionFunc(mouseMove);
@@ -62,6 +60,10 @@ int main(int argc, char** argv){
     
     //gettimeofday(&before , NULL);
     //ti = before;
+    
+    glutDisplayFunc(OGLevel::launchDisplay);
+    glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
+    
     glutMainLoop();
     
     return 0;
@@ -78,37 +80,10 @@ void init(){
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
 	
-    //set perspective mode
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();               //reset view
-    GLfloat aspect = (GLfloat) W_WIDTH /(GLfloat)W_HEIGHT;
-    gluPerspective(45.0f, aspect, 0.1f, 1000.0f);
-    glMatrixMode(GL_MODELVIEW);    
-    glEnable(GL_LIGHT0);
-    
-    //anable wireframe
+    //enable wireframe
     //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     
     //-----------------------------------------------------
     level = new OGLevel();
     level->init("/Volumes/Personal/xcode/terreno/terrain_small.bmp");
-    glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
-    
-}
-
-void display(){
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClearDepth(1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    glLoadIdentity();
-    glViewport(0, 0, W_WIDTH, W_HEIGHT);
-    
-
-    
-    glColor3b(0,0,0);
-
-    level->draw();
-    
-    glutSwapBuffers();
 }

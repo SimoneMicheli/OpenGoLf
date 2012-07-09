@@ -11,15 +11,12 @@
 
 #include "OGObject.h"
 
-enum OGLightType{DIRECTIONAL, SPOT};
-
 class OGLight: public OGObject{
     
 public:
-    float ambient[3],diffuse[3],specular[3],position[4]={10.0f,10.0f,10.0f,0.0f},direction[3];
-    OGLightType type;
+    float ambient[3],diffuse[3],specular[3],position[4]={1.0f,-1.0,1.0f,0.0f},direction[3];
     
-    OGLight();
+    OGLight(int);
     ~OGLight();
     void set();
     void enable();
@@ -29,7 +26,6 @@ public:
 private:
     unsigned short int number;
     bool enabled;
-    static unsigned short int next; //first available light number
 };
 
 #endif

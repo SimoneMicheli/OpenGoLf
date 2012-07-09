@@ -138,7 +138,6 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     
     float c_step = 1.0 / ((float)header.width / 15.0);
     float r_step = 1.0 / ((float)header.height / 15.0);
-    cout<<"step: "<<c_step<<" "<<r_step<<"\n";
     
     //crate n stip one for each image line
     for (int r=0; r < header.height - 1; r++) {
@@ -148,8 +147,6 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         for (int c=0; c < header.width; c++) {
             float s = c * c_step;
             float t = r * r_step;
-                    
-            cout<<s<<" "<<t<<"\n";
             
             v1 = vertex[ (r * header.width) + c];
             v2 = vertex[ ((r+1) * header.width) + c];
@@ -168,6 +165,7 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         
     }
     
+    printf("finish\n");
     glEndList();
     
     return terrainDL;

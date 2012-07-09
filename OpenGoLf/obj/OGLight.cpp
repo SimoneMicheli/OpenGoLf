@@ -9,26 +9,19 @@
 #include <iostream>
 #include "OGLight.h"
 
-unsigned short int OGLight::next=0;
-
-OGLight::OGLight(){
-    number = next;
-    next++;
-}
-
-OGLight::~OGLight(){
-    next--;
+OGLight::OGLight(int num){
+    number = num;
 }
 
 void OGLight::enable(){
-    glEnable(GL_LIGHT0);
+    glEnable(number);
 }
 
 void OGLight::disable(){
-    glDisable(GL_LIGHT0);
+    glDisable(number);
 }
 
 void OGLight::set(){
-    glLightfv(GL_LIGHT0, GL_POSITION, position);
-    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+    glLightfv(number, GL_POSITION, position);
+    glLightfv(number, GL_SPOT_DIRECTION, direction);
 }

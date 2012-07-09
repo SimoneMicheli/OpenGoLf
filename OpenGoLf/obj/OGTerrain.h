@@ -13,7 +13,6 @@
 #include <fstream.h>
 #include <stdlib.h>
 #include <string.h>
-#include "OGTexture.h"
 #include <vector>
 #include "../texture/TXgrass.h"
 
