@@ -17,17 +17,24 @@ enum OGProjectionType {
 };
 
 class OGProjection : public OGObject {
-  
+
 
 public:
   //OGProjection();
   void setPerspective(float ,float,float,float);
   void setOrtho(float, float, float, float, float, float);
   void init();
-  
+
 private:
   OGProjectionType type;
-  float aspect, angle, near, far ,left ,top ,bottom , right;
+  float aspect;
+  float angle;
+  float p_near;
+  float p_far;
+  float left;
+  float top;
+  float bottom;
+  float right;
 
 };
 

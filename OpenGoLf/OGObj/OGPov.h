@@ -7,12 +7,12 @@
 
 
 class OGPov : public OGObject{
-    
+
 private:
-    double alpha, beta; 
+    double alpha, beta;
     Vector3d pos,look;
-    double mod = 1; //modulo del vettore di vista
-    
+    double mod; //modulo del vettore di vista
+
 public:
     OGPov();
     OGPov(double,double,double);

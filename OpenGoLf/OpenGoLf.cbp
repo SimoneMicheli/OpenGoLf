@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="OpenGoLf" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\emptyOpenGL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="C:\freeglut\include" />
+					<Add directory="C:\Users\Gianluca\Documents\Dropbox\Università\Informatica Grafica\OpenGoLf\github\OpenGoLf\OpenGoLf\lib" />
+					<Add directory="C:\Users\Gianluca\Documents\Dropbox\Università\Informatica Grafica\OpenGoLf\github\OpenGoLf\OpenGoLf\OGObj" />
+					<Add directory="C:\Users\Gianluca\Documents\Dropbox\Università\Informatica Grafica\OpenGoLf\github\OpenGoLf\OpenGoLf\texture" />
+				</Compiler>
+				<Linker>
+					<Add option="-lfreeglut" />
+					<Add option="-lopengl32" />
+					<Add option="-lglu32" />
+					<Add directory="C:\freeglut\lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\emptyOpenGL" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="C:\freeglut\include" />
+		</Compiler>
+		<Linker>
+			<Add option="-lfreeglut" />
+			<Add option="-lopengl32" />
+			<Add option="-lglu32" />
+			<Add library="C:\freeglut\lib\libfreeglut.a" />
+			<Add library="C:\freeglut\lib\libfreeglut_static.a" />
+			<Add directory="C:\freeglut\bin" />
+		</Linker>
+		<Unit filename="OGObj\OGAmbient.h" />
+		<Unit filename="OGObj\OGBall.cpp" />
+		<Unit filename="OGObj\OGBall.h" />
+		<Unit filename="OGObj\OGClub.h" />
+		<Unit filename="OGObj\OGGlobal.h" />
+		<Unit filename="OGObj\OGLevel.cpp" />
+		<Unit filename="OGObj\OGLevel.h" />
+		<Unit filename="OGObj\OGLight.cpp" />
+		<Unit filename="OGObj\OGLight.h" />
+		<Unit filename="OGObj\OGMaterial.h" />
+		<Unit filename="OGObj\OGObject.h" />
+		<Unit filename="OGObj\OGPov.cpp" />
+		<Unit filename="OGObj\OGPov.h" />
+		<Unit filename="OGObj\OGProjection.cpp" />
+		<Unit filename="OGObj\OGProjection.h" />
+		<Unit filename="OGObj\OGRoom.h" />
+		<Unit filename="OGObj\OGTerrain.cpp" />
+		<Unit filename="OGObj\OGTerrain.h" />
+		<Unit filename="lib\Vector3d.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="texture\TXgrass.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

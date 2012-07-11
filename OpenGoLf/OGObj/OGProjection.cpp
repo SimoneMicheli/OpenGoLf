@@ -9,18 +9,18 @@
 #include <iostream>
 #include "OGProjection.h"
 
-void OGProjection::setPerspective(float angle, float aspect, float near, float far){
+void OGProjection::setPerspective(float angle, float aspect, float p_near, float p_far){
     this->angle = angle;
     this->aspect = aspect;
-    this->near = near;
-    this->far = far;
+    this->p_near = p_near;
+    this->p_far = p_far;
     this->type = PERSPECTIVE;
     init();
 }
 
-void OGProjection::setOrtho(float near,float far ,float left ,float right, float top, float bottom){
-    this->near = near;
-    this->far = far;
+void OGProjection::setOrtho(float p_near,float p_far ,float left ,float right, float top, float bottom){
+    this->p_near = p_near;
+    this->p_far = p_far;
     this->left = left;
     this->right = right;
     this->top = top;
@@ -33,9 +33,9 @@ void OGProjection::init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     if (type == PERSPECTIVE) {
-        gluPerspective(angle, aspect, near, far);
+        gluPerspective(angle, aspect, p_near, p_far);
     }else{
-        glOrtho(left, right, bottom, top,near, far);
+        glOrtho(left, right, bottom, top,p_near, p_far);
     }
-    glMatrixMode(GL_MODELVIEW);    
+    glMatrixMode(GL_MODELVIEW);
 }

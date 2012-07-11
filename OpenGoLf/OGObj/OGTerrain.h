@@ -10,7 +10,7 @@
 #define OpenGoLf_OGTerrain_h
 
 #include "OGObject.h"
-#include <fstream.h>
+#include <fstream>
 #include <stdlib.h>
 #include <string.h>
 #include <vector>
@@ -36,27 +36,27 @@ private:
         DWORD   used_color;
         DWORD   imp_color;
     };
-    
+
     GLuint terrainDL;
     int H_SCALE;
     int V_SCALE;
-    
+
     Vector3d *vertex, *normals;
     BMPHeader header;
-    
+
     //vector<OGTexture*> texture;
     GLuint texture0;
-    
+
     int terrainFromImage(const char *filename, BMPHeader &header ,Vector3d* &vertex, Vector3d* &normals);
     GLuint createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d* &normals);
     void computeNormals(BMPHeader &header, Vector3d* &vertex, Vector3d* &normals);
     void initTexture();
-    
+
 public:
-    
+
     OGTerrain(string);
     void draw();
-    
+
 };
 
 
