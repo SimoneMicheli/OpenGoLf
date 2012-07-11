@@ -16,6 +16,8 @@
 #include "OGGlobal.h"
 #include "OGBall.h"
 #include "OGProjection.h"
+#include "OGPhysic.h"
+#include <sys/time.h>
 #include <vector>
 
 class OGLevel : public OGAmbient {
@@ -28,13 +30,18 @@ public:
     void mousePassiveMotionFunction(int, int);
     void static wrapperMousePassiveMotionFunction(int, int);
     void static launchDisplay();
+    void static followDisplay();
+    void static mouseClickFunction(int,int,int,int);
     
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
     OGBall *ball;
     OGProjection *projection;
-    vector<OGLight*> lights;
+    OGPhysic *physic;
+    vector<OGLight*> lights; 
+    static struct timeval before,now;
+    double static time_diff(timeval before, timeval now);
     
     Vector3d oldMousePos;
     

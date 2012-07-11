@@ -130,10 +130,24 @@ struct Vector3d
    inline void normalize()
    {
        double len = length();
+       if (len ==0) {
+           return Vector3d();
+       }
        x = x / len;
        y = y / len;
        z = z / len;
    }
+    
+    inline Vector3d getNormalized(){
+        double len = length();
+        if (len ==0) {
+            return Vector3d();
+        }
+        x = x / len;
+        y = y / len;
+        z = z / len;
+        return Vector3d(x,y,z);
+    }
 
    //set to zero
    inline void zero() {

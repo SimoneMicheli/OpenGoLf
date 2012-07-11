@@ -41,7 +41,6 @@ private:
     int H_SCALE;
     int V_SCALE;
 
-    Vector3d *vertex, *normals;
     BMPHeader header;
 
     //vector<OGTexture*> texture;
@@ -53,9 +52,11 @@ private:
     void initTexture();
 
 public:
-
+    int getHScale();
     OGTerrain(string);
     void draw();
+    unsigned int getTerrainHeight();
+    Vector3d *vertex, *normals;
 
 };
 

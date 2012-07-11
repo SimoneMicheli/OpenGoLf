@@ -17,6 +17,7 @@
 		FC35FB0D15ADAD9E0038799D /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0315ADAD9E0038799D /* OGPov.cpp */; };
 		FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0515ADAD9E0038799D /* OGProjection.cpp */; };
 		FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */; };
+		FC35FB1B15ADBFC40038799D /* OGPhysic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,8 @@
 		FC35FB0715ADAD9E0038799D /* OGRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGRoom.h; sourceTree = "<group>"; };
 		FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
 		FC35FB0915ADAD9E0038799D /* OGTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
+		FC35FB1815ADBD930038799D /* OGPhysic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGPhysic.h; sourceTree = "<group>"; };
+		FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPhysic.cpp; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,8 @@
 				FC35FB0715ADAD9E0038799D /* OGRoom.h */,
 				FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */,
 				FC35FB0915ADAD9E0038799D /* OGTerrain.h */,
+				FC35FB1815ADBD930038799D /* OGPhysic.h */,
+				FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */,
 			);
 			name = OGObj;
 			path = OpenGoLf/OGObj;
@@ -204,6 +209,7 @@
 				FC35FB0D15ADAD9E0038799D /* OGPov.cpp in Sources */,
 				FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */,
 				FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */,
+				FC35FB1B15ADBFC40038799D /* OGPhysic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

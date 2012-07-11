@@ -63,6 +63,7 @@ int main(int argc, char** argv){
     
     glutDisplayFunc(OGLevel::launchDisplay);
     glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
+    glutMouseFunc(OGLevel::mouseClickFunction);
     
     glutMainLoop();
     

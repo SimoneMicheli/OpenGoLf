@@ -181,3 +181,11 @@ void OGTerrain::initTexture(){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, TXgrass.width, TXgrass.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXgrass.pixel_data);
 }
+
+int OGTerrain::getHScale(){
+    return H_SCALE;
+}
+
+unsigned int OGTerrain::getTerrainHeight(){
+    return header.height;
+}

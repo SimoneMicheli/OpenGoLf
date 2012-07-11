@@ -3,6 +3,7 @@
 #include "OGLevel.h"
 
 OGLevel* OGLevel::activeLevel=NULL;
+struct timeval OGLevel::before,OGLevel::now;
 
 OGLevel::OGLevel(){
     activeLevel = this;
@@ -15,9 +16,12 @@ void OGLevel::init(string path){
     projection->setPerspective(60.0f, aspect, 0.1f, 1000.0f);
 
     terrain = new OGTerrain(path);
-    ball = new OGBall(0.3,4,0.3);
+    ball = new OGBall(0.3,1,0.3);
     pov = new OGPov(-0.2,3,-0.2); //initial pov
     pov->setRotation(-30, -45);
+    
+    //create physics
+    physic = new OGPhysic(ball, terrain);
     
     OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,1.0,0.0f,0.0f);
     light0->set();
@@ -55,7 +59,6 @@ void OGLevel::launchDisplay(){
     
     glLoadIdentity();
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
-
     
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
@@ -65,6 +68,30 @@ void OGLevel::launchDisplay(){
     
     glutSwapBuffers();
     
+}
+
+//---------------------follow display--------------------------
+void OGLevel::followDisplay(){
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearDepth(1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    glLoadIdentity();
+    glViewport(0, 0, W_WIDTH, W_HEIGHT);
+    
+    gettimeofday(&OGLevel::now,NULL);
+    double dtime = time_diff(OGLevel::before,OGLevel::now);
+    
+    activeLevel->physic->update(dtime);
+    
+    activeLevel->pov->lookAt();
+    activeLevel->terrain->draw();
+    activeLevel->ball->draw();
+    
+    OGLevel::before = OGLevel::now;
+    
+    glutSwapBuffers();
+    glutPostRedisplay();
 }
 
 //-------------------display map viewport----------------------
@@ -106,3 +133,27 @@ void OGLevel::drawMap(){
     delete p;
     delete povl;
 }
+
+//---------------------time diff function--------------------
+double OGLevel::time_diff(timeval before, timeval now){
+    double x_ms, y_ms, diff;
+    
+    x_ms = (double)before.tv_sec * 1000000 + (double)before.tv_usec;
+    y_ms = (double)now.tv_sec * 1000000 + (double)now.tv_usec;
+    
+    diff = ((double)y_ms - (double)x_ms)/ 1000000.0f;
+    
+    return diff;
+}
+
+//---------------------mouse click--------------------
+
+void OGLevel::mouseClickFunction(int button,int state, int x, int y){
+    glutPassiveMotionFunc(NULL); //disattivo rotazione se mouse cliccato
+    activeLevel->ball->setSpeed(0, 5, 0);
+    gettimeofday(&OGLevel::before,NULL);
+    
+    glutDisplayFunc(OGLevel::followDisplay);
+    glutPostRedisplay();
+}
+
