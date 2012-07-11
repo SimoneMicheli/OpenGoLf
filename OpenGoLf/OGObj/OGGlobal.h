@@ -13,6 +13,19 @@
 #define W_WIDTH 800
 #define W_HEIGHT 600
 
+
+#ifdef WIN32
+
+
+#define TERRAIN_PATH "./terrains/terrain_small.bmp"
+
+#else
+
 #define TERRAIN_PATH "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain_small.bmp"
+
+#endif
+
+
+
 
 #endif
