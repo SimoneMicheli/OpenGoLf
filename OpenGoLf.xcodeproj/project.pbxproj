@@ -11,12 +11,12 @@
 		BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDF7020215A470F800C5ED4F /* OpenGoLf.1 */; };
 		BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020915A4710600C5ED4F /* OpenGL.framework */; };
 		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
-		BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */; };
-		BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */; };
-		FC05DADA15AC6BF400C90296 /* OGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC05DAD915AC6BF400C90296 /* OGBall.cpp */; };
-		FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAD41B815A5F60000600336 /* OGPov.cpp */; };
-		FCD877DC15AB3019003B4267 /* OGProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCD877DB15AB3018003B4267 /* OGProjection.cpp */; };
-		FCEF87BC15A709FC003EE787 /* OGLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCEF87BB15A709FC003EE787 /* OGLight.cpp */; };
+		FC35FB0A15ADAD9E0038799D /* OGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAF915ADAD9E0038799D /* OGBall.cpp */; };
+		FC35FB0B15ADAD9E0038799D /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFD15ADAD9E0038799D /* OGLevel.cpp */; };
+		FC35FB0C15ADAD9E0038799D /* OGLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFF15ADAD9E0038799D /* OGLight.cpp */; };
+		FC35FB0D15ADAD9E0038799D /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0315ADAD9E0038799D /* OGPov.cpp */; };
+		FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0515ADAD9E0038799D /* OGProjection.cpp */; };
+		FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,24 +39,24 @@
 		BDF7020915A4710600C5ED4F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDF7020B15A4710D00C5ED4F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		BDF7021015A471FA00C5ED4F /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
-		BDF7021415A473E200C5ED4F /* OGAmbient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGAmbient.h; sourceTree = "<group>"; };
-		BDF7021515A473FC00C5ED4F /* OGRoom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGRoom.h; sourceTree = "<group>"; };
-		BDF7021615A4745200C5ED4F /* OGLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLevel.h; sourceTree = "<group>"; };
-		BDF7021715A4761800C5ED4F /* OGPov.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGPov.h; sourceTree = "<group>"; };
-		BDF7021815A47A1400C5ED4F /* OGBall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGBall.h; sourceTree = "<group>"; };
-		BDF7021915A47BEB00C5ED4F /* OGClub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGClub.h; sourceTree = "<group>"; };
-		BDF7021A15A47D1600C5ED4F /* OGTerrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
-		BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
-		BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLevel.cpp; sourceTree = "<group>"; };
-		FC05DAD915AC6BF400C90296 /* OGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGBall.cpp; sourceTree = "<group>"; };
-		FCAD41B815A5F60000600336 /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPov.cpp; sourceTree = "<group>"; };
-		FCD877D915AB2AB0003B4267 /* OGGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGGlobal.h; sourceTree = "<group>"; };
-		FCD877DA15AB2F2C003B4267 /* OGProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGProjection.h; sourceTree = "<group>"; };
-		FCD877DB15AB3018003B4267 /* OGProjection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGProjection.cpp; sourceTree = "<group>"; };
-		FCEF87BA15A70812003EE787 /* OGLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGLight.h; sourceTree = "<group>"; };
-		FCEF87BB15A709FC003EE787 /* OGLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLight.cpp; sourceTree = "<group>"; };
-		FCEF87BD15A70D68003EE787 /* OGObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGObject.h; sourceTree = "<group>"; };
-		FCEF87BE15A713D2003EE787 /* OGMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGMaterial.h; sourceTree = "<group>"; };
+		FC35FAF815ADAD9E0038799D /* OGAmbient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGAmbient.h; sourceTree = "<group>"; };
+		FC35FAF915ADAD9E0038799D /* OGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGBall.cpp; sourceTree = "<group>"; };
+		FC35FAFA15ADAD9E0038799D /* OGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGBall.h; sourceTree = "<group>"; };
+		FC35FAFB15ADAD9E0038799D /* OGClub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGClub.h; sourceTree = "<group>"; };
+		FC35FAFC15ADAD9E0038799D /* OGGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGGlobal.h; sourceTree = "<group>"; };
+		FC35FAFD15ADAD9E0038799D /* OGLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLevel.cpp; sourceTree = "<group>"; };
+		FC35FAFE15ADAD9E0038799D /* OGLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLevel.h; sourceTree = "<group>"; };
+		FC35FAFF15ADAD9E0038799D /* OGLight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLight.cpp; sourceTree = "<group>"; };
+		FC35FB0015ADAD9E0038799D /* OGLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLight.h; sourceTree = "<group>"; };
+		FC35FB0115ADAD9E0038799D /* OGMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGMaterial.h; sourceTree = "<group>"; };
+		FC35FB0215ADAD9E0038799D /* OGObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGObject.h; sourceTree = "<group>"; };
+		FC35FB0315ADAD9E0038799D /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPov.cpp; sourceTree = "<group>"; };
+		FC35FB0415ADAD9E0038799D /* OGPov.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGPov.h; sourceTree = "<group>"; };
+		FC35FB0515ADAD9E0038799D /* OGProjection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGProjection.cpp; sourceTree = "<group>"; };
+		FC35FB0615ADAD9E0038799D /* OGProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGProjection.h; sourceTree = "<group>"; };
+		FC35FB0715ADAD9E0038799D /* OGRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGRoom.h; sourceTree = "<group>"; };
+		FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
+		FC35FB0915ADAD9E0038799D /* OGTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,8 +76,8 @@
 		BDF701F115A470F800C5ED4F = {
 			isa = PBXGroup;
 			children = (
+				FC35FAF715ADAD9E0038799D /* OGObj */,
 				FCEF87C415A71DC8003EE787 /* texture */,
-				BDF7021315A473D200C5ED4F /* obj */,
 				BDF7020F15A471FA00C5ED4F /* lib */,
 				BDF7020B15A4710D00C5ED4F /* GLUT.framework */,
 				BDF7020915A4710600C5ED4F /* OpenGL.framework */,
@@ -112,30 +112,30 @@
 			path = OpenGoLf/lib;
 			sourceTree = "<group>";
 		};
-		BDF7021315A473D200C5ED4F /* obj */ = {
+		FC35FAF715ADAD9E0038799D /* OGObj */ = {
 			isa = PBXGroup;
 			children = (
-				FCAD41B815A5F60000600336 /* OGPov.cpp */,
-				BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */,
-				BDF7021415A473E200C5ED4F /* OGAmbient.h */,
-				BDF7021515A473FC00C5ED4F /* OGRoom.h */,
-				BDF7021615A4745200C5ED4F /* OGLevel.h */,
-				BDF7021715A4761800C5ED4F /* OGPov.h */,
-				BDF7021815A47A1400C5ED4F /* OGBall.h */,
-				BDF7021915A47BEB00C5ED4F /* OGClub.h */,
-				BDF7021A15A47D1600C5ED4F /* OGTerrain.h */,
-				BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */,
-				FCEF87BA15A70812003EE787 /* OGLight.h */,
-				FCEF87BB15A709FC003EE787 /* OGLight.cpp */,
-				FCEF87BD15A70D68003EE787 /* OGObject.h */,
-				FCEF87BE15A713D2003EE787 /* OGMaterial.h */,
-				FCD877D915AB2AB0003B4267 /* OGGlobal.h */,
-				FCD877DA15AB2F2C003B4267 /* OGProjection.h */,
-				FCD877DB15AB3018003B4267 /* OGProjection.cpp */,
-				FC05DAD915AC6BF400C90296 /* OGBall.cpp */,
+				FC35FAF815ADAD9E0038799D /* OGAmbient.h */,
+				FC35FAF915ADAD9E0038799D /* OGBall.cpp */,
+				FC35FAFA15ADAD9E0038799D /* OGBall.h */,
+				FC35FAFB15ADAD9E0038799D /* OGClub.h */,
+				FC35FAFC15ADAD9E0038799D /* OGGlobal.h */,
+				FC35FAFD15ADAD9E0038799D /* OGLevel.cpp */,
+				FC35FAFE15ADAD9E0038799D /* OGLevel.h */,
+				FC35FAFF15ADAD9E0038799D /* OGLight.cpp */,
+				FC35FB0015ADAD9E0038799D /* OGLight.h */,
+				FC35FB0115ADAD9E0038799D /* OGMaterial.h */,
+				FC35FB0215ADAD9E0038799D /* OGObject.h */,
+				FC35FB0315ADAD9E0038799D /* OGPov.cpp */,
+				FC35FB0415ADAD9E0038799D /* OGPov.h */,
+				FC35FB0515ADAD9E0038799D /* OGProjection.cpp */,
+				FC35FB0615ADAD9E0038799D /* OGProjection.h */,
+				FC35FB0715ADAD9E0038799D /* OGRoom.h */,
+				FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */,
+				FC35FB0915ADAD9E0038799D /* OGTerrain.h */,
 			);
-			name = obj;
-			path = OpenGoLf/obj;
+			name = OGObj;
+			path = OpenGoLf/OGObj;
 			sourceTree = "<group>";
 		};
 		FCEF87C415A71DC8003EE787 /* texture */ = {
@@ -198,12 +198,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDF7020115A470F800C5ED4F /* main.cpp in Sources */,
-				BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */,
-				BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */,
-				FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */,
-				FCEF87BC15A709FC003EE787 /* OGLight.cpp in Sources */,
-				FCD877DC15AB3019003B4267 /* OGProjection.cpp in Sources */,
-				FC05DADA15AC6BF400C90296 /* OGBall.cpp in Sources */,
+				FC35FB0A15ADAD9E0038799D /* OGBall.cpp in Sources */,
+				FC35FB0B15ADAD9E0038799D /* OGLevel.cpp in Sources */,
+				FC35FB0C15ADAD9E0038799D /* OGLight.cpp in Sources */,
+				FC35FB0D15ADAD9E0038799D /* OGPov.cpp in Sources */,
+				FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */,
+				FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

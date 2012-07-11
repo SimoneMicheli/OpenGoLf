@@ -85,5 +85,5 @@ void init(){
     
     //-----------------------------------------------------
     level = new OGLevel();
-    level->init("/Volumes/Personal/xcode/terreno/terrain_small.bmp");
+    level->init(TERRAIN_PATH);
 }
