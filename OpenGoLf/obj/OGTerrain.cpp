@@ -39,7 +39,7 @@ int OGTerrain::terrainFromImage(const char *filename, BMPHeader &header ,Vector3
     normals = (Vector3d *) malloc(sizeof(Vector3d) * header.width * header.height);
     
     if (vertex == NULL || normals== NULL) {
-        printf("memory allocation error");
+        printf("Memory allocation error");
         return -1;
     }
     
@@ -62,7 +62,7 @@ int OGTerrain::terrainFromImage(const char *filename, BMPHeader &header ,Vector3
             
             x = (float) c/ H_SCALE;
             z = (float) r / H_SCALE;
-            y = (float) (tmp - 127) / V_SCALE;
+            y = (float) tmp / V_SCALE;
             vertex[(r * header.width) + c] = Vector3d(x,y,z);
         }
         

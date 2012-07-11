@@ -14,15 +14,20 @@
 class OGLight: public OGObject{
     
 public:
-    float ambient[3],diffuse[3],specular[3],position[4]={1.0f,-1.0,1.0f,0.0f},direction[3];
+    float ambient[3];
+    float diffuse[3];
+    float specular[3];
+    float position[4]; //{1.0f,-1.0,1.0f,0.0f};
+    float direction[3];
     
     OGLight(int);
-    ~OGLight();
-    void set();
+    OGLight(int,double,double,double,double);
+    void setPosition(double,double,double,double);
     void enable();
     void disable();
+    void set();
     bool getStatus();
-    int getNumber();
+    unsigned short int getNumber();
 private:
     unsigned short int number;
     bool enabled;

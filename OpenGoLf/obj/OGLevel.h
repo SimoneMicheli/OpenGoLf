@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "OGLight.h"
 #include "OGGlobal.h"
+#include "OGBall.h"
 #include "OGProjection.h"
 #include <vector>
 
@@ -31,6 +32,7 @@ public:
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
+    OGBall *ball;
     OGProjection *projection;
     vector<OGLight*> lights;
     

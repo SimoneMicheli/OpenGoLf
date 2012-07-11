@@ -15,12 +15,13 @@ void OGLevel::init(string path){
     projection->setPerspective(60.0f, aspect, 0.1f, 1000.0f);
 
     terrain = new OGTerrain(path);
-    pov = new OGPov(0,5,0); //initial pov
+    ball = new OGBall(0.3,4,0.3);
+    pov = new OGPov(-0.2,3,-0.2); //initial pov
     pov->setRotation(-30, -45);
     
-    OGLight *light0 = new OGLight(GL_LIGHT0);
-    lights.push_back(light0);
+    OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,1.0,0.0f,0.0f);
     light0->set();
+    lights.push_back(light0);
     light0->enable();
 }
 
@@ -58,6 +59,7 @@ void OGLevel::launchDisplay(){
     
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
+    activeLevel->ball->draw();
     
     activeLevel->drawMap();
     

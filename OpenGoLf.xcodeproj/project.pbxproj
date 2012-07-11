@@ -13,6 +13,7 @@
 		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
 		BDF7021C15A480AF00C5ED4F /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */; };
 		BDF7022015A4A75F00C5ED4F /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */; };
+		FC05DADA15AC6BF400C90296 /* OGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC05DAD915AC6BF400C90296 /* OGBall.cpp */; };
 		FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCAD41B815A5F60000600336 /* OGPov.cpp */; };
 		FCD877DC15AB3019003B4267 /* OGProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCD877DB15AB3018003B4267 /* OGProjection.cpp */; };
 		FCEF87BC15A709FC003EE787 /* OGLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCEF87BB15A709FC003EE787 /* OGLight.cpp */; };
@@ -47,6 +48,7 @@
 		BDF7021A15A47D1600C5ED4F /* OGTerrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
 		BDF7021B15A480AF00C5ED4F /* OGTerrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGTerrain.cpp; sourceTree = "<group>"; };
 		BDF7021F15A4A75F00C5ED4F /* OGLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGLevel.cpp; sourceTree = "<group>"; };
+		FC05DAD915AC6BF400C90296 /* OGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGBall.cpp; sourceTree = "<group>"; };
 		FCAD41B815A5F60000600336 /* OGPov.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPov.cpp; sourceTree = "<group>"; };
 		FCD877D915AB2AB0003B4267 /* OGGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGGlobal.h; sourceTree = "<group>"; };
 		FCD877DA15AB2F2C003B4267 /* OGProjection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGProjection.h; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				FCD877D915AB2AB0003B4267 /* OGGlobal.h */,
 				FCD877DA15AB2F2C003B4267 /* OGProjection.h */,
 				FCD877DB15AB3018003B4267 /* OGProjection.cpp */,
+				FC05DAD915AC6BF400C90296 /* OGBall.cpp */,
 			);
 			name = obj;
 			path = OpenGoLf/obj;
@@ -200,6 +203,7 @@
 				FCAD41B915A5F60000600336 /* OGPov.cpp in Sources */,
 				FCEF87BC15A709FC003EE787 /* OGLight.cpp in Sources */,
 				FCD877DC15AB3019003B4267 /* OGProjection.cpp in Sources */,
+				FC05DADA15AC6BF400C90296 /* OGBall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

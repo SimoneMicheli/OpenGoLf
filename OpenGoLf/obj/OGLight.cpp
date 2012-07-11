@@ -13,15 +13,40 @@ OGLight::OGLight(int num){
     number = num;
 }
 
-void OGLight::enable(){
-    glEnable(number);
+OGLight::OGLight(int num,double x, double y, double z, double t){
+    number = num;
+    position[0]=x;
+    position[1]=y;
+    position[2]=z;
+    position[3]=t;
 }
 
-void OGLight::disable(){
-    glDisable(number);
+void OGLight::setPosition(double x, double y, double z, double t){
+    position[0]=x;
+    position[1]=y;
+    position[2]=z;
+    position[3]=t;
 }
 
 void OGLight::set(){
     glLightfv(number, GL_POSITION, position);
-    glLightfv(number, GL_SPOT_DIRECTION, direction);
+}
+
+
+void OGLight::enable(){
+    glEnable(number);
+    enabled = true;
+}
+
+void OGLight::disable(){
+    glDisable(number);
+    enabled = false;
+}
+
+bool OGLight::getStatus(){
+    return enabled;
+}
+
+unsigned short int OGLight::getNumber(){
+    return number;
 }
