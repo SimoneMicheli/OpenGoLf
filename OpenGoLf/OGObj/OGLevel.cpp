@@ -16,12 +16,12 @@ void OGLevel::init(string path){
     projection->setPerspective(60.0f, aspect, 0.1f, 1000.0f);
 
     terrain = new OGTerrain(path);
-    ball = new OGBall(0.3,1,0.3);
-    pov = new OGPov(-0.2,3,-0.2); //initial pov
-    pov->setRotation(-30, -45);
+    ball = new OGBall(0.12,4,0.22);
+    pov = new OGPov(0.12,3,0.22); //initial pov
+    pov->setRotation(-30, -90);
     
     //create physics
-    physic = new OGPhysic(ball, terrain);
+    physic = new OGPhysic(ball, terrain, pov);
     
     OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,1.0,0.0f,0.0f);
     light0->set();
@@ -150,9 +150,8 @@ double OGLevel::time_diff(timeval before, timeval now){
 
 void OGLevel::mouseClickFunction(int button,int state, int x, int y){
     glutPassiveMotionFunc(NULL); //disattivo rotazione se mouse cliccato
-    activeLevel->ball->setSpeed(0, 5, 0);
+    activeLevel->ball->setSpeed(4, 3, 4);
     gettimeofday(&OGLevel::before,NULL);
-    
     glutDisplayFunc(OGLevel::followDisplay);
     glutPostRedisplay();
 }

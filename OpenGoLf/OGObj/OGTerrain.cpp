@@ -164,6 +164,32 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glEnd();
 
     }
+    
+    //show normals
+    /*for (int r=0; r < 8 - 1; r++) {
+
+        glBegin(GL_LINES);
+
+        for (int c=0; c < 8; c++) {
+            float s = c * c_step;
+            float t = r * r_step;
+
+            v1 = vertex[ (r * header.width) + c];
+            v2 = vertex[ ((r+1) * header.width) + c];
+            n1 = normals [ (r * header.width) + c];
+            n2 = normals [ ((r+1) * header.width) + c];
+
+            
+            glVertex3d(v1.x, v1.y, v1.z);
+            glVertex3d(n1.x + v1.x, n1.y + v1.y, n1.z + v1.z);
+            
+            glVertex3d(v2.x, v2.y, v2.z);
+            glNormal3f(n2.x + v1.x, n2.y + v2.y, n2.z + v2.z);
+        }
+
+        glEnd();
+
+    }*/
 
     printf("finish\n");
     glEndList();
@@ -186,11 +212,10 @@ int OGTerrain::getHScale(){
     return H_SCALE;
 }
 
-unsigned int OGTerrain::getTerrainHeight(){
-    return header.height;
+unsigned int OGTerrain::getTerrainWidth(){
+    return header.width;
 }
 
 OGTerrain::~OGTerrain(){
     free(vertex);
     free(normals);
-}
