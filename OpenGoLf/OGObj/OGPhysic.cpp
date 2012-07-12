@@ -9,84 +9,70 @@
 #include <iostream>
 #include "OGPhysic.h"
 
-OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain){
+OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     viscosity = 0.02;
-    friction = 0.03;
+    friction = 0.3;
     gravity = -9.81;
     elasticity = 0.6;
     srand ( time(NULL) );
-    const int MAX_WIND = 5;
+    const int MAX_WIND = 4;
     wind = Vector3d((rand() % MAX_WIND),0,(rand() % MAX_WIND));
     wind = Vector3d();
     this->ball = ball;
     this->terrain = terrain;
+    this->pov = pov;
 }
 
-void OGPhysic::update(double time){
-
-    Vector3d fp = Vector3d(0,ball->getMass() * gravity,0); //forza peso
-    Vector3d faa = 6 * M_PI * viscosity * ball->getMass() * (wind - ball->getSpeed()); //forza attrito aria
-    Vector3d fr = fp + faa; //forza attiva sulla pallina
-     
+void OGPhysic::update(double time){     
     
     Vector3d terrainNorm;
-    bool collision = terrainCollision(terrainNorm);
+    Vector3d vertex;
+    Vector3d pos;
+    bool collision = terrainCollision(vertex, terrainNorm);
     
-    if (collision) {
+    Vector3d fp = Vector3d(0,ball->getMass() * gravity,0); //forza peso
+    
+    if (!collision){
+        Vector3d faa = 6 * M_PI * viscosity * ball->getMass() * (wind - ball->getSpeed()); //forza attrito aria
+        Vector3d fr = fp + faa; //forza attiva sulla pallina
+        Vector3d acc = fr / ball->getMass();
+        ball->setSpeed(ball->getSpeed() + (acc * time));
+        pos = ball->getPosition() + (ball->getSpeed() * time);
+    }else{
+        //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
         Vector3d fat = -normV * (-fp.y * friction); //attrito radente terreno
-        fr += fat;
-        //printf("terrain norm: %f",terrainNorm.dot(fr.getNormalized()));
-        fr = Vector3d(fr.x,-fr.y,fr.z);
+        
+        //calcolo forza peso parallela
+        Vector3d fpp = fp.length() * terrainNorm + Vector3d(0,-1,0);
+        Vector3d acc = fat + fpp / ball->getMass();
+        
+        Vector3d speed = ball->getSpeed();
+        pos = ball->getPosition();
+        
+        speed = Vector3d(speed.x + (acc.x * time), -speed.y * 0.3, speed.z + (acc.z * time));
+        
+        pos = Vector3d(pos.x + (speed.x * time), vertex.y + (speed.y * time) ,pos.z + (speed.z * time));
+        
+        ball->setSpeed(speed);
     }
     
-    Vector3d acc = fr / ball->getMass();
-    
-    Vector3d speed = ball->getSpeed() + (acc * time);
-    ball->setSpeed(speed);
-    ball->setPosition(ball->getPosition() + (ball->getSpeed() * time));
+    ball->setPosition(pos.x, pos.y, pos.z);
+    //update pov
+    pov->setPosition(pos.x - 0.4, pos.y + 0.2 , pos.z - 0.4);
+    pov->setRotation(-10, -45);
+
 }
 
-bool OGPhysic::terrainCollision(Vector3d &normal){
+bool OGPhysic::terrainCollision(Vector3d &vertex, Vector3d &normal){
     Vector3d newPos = ball->getPosition() * terrain->getHScale(); //posizione nell'immagine scalata
     
-    Vector3d v1 = terrain->vertex[(int)(round(newPos.z) * terrain->getTerrainWidth() + round(newPos.x))];
-    Vector3d v2 = terrain->vertex[(int)(round(newPos.z) * terrain->getTerrainWidth() + round(newPos.x + 1))];
-    Vector3d v3 = terrain->vertex[(int)(round(newPos.z +1) * terrain->getTerrainWidth() + round(newPos.x))];
+    Vector3d v1 = terrain->vertex[(int)(floor(newPos.z) * (int)terrain->getTerrainWidth() + floor(newPos.x))];
+    Vector3d v2 = terrain->vertex[(int)(floor(newPos.z) * (int)terrain->getTerrainWidth() + floor(newPos.x + 1))];
+    Vector3d v3 = terrain->vertex[(int)(floor(newPos.z +1) * (int)terrain->getTerrainWidth() + floor(newPos.x))];
     
     Vector3d center = (v1+v2+v3)/3;
     double distance = (ball->getPosition().y - center.y);
-    
-    glLineWidth(2);
-    glBegin(GL_LINES);
-            glVertex3d(v1.x, v1.y, v1.z);
-            glVertex3d(v1.x, v1.y+1, v1.z);
-            glVertex3d(v2.x, v2.y, v2.z);
-            glVertex3d(v2.x, v2.y+1, v2.z);
-            glVertex3d(v3.x, v3.y, v3.z);
-            glVertex3d(v3.x, v3.y+1, v3.z);
-            //glVertex3d(center.x, center.y, center.z);
-            //glVertex3d(center.x +0 , center.y +1, center.z +0);
-    glEnd();
-    glLineWidth(1);
-    
-    glPushMatrix();
-    glTranslated(center.x, center.y, center.z);
-    glutSolidSphere(0.002, 10, 10);
-    glPopMatrix();
-    
-    //show red triangle
-    glColor3f(0, 1, 0 );
-    
-    glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-    glBegin(GL_TRIANGLES);
-    
-    glVertex3d(v1.x, v1.y, v1.z);
-    glVertex3d(v2.x, v2.y, v2.z);
-    glVertex3d(v3.x, v3.y, v3.z);
-    
-    glEnd();
-    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
     
     //glutSolidSphere(1, 10, 10);
     if(distance<ball->getRadius()){
@@ -94,14 +80,7 @@ bool OGPhysic::terrainCollision(Vector3d &normal){
         Vector3d n2 = terrain->normals[(int)(round(newPos.z) * terrain->getTerrainWidth() + round(newPos.x + 1))];
         Vector3d n3 = terrain->normals[(int)(round(newPos.z +1) * terrain->getTerrainWidth() + round(newPos.x))];
         normal = (n1+n2+n3).getNormalized(); //
-        
-        
-        glLineWidth(2);
-        glBegin(GL_LINES);
-        glVertex3d(center.x, center.y, center.z);
-        glVertex3d(normal.x +center.x , center.y +normal.y, center.z +normal.z);
-        glEnd();
-        glLineWidth(1);
+        vertex = center;
         return true;
         
     }else{
@@ -109,6 +88,45 @@ bool OGPhysic::terrainCollision(Vector3d &normal){
         return false;
     }
     
+    if (DEBUGGING) {
+        glLineWidth(2);
+        glBegin(GL_LINES);
+        glVertex3d(v1.x, v1.y, v1.z);
+        glVertex3d(v1.x, v1.y+1, v1.z);
+        glVertex3d(v2.x, v2.y, v2.z);
+        glVertex3d(v2.x, v2.y+1, v2.z);
+        glVertex3d(v3.x, v3.y, v3.z);
+        glVertex3d(v3.x, v3.y+1, v3.z);
+        //glVertex3d(center.x, center.y, center.z);
+        //glVertex3d(center.x +0 , center.y +1, center.z +0);
+        glEnd();
+        glLineWidth(1);
+        
+        glPushMatrix();
+        glTranslated(center.x, center.y, center.z);
+        glutSolidSphere(0.002, 10, 10);
+        glPopMatrix();
+        
+        //show red triangle
+        glColor3f(0, 1, 0 );
+        
+        glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+        glBegin(GL_TRIANGLES);
+        
+        glVertex3d(v1.x, v1.y, v1.z);
+        glVertex3d(v2.x, v2.y, v2.z);
+        glVertex3d(v3.x, v3.y, v3.z);
+        
+        glEnd();
+        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+        
+        glLineWidth(2);
+        glBegin(GL_LINES);
+        glVertex3d(center.x, center.y, center.z);
+        glVertex3d(normal.x +center.x , center.y +normal.y, center.z +normal.z);
+        glEnd();
+        glLineWidth(1);
+    }
     
 }
 

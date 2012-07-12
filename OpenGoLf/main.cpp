@@ -58,15 +58,12 @@ int main(int argc, char** argv){
     //glutMotionFunc(mouseMove);
     //glutMouseFunc(mouseClick);
     
-    //gettimeofday(&before , NULL);
-    //ti = before;
-    
     glutDisplayFunc(OGLevel::launchDisplay);
     glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
     
-    //anable wireframe
-    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    if (DEBUGGING)
+     glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); //enable wireframe
     
     glutMainLoop();
     
@@ -80,7 +77,7 @@ void init(){
 	glEnable(GL_DEPTH_TEST);
     
     //enable lghting
-    //glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
 	

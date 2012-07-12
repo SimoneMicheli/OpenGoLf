@@ -10,6 +10,7 @@
 #include <math.h>
 #include "OGBall.h"
 #include "OGTerrain.h"
+#include "OGPov.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -19,7 +20,7 @@
 
 class OGPhysic : public OGObject{
 public:
-    OGPhysic(OGBall*, OGTerrain*);
+    OGPhysic(OGBall*, OGTerrain*, OGPov*);
     void update(double time);
     void shoot(float power, Vector3d direction);
     
@@ -28,9 +29,10 @@ private:
     Vector3d wind;
     OGBall *ball;
     OGTerrain *terrain;
+    OGPov *pov;
     bool oldCollision;
     
-    bool terrainCollision(Vector3d &normal);
+    bool terrainCollision(Vector3d &vertex, Vector3d &normal);
     bool objCollision();
 };
 

@@ -10,8 +10,9 @@
 #define OpenGoLf_OGGlobal_h
 
 
-#define W_WIDTH 800
-#define W_HEIGHT 600
+#define W_WIDTH 900
+#define W_HEIGHT 900
+#define DEBUGGING false
 
 
 #ifdef WIN32
