@@ -36,7 +36,7 @@ struct Vector3d
        y = a[1];
        z = a[2];
    }
-
+    
     Vector3d( const double*& a )
     {
         x = a[0]; y = a[1]; z = a[2];
@@ -77,9 +77,9 @@ struct Vector3d
        a[1] = y;
        a[2] = z;
    }
-
+    
     /*inline double distance ( const Vector3d a){
-        Vector3d d =
+        Vector3d d = 
         if (<#condition#>) {
             <#statements#>
         }
@@ -91,10 +91,10 @@ struct Vector3d
        switch (i) {
            case 0:
                return x;
-
+               
             case 1:
                return y;
-
+               
             case 2:
                return z;
        }
@@ -105,10 +105,10 @@ struct Vector3d
        switch (i) {
            case 0:
                return x;
-
+               
            case 1:
                return y;
-
+               
            case 2:
                return z;
        }
@@ -131,15 +131,13 @@ struct Vector3d
    {
        double len = length();
        if (len ==0) {
-           x=0;
-           y=0;
-           z=0;
+           return Vector3d();
        }
        x = x / len;
        y = y / len;
        z = z / len;
    }
-
+    
     inline Vector3d getNormalized(){
         double len = length();
         if (len ==0) {
@@ -176,9 +174,9 @@ struct Vector3d
    inline Vector3d cross( const Vector3d &v )
    {
       /* x = (y * v.z) - (z* v.y);
-       y = (z * v.x) - ( x * v.z);
+       y = (z * v.x) - ( x * v.z); 
        z = (x * v.y) - (y * v.x);*/
-
+       
        return Vector3d( y * v.z - z * v.y,
                        z * v.x - x * v.z,
                        x * v.y - y * v.x );
@@ -205,8 +203,8 @@ struct Vector3d
        y = (x * sin(angle)) + (y * sin(angle));
        x = x1;
    }
-
-
+    
+    
     inline float alfa(){
         float l = length();
         if (l != 0)
@@ -217,10 +215,10 @@ struct Vector3d
         else
             return M_PI / 2;
     }
-
+    
     inline float beta(){
         if (x != 0)
-            if (x>0)
+            if (x>0) 
                 return atanf(z/x);
             else
                 return atanf(z/x) - M_PI;
