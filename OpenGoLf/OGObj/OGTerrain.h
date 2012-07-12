@@ -10,6 +10,7 @@
 #define OpenGoLf_OGTerrain_h
 
 #include "OGObject.h"
+#include "OGModel3DS.h"
 #include <fstream>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +59,7 @@ public:
     void draw();
     unsigned int getTerrainWidth();
     Vector3d *vertex, *normals;
-
+    vector<OGModel3DS*> models;
 };
 
 

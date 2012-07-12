@@ -18,6 +18,26 @@
 		FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0515ADAD9E0038799D /* OGProjection.cpp */; };
 		FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */; };
 		FC35FB1B15ADBFC40038799D /* OGPhysic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */; };
+		FC42DA0715AF1799006954EF /* lib3ds_atmosphere.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F115AF1799006954EF /* lib3ds_atmosphere.c */; };
+		FC42DA0815AF1799006954EF /* lib3ds_background.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F215AF1799006954EF /* lib3ds_background.c */; };
+		FC42DA0915AF1799006954EF /* lib3ds_camera.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F315AF1799006954EF /* lib3ds_camera.c */; };
+		FC42DA0A15AF1799006954EF /* lib3ds_chunk.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F415AF1799006954EF /* lib3ds_chunk.c */; };
+		FC42DA0B15AF1799006954EF /* lib3ds_chunktable.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F515AF1799006954EF /* lib3ds_chunktable.c */; };
+		FC42DA0C15AF1799006954EF /* lib3ds_file.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F615AF1799006954EF /* lib3ds_file.c */; };
+		FC42DA0D15AF1799006954EF /* lib3ds_io.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F815AF1799006954EF /* lib3ds_io.c */; };
+		FC42DA0E15AF1799006954EF /* lib3ds_light.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9F915AF1799006954EF /* lib3ds_light.c */; };
+		FC42DA0F15AF1799006954EF /* lib3ds_material.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FA15AF1799006954EF /* lib3ds_material.c */; };
+		FC42DA1015AF1799006954EF /* lib3ds_math.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FB15AF1799006954EF /* lib3ds_math.c */; };
+		FC42DA1115AF1799006954EF /* lib3ds_matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FC15AF1799006954EF /* lib3ds_matrix.c */; };
+		FC42DA1215AF1799006954EF /* lib3ds_mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FD15AF1799006954EF /* lib3ds_mesh.c */; };
+		FC42DA1315AF1799006954EF /* lib3ds_node.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FE15AF1799006954EF /* lib3ds_node.c */; };
+		FC42DA1415AF1799006954EF /* lib3ds_quat.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42D9FF15AF1799006954EF /* lib3ds_quat.c */; };
+		FC42DA1515AF1799006954EF /* lib3ds_shadow.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0015AF1799006954EF /* lib3ds_shadow.c */; };
+		FC42DA1615AF1799006954EF /* lib3ds_track.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0115AF1799006954EF /* lib3ds_track.c */; };
+		FC42DA1715AF1799006954EF /* lib3ds_util.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0215AF1799006954EF /* lib3ds_util.c */; };
+		FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0315AF1799006954EF /* lib3ds_vector.c */; };
+		FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0415AF1799006954EF /* lib3ds_viewport.c */; };
+		FCE7ABD315AF15970057CB87 /* OGModel3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +80,33 @@
 		FC35FB0915ADAD9E0038799D /* OGTerrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGTerrain.h; sourceTree = "<group>"; };
 		FC35FB1815ADBD930038799D /* OGPhysic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGPhysic.h; sourceTree = "<group>"; };
 		FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGPhysic.cpp; sourceTree = "<group>"; };
+		FC42D9EE15AF1799006954EF /* lib3ds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib3ds.h; sourceTree = "<group>"; };
+		FC42D9EF15AF1799006954EF /* lib3ds.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lib3ds.rc; sourceTree = "<group>"; };
+		FC42D9F015AF1799006954EF /* lib3ds.vcproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lib3ds.vcproj; sourceTree = "<group>"; };
+		FC42D9F115AF1799006954EF /* lib3ds_atmosphere.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_atmosphere.c; sourceTree = "<group>"; };
+		FC42D9F215AF1799006954EF /* lib3ds_background.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_background.c; sourceTree = "<group>"; };
+		FC42D9F315AF1799006954EF /* lib3ds_camera.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_camera.c; sourceTree = "<group>"; };
+		FC42D9F415AF1799006954EF /* lib3ds_chunk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_chunk.c; sourceTree = "<group>"; };
+		FC42D9F515AF1799006954EF /* lib3ds_chunktable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_chunktable.c; sourceTree = "<group>"; };
+		FC42D9F615AF1799006954EF /* lib3ds_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_file.c; sourceTree = "<group>"; };
+		FC42D9F715AF1799006954EF /* lib3ds_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib3ds_impl.h; sourceTree = "<group>"; };
+		FC42D9F815AF1799006954EF /* lib3ds_io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_io.c; sourceTree = "<group>"; };
+		FC42D9F915AF1799006954EF /* lib3ds_light.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_light.c; sourceTree = "<group>"; };
+		FC42D9FA15AF1799006954EF /* lib3ds_material.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_material.c; sourceTree = "<group>"; };
+		FC42D9FB15AF1799006954EF /* lib3ds_math.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_math.c; sourceTree = "<group>"; };
+		FC42D9FC15AF1799006954EF /* lib3ds_matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_matrix.c; sourceTree = "<group>"; };
+		FC42D9FD15AF1799006954EF /* lib3ds_mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_mesh.c; sourceTree = "<group>"; };
+		FC42D9FE15AF1799006954EF /* lib3ds_node.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_node.c; sourceTree = "<group>"; };
+		FC42D9FF15AF1799006954EF /* lib3ds_quat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_quat.c; sourceTree = "<group>"; };
+		FC42DA0015AF1799006954EF /* lib3ds_shadow.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_shadow.c; sourceTree = "<group>"; };
+		FC42DA0115AF1799006954EF /* lib3ds_track.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_track.c; sourceTree = "<group>"; };
+		FC42DA0215AF1799006954EF /* lib3ds_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_util.c; sourceTree = "<group>"; };
+		FC42DA0315AF1799006954EF /* lib3ds_vector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_vector.c; sourceTree = "<group>"; };
+		FC42DA0415AF1799006954EF /* lib3ds_viewport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_viewport.c; sourceTree = "<group>"; };
+		FC42DA0515AF1799006954EF /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		FC42DA0615AF1799006954EF /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		FCE7ABD015AF15220057CB87 /* OGModel3DS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGModel3DS.h; sourceTree = "<group>"; };
+		FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGModel3DS.cpp; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +156,7 @@
 		BDF7020F15A471FA00C5ED4F /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				FC42D9ED15AF1799006954EF /* lib3ds */,
 				BDF7021015A471FA00C5ED4F /* Vector3d.h */,
 			);
 			name = lib;
@@ -118,6 +166,7 @@
 		FC35FAF715ADAD9E0038799D /* OGObj */ = {
 			isa = PBXGroup;
 			children = (
+				FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */,
 				FC35FAF815ADAD9E0038799D /* OGAmbient.h */,
 				FC35FAF915ADAD9E0038799D /* OGBall.cpp */,
 				FC35FAFA15ADAD9E0038799D /* OGBall.h */,
@@ -138,9 +187,42 @@
 				FC35FB0915ADAD9E0038799D /* OGTerrain.h */,
 				FC35FB1815ADBD930038799D /* OGPhysic.h */,
 				FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */,
+				FCE7ABD015AF15220057CB87 /* OGModel3DS.h */,
 			);
 			name = OGObj;
 			path = OpenGoLf/OGObj;
+			sourceTree = "<group>";
+		};
+		FC42D9ED15AF1799006954EF /* lib3ds */ = {
+			isa = PBXGroup;
+			children = (
+				FC42D9EE15AF1799006954EF /* lib3ds.h */,
+				FC42D9EF15AF1799006954EF /* lib3ds.rc */,
+				FC42D9F015AF1799006954EF /* lib3ds.vcproj */,
+				FC42D9F115AF1799006954EF /* lib3ds_atmosphere.c */,
+				FC42D9F215AF1799006954EF /* lib3ds_background.c */,
+				FC42D9F315AF1799006954EF /* lib3ds_camera.c */,
+				FC42D9F415AF1799006954EF /* lib3ds_chunk.c */,
+				FC42D9F515AF1799006954EF /* lib3ds_chunktable.c */,
+				FC42D9F615AF1799006954EF /* lib3ds_file.c */,
+				FC42D9F715AF1799006954EF /* lib3ds_impl.h */,
+				FC42D9F815AF1799006954EF /* lib3ds_io.c */,
+				FC42D9F915AF1799006954EF /* lib3ds_light.c */,
+				FC42D9FA15AF1799006954EF /* lib3ds_material.c */,
+				FC42D9FB15AF1799006954EF /* lib3ds_math.c */,
+				FC42D9FC15AF1799006954EF /* lib3ds_matrix.c */,
+				FC42D9FD15AF1799006954EF /* lib3ds_mesh.c */,
+				FC42D9FE15AF1799006954EF /* lib3ds_node.c */,
+				FC42D9FF15AF1799006954EF /* lib3ds_quat.c */,
+				FC42DA0015AF1799006954EF /* lib3ds_shadow.c */,
+				FC42DA0115AF1799006954EF /* lib3ds_track.c */,
+				FC42DA0215AF1799006954EF /* lib3ds_util.c */,
+				FC42DA0315AF1799006954EF /* lib3ds_vector.c */,
+				FC42DA0415AF1799006954EF /* lib3ds_viewport.c */,
+				FC42DA0515AF1799006954EF /* Makefile.am */,
+				FC42DA0615AF1799006954EF /* Makefile.in */,
+			);
+			path = lib3ds;
 			sourceTree = "<group>";
 		};
 		FCEF87C415A71DC8003EE787 /* texture */ = {
@@ -210,6 +292,26 @@
 				FC35FB0E15ADAD9E0038799D /* OGProjection.cpp in Sources */,
 				FC35FB0F15ADAD9E0038799D /* OGTerrain.cpp in Sources */,
 				FC35FB1B15ADBFC40038799D /* OGPhysic.cpp in Sources */,
+				FCE7ABD315AF15970057CB87 /* OGModel3DS.cpp in Sources */,
+				FC42DA0715AF1799006954EF /* lib3ds_atmosphere.c in Sources */,
+				FC42DA0815AF1799006954EF /* lib3ds_background.c in Sources */,
+				FC42DA0915AF1799006954EF /* lib3ds_camera.c in Sources */,
+				FC42DA0A15AF1799006954EF /* lib3ds_chunk.c in Sources */,
+				FC42DA0B15AF1799006954EF /* lib3ds_chunktable.c in Sources */,
+				FC42DA0C15AF1799006954EF /* lib3ds_file.c in Sources */,
+				FC42DA0D15AF1799006954EF /* lib3ds_io.c in Sources */,
+				FC42DA0E15AF1799006954EF /* lib3ds_light.c in Sources */,
+				FC42DA0F15AF1799006954EF /* lib3ds_material.c in Sources */,
+				FC42DA1015AF1799006954EF /* lib3ds_math.c in Sources */,
+				FC42DA1115AF1799006954EF /* lib3ds_matrix.c in Sources */,
+				FC42DA1215AF1799006954EF /* lib3ds_mesh.c in Sources */,
+				FC42DA1315AF1799006954EF /* lib3ds_node.c in Sources */,
+				FC42DA1415AF1799006954EF /* lib3ds_quat.c in Sources */,
+				FC42DA1515AF1799006954EF /* lib3ds_shadow.c in Sources */,
+				FC42DA1615AF1799006954EF /* lib3ds_track.c in Sources */,
+				FC42DA1715AF1799006954EF /* lib3ds_util.c in Sources */,
+				FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */,
+				FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

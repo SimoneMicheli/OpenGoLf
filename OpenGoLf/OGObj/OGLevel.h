@@ -40,8 +40,8 @@ private:
     OGBall *ball;
     OGProjection *projection;
     OGPhysic *physic;
-    vector<OGLight*> lights; 
-    static struct timeval before,now;
+    vector<OGLight*> lights;
+    static struct timeval before,now,stopTime;
     double static time_diff(timeval before, timeval now);
     
     Vector3d oldMousePos;

@@ -15,10 +15,20 @@ OGTerrain::OGTerrain(string path){
 
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
+    
+    OGModel3DS *model = new OGModel3DS("/Volumes/Personal/xcode/3ds/tree.3ds");
+    model->setPosition(2, 0.5, 5);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.0001, 0.0001, 0.0001);
+    models.push_back(model);
 }
 
 void OGTerrain::draw(){
     glCallList(terrainDL);
+    //show loaded objects
+    for (int i=0; i<models.size(); i++) {
+        models[i]->draw();
+    }
 }
 
 int OGTerrain::terrainFromImage(const char *filename, BMPHeader &header ,Vector3d* &vertex, Vector3d* &normals){
@@ -190,6 +200,8 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glEnd();
 
     }*/
+    
+    
 
     printf("finish\n");
     glEndList();

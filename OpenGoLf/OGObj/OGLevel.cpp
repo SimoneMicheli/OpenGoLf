@@ -3,7 +3,7 @@
 #include "OGLevel.h"
 
 OGLevel* OGLevel::activeLevel=NULL;
-struct timeval OGLevel::before,OGLevel::now;
+struct timeval OGLevel::before,OGLevel::now,OGLevel::stopTime;
 
 OGLevel::OGLevel(){
     activeLevel = this;
@@ -84,6 +84,11 @@ void OGLevel::followDisplay(){
     
     activeLevel->physic->update(dtime);
     
+    if (activeLevel->ball->getSpeed().length() < 0.01){
+        glutDisplayFunc(OGLevel::launchDisplay);
+        glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
+    }
+    
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
@@ -150,7 +155,7 @@ double OGLevel::time_diff(timeval before, timeval now){
 
 void OGLevel::mouseClickFunction(int button,int state, int x, int y){
     glutPassiveMotionFunc(NULL); //disattivo rotazione se mouse cliccato
-    activeLevel->ball->setSpeed(4, 3, 4);
+    activeLevel->ball->setSpeed(2, 5, 2);
     gettimeofday(&OGLevel::before,NULL);
     glutDisplayFunc(OGLevel::followDisplay);
     glutPostRedisplay();
