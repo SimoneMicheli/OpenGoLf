@@ -74,7 +74,6 @@ bool OGPhysic::terrainCollision(Vector3d &vertex, Vector3d &normal){
     Vector3d center = (v1+v2+v3)/3;
     double distance = (ball->getPosition().y - center.y);
     
-    //glutSolidSphere(1, 10, 10);
     if(distance<ball->getRadius()){
         Vector3d n1 = terrain->normals[(int)(round(newPos.z) * terrain->getTerrainWidth() + round(newPos.x))];
         Vector3d n2 = terrain->normals[(int)(round(newPos.z) * terrain->getTerrainWidth() + round(newPos.x + 1))];
