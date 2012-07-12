@@ -157,3 +157,16 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
     glutPostRedisplay();
 }
 
+OGLevel::~OGLevel(){
+    activeLevel = NULL;
+    delete terrain;
+    delete ball;
+    delete projection;
+    delete physic;
+    while (!lights.empty())
+    {
+        delete lights.back();
+        lights.pop_back();
+    }
+    
+}

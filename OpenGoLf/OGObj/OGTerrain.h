@@ -54,6 +54,7 @@ private:
 public:
     int getHScale();
     OGTerrain(string);
+    ~OGTerrain();
     void draw();
     unsigned int getTerrainHeight();
     Vector3d *vertex, *normals;

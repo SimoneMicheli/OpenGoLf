@@ -25,6 +25,7 @@ class OGLevel : public OGAmbient {
 public:
     
     OGLevel();
+    ~OGLevel();
     void init(string);
 
     void mousePassiveMotionFunction(int, int);

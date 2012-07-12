@@ -189,3 +189,8 @@ int OGTerrain::getHScale(){
 unsigned int OGTerrain::getTerrainHeight(){
     return header.height;
 }
+
+OGTerrain::~OGTerrain(){
+    free(vertex);
+    free(normals);
+}
