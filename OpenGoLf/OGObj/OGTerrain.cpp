@@ -219,3 +219,4 @@ unsigned int OGTerrain::getTerrainWidth(){
 OGTerrain::~OGTerrain(){
     free(vertex);
     free(normals);
+}
