@@ -65,6 +65,9 @@ int main(int argc, char** argv){
     glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
     
+    //anable wireframe
+    glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+    
     glutMainLoop();
     
     return 0;
@@ -77,7 +80,7 @@ void init(){
 	glEnable(GL_DEPTH_TEST);
     
     //enable lghting
-    glEnable(GL_LIGHTING);
+    //glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
 	

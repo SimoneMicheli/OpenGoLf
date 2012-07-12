@@ -28,6 +28,7 @@ private:
     Vector3d wind;
     OGBall *ball;
     OGTerrain *terrain;
+    bool oldCollision;
     
     bool terrainCollision(Vector3d &normal);
     bool objCollision();
