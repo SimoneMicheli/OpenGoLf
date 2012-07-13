@@ -228,6 +228,10 @@ unsigned int OGTerrain::getTerrainWidth(){
     return header.width;
 }
 
+unsigned int OGTerrain::getTerrainHeight(){
+    return header.height;
+}
+
 OGTerrain::~OGTerrain(){
     free(vertex);
     free(normals);

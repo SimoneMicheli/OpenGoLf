@@ -11,6 +11,7 @@
 #include "OGBall.h"
 #include "OGTerrain.h"
 #include "OGPov.h"
+//#include "OGGlobal.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -23,6 +24,7 @@ public:
     OGPhysic(OGBall*, OGTerrain*, OGPov*);
     void update(double time);
     void shoot(float power, Vector3d direction);
+    bool terrainEdge();
     
 private:
     float viscosity, friction, gravity, elasticity;

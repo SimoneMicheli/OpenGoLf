@@ -33,6 +33,7 @@ typedef int32_t LONG;
 
 #include "Vector3d.h"
 #include "OGGlobal.h"
+#include "Util.h"
 
 class OGObject{
     

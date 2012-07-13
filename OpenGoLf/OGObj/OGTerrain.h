@@ -58,6 +58,7 @@ public:
     ~OGTerrain();
     void draw();
     unsigned int getTerrainWidth();
+    unsigned int getTerrainHeight();
     Vector3d *vertex, *normals;
     vector<OGModel3DS*> models;
 };

@@ -3,7 +3,7 @@
 #include "OGLevel.h"
 
 OGLevel* OGLevel::activeLevel=NULL;
-struct timeval OGLevel::before,OGLevel::now,OGLevel::stopTime;
+struct timeval OGLevel::before,OGLevel::now,OGLevel::launchTime;
 
 OGLevel::OGLevel(){
     activeLevel = this;
@@ -16,8 +16,10 @@ void OGLevel::init(string path){
     projection->setPerspective(60.0f, aspect, 0.1f, 1000.0f);
 
     terrain = new OGTerrain(path);
-    ball = new OGBall(0.12,4,0.22);
+    ball = new OGBall(0.12,2,0.22);
+    oldBall = new OGBall();
     pov = new OGPov(0.12,3,0.22); //initial pov
+    oldPov = new OGPov();
     pov->setRotation(-30, -90);
     
     //create physics
@@ -30,21 +32,16 @@ void OGLevel::init(string path){
 }
 
 //-----------------------mouse functions-----------------------
-
-void OGLevel::wrapperMousePassiveMotionFunction(int x, int y){
-    activeLevel->mousePassiveMotionFunction(x,y);
-}
-
 void OGLevel::mousePassiveMotionFunction(int x, int y){
     //recupera la posizione del mouse all'inizo dopo il primo movimento
-    if (oldMousePos.x != 0 || oldMousePos.y != 0) {
-        double a = (oldMousePos.y - (double) y) / 5;
-        double b = (oldMousePos.x - (double) x) / 5;
-        pov->addRotation(a, b);
+    if (activeLevel->oldMousePos.x != 0 || activeLevel->oldMousePos.y != 0) {
+        double a = (activeLevel->oldMousePos.y - (double) y) / 2;
+        double b = (activeLevel->oldMousePos.x - (double) x) / 2;
+        activeLevel->pov->addRotation(a, b);
     }
     
-    oldMousePos.x = x;
-    oldMousePos.y = y;
+    activeLevel->oldMousePos.x = x;
+    activeLevel->oldMousePos.y = y;
     glutPostRedisplay();
 }
 
@@ -82,11 +79,18 @@ void OGLevel::followDisplay(){
     gettimeofday(&OGLevel::now,NULL);
     double dtime = time_diff(OGLevel::before,OGLevel::now);
     
+    if (activeLevel->physic->terrainEdge()){
+        *activeLevel->ball = *activeLevel->oldBall;
+        *activeLevel->pov = *activeLevel->oldPov;
+    }
+    
     activeLevel->physic->update(dtime);
     
     if (activeLevel->ball->getSpeed().length() < 0.01){
         glutDisplayFunc(OGLevel::launchDisplay);
-        glutPassiveMotionFunc(OGLevel::wrapperMousePassiveMotionFunction);
+        glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+        Vector3d pos = activeLevel->ball->getPosition();
+        activeLevel->pov->setPosition(pos.x, pos.y +0.05,pos.z);
     }
     
     activeLevel->pov->lookAt();
@@ -154,11 +158,32 @@ double OGLevel::time_diff(timeval before, timeval now){
 //---------------------mouse click--------------------
 
 void OGLevel::mouseClickFunction(int button,int state, int x, int y){
-    glutPassiveMotionFunc(NULL); //disattivo rotazione se mouse cliccato
-    activeLevel->ball->setSpeed(2, 5, 2);
-    gettimeofday(&OGLevel::before,NULL);
-    glutDisplayFunc(OGLevel::followDisplay);
-    glutPostRedisplay();
+    
+    if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
+        //copy old object
+        //activeLevel->oldBall = new OGBall(0,0,0);
+        *activeLevel->oldBall = *activeLevel->ball;
+        *activeLevel->oldPov = *activeLevel->pov;
+        
+        printf("std: %f\n",activeLevel->ball->getSpeed().x);
+        printf("old: %f\n",activeLevel->pov->getDirection().x);
+        //return;
+        
+        glutPassiveMotionFunc(NULL); //disattivo rotazione
+        Vector3d direction = (activeLevel->pov->getDirection() - activeLevel->pov->getPosition()).getNormalized() * 5;
+        
+        Vector3d p = activeLevel->ball->getPosition();
+         activeLevel->ball->setSpeed(0,0,0);
+        activeLevel->ball->setPosition(p.x, p.y + 0.05, p.z);
+        //activeLevel->physic->shoot(10, direction);
+        activeLevel->ball->setSpeed(direction.x, direction.y, direction.z);
+        
+        
+        gettimeofday(&OGLevel::before,NULL);
+        glutDisplayFunc(OGLevel::followDisplay);
+        glutPostRedisplay();    
+    }
+    
 }
 
 OGLevel::~OGLevel(){

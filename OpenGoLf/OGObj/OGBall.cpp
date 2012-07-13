@@ -16,6 +16,23 @@ OGBall::OGBall(){
     speed =Vector3d();
 }
 
+OGBall::OGBall(const OGBall &ball){
+    radius = 0.021;
+    mass = 0.4555555;
+    position = ball.position;
+    speed = ball.speed;
+}
+
+OGBall & OGBall::operator=(const OGBall &ball){
+    if (this != &ball) {
+        this->radius = ball.radius;
+        this->mass = ball.mass;
+        this->position = ball.position;
+        this->speed = ball.speed;
+    }
+    return *this;
+}
+
 OGBall::OGBall(Vector3d pos){
     radius = 0.021;
     mass = 0.4555555;
@@ -65,7 +82,7 @@ Vector3d OGBall::getSpeed(){
 void OGBall::draw(){
     glPushMatrix();
     glColor3b(0.333, 0.0, 0.0);
-    glTranslated(position.x,position.y, position.z);
+    glTranslated(position.x,position.y + radius, position.z);
     glutSolidSphere(radius, 15, 15);
     glPopMatrix();
 }

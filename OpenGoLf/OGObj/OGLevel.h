@@ -13,10 +13,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include "OGLight.h"
-#include "OGGlobal.h"
 #include "OGBall.h"
 #include "OGProjection.h"
 #include "OGPhysic.h"
+#include "OGObject.h"
+#include "OGLevel.h"
 #include <sys/time.h>
 #include <vector>
 
@@ -28,8 +29,7 @@ public:
     ~OGLevel();
     void init(string);
 
-    void mousePassiveMotionFunction(int, int);
-    void static wrapperMousePassiveMotionFunction(int, int);
+    void static mousePassiveMotionFunction(int, int);
     void static launchDisplay();
     void static followDisplay();
     void static mouseClickFunction(int,int,int,int);
@@ -37,11 +37,11 @@ public:
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
-    OGBall *ball;
+    OGBall *ball, *oldBall;
     OGProjection *projection;
     OGPhysic *physic;
     vector<OGLight*> lights;
-    static struct timeval before,now,stopTime;
+    static struct timeval before,now,launchTime;
     double static time_diff(timeval before, timeval now);
     
     Vector3d oldMousePos;

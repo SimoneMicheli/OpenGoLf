@@ -18,6 +18,25 @@ OGPov::OGPov(){
     setRotation(0, 0);
 }
 
+OGPov::OGPov(const OGPov &pov){
+    alpha = pov.alpha;
+    beta = pov.beta;
+    mod = pov.mod;
+    pos = pov.pos;
+    look = pov.look;
+}
+
+OGPov & OGPov::operator=(const OGPov& pov){
+    if (this != &pov) {
+        alpha = pov.alpha;
+        beta = pov.beta;
+        mod = pov.mod;
+        pos = pov.pos;
+        look = pov.look;
+    }
+    return *this;
+}
+
 OGPov::OGPov(Vector3d p){
     alpha = 0;
     beta = 0;
@@ -90,4 +109,8 @@ void OGPov::lookAt(){
               look.x, look.y, look.z,
               0.0f, 1.0f, 0.0f);
     //printf("look x:%f y:%f z:%f\n",look.x,look.y,look.z);
+}
+
+Vector3d OGPov::getDirection(){
+    return look;
 }

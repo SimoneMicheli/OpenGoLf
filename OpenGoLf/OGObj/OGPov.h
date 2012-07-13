@@ -15,6 +15,8 @@ private:
 
 public:
     OGPov();
+    OGPov(const OGPov &pov);
+    OGPov & operator=(const OGPov& pov);
     OGPov(double,double,double);
     OGPov(Vector3d);
     void setPosition(double, double, double);
@@ -22,6 +24,7 @@ public:
     Vector3d getPosition();
     void setRotation(double,double);
     void addRotation(double,double);
+    Vector3d getDirection();
     //imposta la pov corrente
     void lookAt();
 };

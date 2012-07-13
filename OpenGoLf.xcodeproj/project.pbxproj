@@ -38,6 +38,7 @@
 		FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0315AF1799006954EF /* lib3ds_vector.c */; };
 		FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0415AF1799006954EF /* lib3ds_viewport.c */; };
 		FCE7ABD315AF15970057CB87 /* OGModel3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */; };
+		FCFC07C915B011170083BE0A /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCFC07C815B011170083BE0A /* Util.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -108,6 +109,8 @@
 		FCE7ABD015AF15220057CB87 /* OGModel3DS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGModel3DS.h; sourceTree = "<group>"; };
 		FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGModel3DS.cpp; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
+		FCFC07C815B011170083BE0A /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		FCFC07CB15B012060083BE0A /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 			children = (
 				FC42D9ED15AF1799006954EF /* lib3ds */,
 				BDF7021015A471FA00C5ED4F /* Vector3d.h */,
+				FCFC07C815B011170083BE0A /* Util.cpp */,
+				FCFC07CB15B012060083BE0A /* Util.h */,
 			);
 			name = lib;
 			path = OpenGoLf/lib;
@@ -312,6 +317,7 @@
 				FC42DA1715AF1799006954EF /* lib3ds_util.c in Sources */,
 				FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */,
 				FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */,
+				FCFC07C915B011170083BE0A /* Util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

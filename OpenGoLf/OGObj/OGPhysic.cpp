@@ -39,6 +39,7 @@ void OGPhysic::update(double time){
         ball->setSpeed(ball->getSpeed() + (acc * time));
         pos = ball->getPosition() + (ball->getSpeed() * time);
     }else{
+        renderString("collision");
         //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
         Vector3d fat = -normV * (-fp.y * friction); //attrito radente terreno
@@ -59,7 +60,7 @@ void OGPhysic::update(double time){
     
     ball->setPosition(pos.x, pos.y, pos.z);
     //update pov
-    pov->setPosition(pos.x - 0.4, pos.y + 0.2 , pos.z - 0.4);
+    pov->setPosition(pos.x + BALL_DIST_X, pos.y + BALL_DIST_Y , pos.z + BALL_DIST_Z);
     pov->setRotation(-10, -45);
 
 }
@@ -126,6 +127,19 @@ bool OGPhysic::terrainCollision(Vector3d &vertex, Vector3d &normal){
         glEnd();
         glLineWidth(1);
     }
+    
+}
+
+bool OGPhysic::terrainEdge(){
+    Vector3d position = ball->getPosition() * terrain->getHScale();
+    unsigned int width = terrain->getTerrainWidth();
+    unsigned int height = terrain->getTerrainHeight();
+    
+    if (position.x > width || position.z > height || position.x< 0 || position.z < 0) {
+        return true;
+    }
+    
+    return false;
     
 }
 

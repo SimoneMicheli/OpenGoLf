@@ -9,6 +9,7 @@
 #ifndef OpenGoLf_OGBall_h
 #define OpenGoLf_OGBall_h
 
+
 #include "OGObject.h"
 #include "Vector3d.h"
 
@@ -19,6 +20,8 @@ private:
     
 public:
     OGBall();
+    OGBall(const OGBall &ball); //costruttore di copia
+    OGBall & operator=(const OGBall &); //op overload
     OGBall(double x, double y, double z);
     OGBall(Vector3d);
     void setPosition(double,double,double);
