@@ -11,9 +11,9 @@
 
 OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     viscosity = 0.02;
-    friction = 0.3;
+    friction = 1;
     gravity = -9.81;
-    elasticity = 0.6;
+    elasticity = 0.5;
     srand ( time(NULL) );
     const int MAX_WIND = 4;
     wind = Vector3d((rand() % MAX_WIND),0,(rand() % MAX_WIND));
@@ -51,7 +51,7 @@ void OGPhysic::update(double time){
         Vector3d speed = ball->getSpeed();
         pos = ball->getPosition();
         
-        speed = Vector3d(speed.x + (acc.x * time), -speed.y * 0.3, speed.z + (acc.z * time));
+        speed = Vector3d(speed.x + (acc.x * time), -speed.y * elasticity, speed.z + (acc.z * time));
         
         pos = Vector3d(pos.x + (speed.x * time), vertex.y + (speed.y * time) ,pos.z + (speed.z * time));
         
@@ -143,7 +143,10 @@ bool OGPhysic::terrainEdge(){
     
 }
 
-void OGPhysic::shoot(float power,Vector3d direction){
-    direction.normalize();
-    ball->setSpeed(direction * power);
+void OGPhysic::shoot(float power){
+    Vector3d direction = (pov->getDirection() - pov->getPosition()).getNormalized() * power;
+    Vector3d p = ball->getPosition();
+    ball->setSpeed(0,0,0);
+    ball->setPosition(p.x, p.y + 0.25, p.z);
+    ball->setSpeed(direction.x, direction.y, direction.z);
 }

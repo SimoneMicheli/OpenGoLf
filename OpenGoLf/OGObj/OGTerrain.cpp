@@ -10,14 +10,14 @@
 #include "OGTerrain.h"
 
 OGTerrain::OGTerrain(string path){
-    H_SCALE = 10;
-    V_SCALE = 80;
+    H_SCALE = 5;
+    V_SCALE = 15;
 
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
     
     OGModel3DS *model = new OGModel3DS("/Volumes/Personal/xcode/3ds/tree.3ds");
-    model->setPosition(2, 0.5, 5);
+    model->setPosition(2, 0, 5);
     model->setRotation(-90, 1, 0, 0);
     model->setScale(0.0001, 0.0001, 0.0001);
     models.push_back(model);
@@ -146,8 +146,8 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     glBindTexture(GL_TEXTURE_2D, texture0);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
-    float c_step = 1.0 / ((float)header.width / 15.0);
-    float r_step = 1.0 / ((float)header.height / 15.0);
+    float c_step = 1.0 / ((float)header.width / 100.0);
+    float r_step = 1.0 / ((float)header.height / 100.0);
 
     //crate n stip one for each image line
     for (int r=0; r < header.height - 1; r++) {

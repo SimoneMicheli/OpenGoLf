@@ -13,7 +13,7 @@ OGLevel::OGLevel(){
 void OGLevel::init(string path){
     projection = new OGProjection(); 
     float aspect = (float) W_WIDTH/(float) W_HEIGHT;
-    projection->setPerspective(60.0f, aspect, 0.1f, 1000.0f);
+    projection->setPerspective(60.0f, aspect, 0.1f, 100.0f);
 
     terrain = new OGTerrain(path);
     ball = new OGBall(0.12,2,0.22);
@@ -25,7 +25,7 @@ void OGLevel::init(string path){
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
     
-    OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,1.0,0.0f,0.0f);
+    OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,50.0,50.0f,0.0f);
     light0->set();
     lights.push_back(light0);
     light0->enable();
@@ -35,8 +35,8 @@ void OGLevel::init(string path){
 void OGLevel::mousePassiveMotionFunction(int x, int y){
     //recupera la posizione del mouse all'inizo dopo il primo movimento
     if (activeLevel->oldMousePos.x != 0 || activeLevel->oldMousePos.y != 0) {
-        double a = (activeLevel->oldMousePos.y - (double) y) / 2;
-        double b = (activeLevel->oldMousePos.x - (double) x) / 2;
+        double a = (activeLevel->oldMousePos.y - (double) y) / 1;
+        double b = (activeLevel->oldMousePos.x - (double) x) / 1;
         activeLevel->pov->addRotation(a, b);
     }
     
@@ -50,7 +50,7 @@ void OGLevel::mousePassiveMotionFunction(int x, int y){
 void OGLevel::launchDisplay(){
     //activeLevel->drawMap();
 
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.376, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -69,7 +69,7 @@ void OGLevel::launchDisplay(){
 
 //---------------------follow display--------------------------
 void OGLevel::followDisplay(){
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.376, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -170,15 +170,8 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
         //return;
         
         glutPassiveMotionFunc(NULL); //disattivo rotazione
-        Vector3d direction = (activeLevel->pov->getDirection() - activeLevel->pov->getPosition()).getNormalized() * 5;
         
-        Vector3d p = activeLevel->ball->getPosition();
-         activeLevel->ball->setSpeed(0,0,0);
-        activeLevel->ball->setPosition(p.x, p.y + 0.05, p.z);
-        //activeLevel->physic->shoot(10, direction);
-        activeLevel->ball->setSpeed(direction.x, direction.y, direction.z);
-        
-        
+        activeLevel->physic->shoot(10);
         gettimeofday(&OGLevel::before,NULL);
         glutDisplayFunc(OGLevel::followDisplay);
         glutPostRedisplay();    

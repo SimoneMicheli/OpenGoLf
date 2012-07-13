@@ -13,9 +13,9 @@
 #define W_WIDTH 900
 #define W_HEIGHT 900
 #define DEBUGGING false
-#define BALL_DIST_X -0.4
-#define BALL_DIST_Y +0.2
-#define BALL_DIST_Z -0.4
+#define BALL_DIST_X -0.8
+#define BALL_DIST_Y +0.3
+#define BALL_DIST_Z -0.8
 
 
 #ifdef WIN32
