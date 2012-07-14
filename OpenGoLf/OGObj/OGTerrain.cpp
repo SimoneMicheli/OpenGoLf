@@ -11,7 +11,7 @@
 
 OGTerrain::OGTerrain(string path){
     H_SCALE = 10;
-    V_SCALE = 80;
+    V_SCALE = 30;
 
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);

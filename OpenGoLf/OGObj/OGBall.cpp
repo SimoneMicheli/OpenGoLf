@@ -52,7 +52,7 @@ double OGBall::getMass(){
 
 double OGBall::getRadius(){
     return radius;
-} 
+}
 
 Vector3d OGBall::getPosition(){
     return position;

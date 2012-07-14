@@ -21,30 +21,31 @@
 #include <vector>
 
 class OGLevel : public OGAmbient {
-    
+
 public:
-    
+
     OGLevel();
     void init(string);
-
+    void drawmap();
+    void drawwind();
     void mousePassiveMotionFunction(int, int);
     void static wrapperMousePassiveMotionFunction(int, int);
     void static launchDisplay();
     void static followDisplay();
     void static mouseClickFunction(int,int,int,int);
-    
+
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
     OGBall *ball;
     OGProjection *projection;
     OGPhysic *physic;
-    vector<OGLight*> lights; 
+    vector<OGLight*> lights;
     static struct timeval before,now;
     double static time_diff(timeval before, timeval now);
-    
+
     Vector3d oldMousePos;
-    
+
     void drawMap();
 };
 

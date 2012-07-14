@@ -17,18 +17,90 @@ void OGLevel::init(string path){
 
     terrain = new OGTerrain(path);
     ball = new OGBall(0.3,1,0.3);
-    pov = new OGPov(-0.2,3,-0.2); //initial pov
+    pov = new OGPov(-20,30,-20); //initial pov
     pov->setRotation(-30, -45);
 
     //create physics
     physic = new OGPhysic(ball, terrain);
 
-    OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,1.0,0.0f,0.0f);
+    OGLight *light0 = new OGLight(GL_LIGHT0,-3.0f,3.0,-3.0f,0.0f);
     light0->set();
     lights.push_back(light0);
     light0->enable();
+
+
 }
 
+
+void OGLevel::drawmap(){
+    GLdouble modelMatrix[16],projMatrix[16];
+    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
+    glLoadIdentity();
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glMatrixMode(GL_MODELVIEW);
+
+    OGProjection *p = new OGProjection();
+    p->setOrtho(0.1f,100.0f,-8.0f,8.0f,8.0f,-8.0f);
+    OGPov *pov = new OGPov(8,5,0);
+    pov->setRotation(-89,0);
+
+
+    pov->lookAt();
+
+    glViewport(0,0,200,100);
+    terrain->draw();
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixd(projMatrix);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixd(modelMatrix);
+    delete p;
+    delete pov;
+
+}
+
+
+void OGLevel::drawwind(){
+
+    GLdouble modelMatrix[16],projMatrix[16];
+    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
+    glLoadIdentity();
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+
+    glMatrixMode(GL_MODELVIEW);
+
+    OGProjection *p = new OGProjection();
+    p->setOrtho(0.1f,100.0f,-4.0f,4.0f,4.0f,-4.0f);
+    OGPov *pov = new OGPov(0,1,0);
+
+
+    pov->lookAt();
+
+    glViewport(0,400,200,200);
+    OGLight *light7 = new OGLight(GL_LIGHT7,0.0f,10.0,0.0f,0.0f);
+    light7->set();
+    light7->enable();
+    glDisable(GL_TEXTURE_2D);
+    glutSolidSphere(3,50,50);
+    light7->disable();
+
+    glEnable(GL_TEXTURE_2D);
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixd(projMatrix);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixd(modelMatrix);
+    delete p;
+    delete pov;
+}
 //-----------------------mouse functions-----------------------
 
 void OGLevel::wrapperMousePassiveMotionFunction(int x, int y){
@@ -51,28 +123,27 @@ void OGLevel::mousePassiveMotionFunction(int x, int y){
 
 //--------------------launch display function-----------------
 void OGLevel::launchDisplay(){
-    activeLevel->drawMap();
 
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.377, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glLoadIdentity();
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
+    //activeLevel->projection->init();
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
-
-    activeLevel->drawMap();
-
+    activeLevel->drawmap();
+    activeLevel->drawwind();
     glutSwapBuffers();
 
 }
 
 //---------------------follow display--------------------------
 void OGLevel::followDisplay(){
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.377, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -94,45 +165,6 @@ void OGLevel::followDisplay(){
     glutPostRedisplay();
 }
 
-//-------------------display map viewport----------------------
-void OGLevel::drawMap(){
-    GLdouble modelMatrix[16], projMatrix[16];
-
-    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
-
-    glPushMatrix();
-    glLoadIdentity();
-
-    glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
-    glLoadIdentity();
-
-    glMatrixMode(GL_MODELVIEW);
-
-    OGProjection *p = new OGProjection();
-    p->setOrtho(0.1f, 100.0f, -8.0f, 8.0f, 8.0f, -8.0f);
-
-    OGPov *povl = new OGPov(8,5,0);
-    povl->setRotation(-90, 0);
-
-    povl->lookAt();
-    glViewport(0, 0, 200, 200);
-
-    terrain->draw();
-
-    glMatrixMode(GL_PROJECTION);
-    //glPopMatrix();
-    glLoadMatrixd(projMatrix);
-
-    glMatrixMode(GL_MODELVIEW);
-    //glPopMatrix();
-    glLoadMatrixd(modelMatrix);
-
-    //!important avoid memory leak
-    delete p;
-    delete povl;
-}
 
 //---------------------time diff function--------------------
 double OGLevel::time_diff(timeval before, timeval now){

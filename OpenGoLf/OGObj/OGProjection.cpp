@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "OGProjection.h"
+#include <stdio.h>
 
 void OGProjection::setPerspective(float angle, float aspect, float p_near, float p_far){
     this->angle = angle;
@@ -32,6 +33,7 @@ void OGProjection::setOrtho(float p_near,float p_far ,float left ,float right, f
 void OGProjection::init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
+    printf("%f\n",p_far);
     if (type == PERSPECTIVE) {
         gluPerspective(angle, aspect, p_near, p_far);
     }else{

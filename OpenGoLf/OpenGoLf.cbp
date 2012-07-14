@@ -59,7 +59,6 @@
 		<Unit filename="OGObj\OGLevel.h" />
 		<Unit filename="OGObj\OGLight.cpp" />
 		<Unit filename="OGObj\OGLight.h" />
-		<Unit filename="OGObj\OGMap.cpp" />
 		<Unit filename="OGObj\OGMap.h" />
 		<Unit filename="OGObj\OGMaterial.h" />
 		<Unit filename="OGObj\OGObject.h" />
