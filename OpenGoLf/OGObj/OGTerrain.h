@@ -53,6 +53,8 @@ private:
     void computeNormals(BMPHeader &header, Vector3d* &vertex, Vector3d* &normals);
     void initTexture();
     GLuint createModelsDL();
+    void readModelsFromFile();
+    Vector3d modelInitPosition(double x, double z);
 
 public:
     int getHScale();

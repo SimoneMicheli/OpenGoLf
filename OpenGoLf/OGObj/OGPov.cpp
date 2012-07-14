@@ -68,8 +68,36 @@ Vector3d OGPov::getPosition(){
     return pos;
 }
 
+void OGPov::setLook(double x, double y, double z){
+    look.z=x;
+    look.y=y;
+    look.z=z;
+}
+
+void OGPov::setLook(Vector3d v){
+    look = v;
+}
+
+Vector3d OGPov::getLook(){
+    return look;
+}
+
+void OGPov::setDirection(double x, double y, double z){
+    setDirection(Vector3d(x,y,z));
+}
+
+void OGPov::setDirection(Vector3d direction){
+    direction = direction.getNormalized() * mod;
+    look = direction;
+    alpha = look.alfa();
+    beta = look.beta();
+}
+
+Vector3d OGPov::getDirection(){
+    return pos - look;
+}
+
 void OGPov::setRotation(double a,double b){
-     //printf("setlook a:%f b:%f\n",a,b);
     a = a * M_PI / 180;
     b = (b + 90) * M_PI / 180;
 
@@ -82,9 +110,6 @@ void OGPov::setRotation(double a,double b){
     look[0] = (mod * cos(alpha) * cos(beta));
     look[1] = (mod * sin(alpha));
     look[2] = (mod * cos(alpha) * sin(beta));
-
-    look += pos;
-    //printf("setlook x:%f y:%f z:%f\n",look.x,look.y,look.z);
 }
 
 void OGPov::addRotation(double a, double b){
@@ -99,18 +124,12 @@ void OGPov::addRotation(double a, double b){
     look[0] = (mod * cos(alpha) * cos(beta));
     look[1] = (mod * sin(alpha));
     look[2] = (mod * cos(alpha) * sin(beta));
-
-    look += pos;
 }
 
 //imposta la pov corrente
 void OGPov::lookAt(){
-    gluLookAt(pos.x, pos.y, pos.z,
-              look.x, look.y, look.z,
+    Vector3d pov = pos - look;
+    gluLookAt(pov.x, pov.y, pov.z,
+              pos.x, pos.y, pos.z,
               0.0f, 1.0f, 0.0f);
-    //printf("look x:%f y:%f z:%f\n",look.x,look.y,look.z);
-}
-
-Vector3d OGPov::getDirection(){
-    return look;
 }

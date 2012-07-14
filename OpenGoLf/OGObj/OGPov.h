@@ -22,8 +22,13 @@ public:
     void setPosition(double, double, double);
     void setPosition(Vector3d);
     Vector3d getPosition();
+    void setLook(double, double, double);
+    void setLook(Vector3d);
+    Vector3d getLook();
     void setRotation(double,double);
     void addRotation(double,double);
+    void setDirection(double, double, double);
+    void setDirection(Vector3d);
     Vector3d getDirection();
     //imposta la pov corrente
     void lookAt();

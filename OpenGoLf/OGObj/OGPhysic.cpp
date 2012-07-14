@@ -60,8 +60,7 @@ void OGPhysic::update(double time){
     
     ball->setPosition(pos.x, pos.y, pos.z);
     //update pov
-    pov->setPosition(pos.x + BALL_DIST_X, pos.y + BALL_DIST_Y , pos.z + BALL_DIST_Z);
-    pov->setRotation(-10, -45);
+    pov->setPosition(pos.x, pos.y , pos.z);
 
 }
 
@@ -87,47 +86,6 @@ bool OGPhysic::terrainCollision(Vector3d &vertex, Vector3d &normal){
         normal = Vector3d();
         return false;
     }
-    
-    if (DEBUGGING) {
-        glLineWidth(2);
-        glBegin(GL_LINES);
-        glVertex3d(v1.x, v1.y, v1.z);
-        glVertex3d(v1.x, v1.y+1, v1.z);
-        glVertex3d(v2.x, v2.y, v2.z);
-        glVertex3d(v2.x, v2.y+1, v2.z);
-        glVertex3d(v3.x, v3.y, v3.z);
-        glVertex3d(v3.x, v3.y+1, v3.z);
-        //glVertex3d(center.x, center.y, center.z);
-        //glVertex3d(center.x +0 , center.y +1, center.z +0);
-        glEnd();
-        glLineWidth(1);
-        
-        glPushMatrix();
-        glTranslated(center.x, center.y, center.z);
-        glutSolidSphere(0.002, 10, 10);
-        glPopMatrix();
-        
-        //show red triangle
-        glColor3f(0, 1, 0 );
-        
-        glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
-        glBegin(GL_TRIANGLES);
-        
-        glVertex3d(v1.x, v1.y, v1.z);
-        glVertex3d(v2.x, v2.y, v2.z);
-        glVertex3d(v3.x, v3.y, v3.z);
-        
-        glEnd();
-        glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-        
-        glLineWidth(2);
-        glBegin(GL_LINES);
-        glVertex3d(center.x, center.y, center.z);
-        glVertex3d(normal.x +center.x , center.y +normal.y, center.z +normal.z);
-        glEnd();
-        glLineWidth(1);
-    }
-    
 }
 
 bool OGPhysic::terrainEdge(){
@@ -144,9 +102,10 @@ bool OGPhysic::terrainEdge(){
 }
 
 void OGPhysic::shoot(float power){
-    Vector3d direction = (pov->getDirection() - pov->getPosition()).getNormalized() * power;
+    Vector3d direction = (pov->getPosition() - pov->getDirection()).getNormalized() * power;
     Vector3d p = ball->getPosition();
     ball->setSpeed(0,0,0);
     ball->setPosition(p.x, p.y + 0.25, p.z);
     ball->setSpeed(direction.x, direction.y, direction.z);
+    
 }

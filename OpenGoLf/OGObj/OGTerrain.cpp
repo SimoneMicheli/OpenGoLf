@@ -16,17 +16,13 @@ OGTerrain::OGTerrain(string path){
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
     
-    OGModel3DS *model = new OGModel3DS("/Volumes/Personal/xcode/3ds/tree.3ds");
-    model->setPosition(2, 0, 5);
-    model->setRotation(-90, 1, 0, 0);
-    model->setScale(0.0001, 0.0001, 0.0001);
-    models.push_back(model);
-    
+    readModelsFromFile();
     modelsDL = createModelsDL();
 }
 
 void OGTerrain::draw(){
     glCallList(terrainDL);
+    
     //show loaded objects
     glDisable(GL_TEXTURE_2D);
     glCallList(modelsDL);
@@ -246,6 +242,26 @@ GLuint OGTerrain::createModelsDL(){
     glEndList();
     
     return modelsDL;
+}
+
+void OGTerrain::readModelsFromFile(){
+    OGModel3DS *model = new OGModel3DS("/Volumes/Personal/xcode/3ds/tree.3ds");
+    Vector3d pos = modelInitPosition(100, 100);
+    model->setPosition(pos);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.0001, 0.0001, 0.0001);
+    models.push_back(model);
+}
+
+Vector3d OGTerrain::modelInitPosition(double x, double z){
+    Vector3d newPos = Vector3d(x,0,z) * getHScale(); //posizione nell'immagine scalata
+    
+    Vector3d v1 = vertex[(int)(floor(newPos.z) * (int)getTerrainWidth() + floor(newPos.x))];
+    Vector3d v2 = vertex[(int)(floor(newPos.z) * (int)getTerrainWidth() + floor(newPos.x + 1))];
+    Vector3d v3 = vertex[(int)(floor(newPos.z +1) * (int)getTerrainWidth() + floor(newPos.x))];
+    
+    Vector3d center = (v1+v2+v3)/3;
+    return Vector3d(x,center.y,z);
 }
 
 OGTerrain::~OGTerrain(){

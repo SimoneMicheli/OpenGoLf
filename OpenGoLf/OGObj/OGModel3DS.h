@@ -37,7 +37,6 @@ public:
     void setPosition(double x, double y, double z);
     void setPosition(Vector3d v);
     Vector3d getPosition();
-    
 };
 
 #endif

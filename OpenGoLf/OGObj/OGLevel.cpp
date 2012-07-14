@@ -16,9 +16,9 @@ void OGLevel::init(string path){
     projection->setPerspective(60.0f, aspect, 0.1f, 100.0f);
 
     terrain = new OGTerrain(path);
-    ball = new OGBall(0.12,2,0.22);
+    ball = new OGBall(5,0,5);
     oldBall = new OGBall();
-    pov = new OGPov(0.12,3,0.22); //initial pov
+    pov = new OGPov(5,0,5); //initial pov
     oldPov = new OGPov();
     pov->setRotation(-30, -90);
     
@@ -101,8 +101,6 @@ void OGLevel::followDisplay(){
     if (activeLevel->ball->getSpeed().length() < 0.01){
         glutDisplayFunc(OGLevel::launchDisplay);
         glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
-        Vector3d pos = activeLevel->ball->getPosition();
-        activeLevel->pov->setPosition(pos.x, pos.y +0.05,pos.z);
     }
     
     activeLevel->pov->lookAt();
