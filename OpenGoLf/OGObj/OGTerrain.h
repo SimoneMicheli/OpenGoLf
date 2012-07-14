@@ -39,6 +39,7 @@ private:
     };
 
     GLuint terrainDL;
+    GLuint modelsDL;
     int H_SCALE;
     int V_SCALE;
 
@@ -51,6 +52,7 @@ private:
     GLuint createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d* &normals);
     void computeNormals(BMPHeader &header, Vector3d* &vertex, Vector3d* &normals);
     void initTexture();
+    GLuint createModelsDL();
 
 public:
     int getHScale();

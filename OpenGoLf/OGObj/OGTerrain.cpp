@@ -21,14 +21,16 @@ OGTerrain::OGTerrain(string path){
     model->setRotation(-90, 1, 0, 0);
     model->setScale(0.0001, 0.0001, 0.0001);
     models.push_back(model);
+    
+    modelsDL = createModelsDL();
 }
 
 void OGTerrain::draw(){
     glCallList(terrainDL);
     //show loaded objects
-    for (int i=0; i<models.size(); i++) {
-        models[i]->draw();
-    }
+    glDisable(GL_TEXTURE_2D);
+    glCallList(modelsDL);
+    glEnable(GL_TEXTURE_2D);
 }
 
 int OGTerrain::terrainFromImage(const char *filename, BMPHeader &header ,Vector3d* &vertex, Vector3d* &normals){
@@ -230,6 +232,20 @@ unsigned int OGTerrain::getTerrainWidth(){
 
 unsigned int OGTerrain::getTerrainHeight(){
     return header.height;
+}
+
+GLuint OGTerrain::createModelsDL(){
+    //create models DisplayList
+    GLuint modelsDL = glGenLists(1);
+    glNewList(modelsDL, GL_COMPILE);
+    
+    for (int i=0; i<models.size(); i++) {
+        models[i]->draw();
+    }
+    
+    glEndList();
+    
+    return modelsDL;
 }
 
 OGTerrain::~OGTerrain(){

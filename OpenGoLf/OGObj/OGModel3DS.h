@@ -16,7 +16,7 @@ typedef float Lib3dsVector[3];
 class  OGModel3DS : public OGObject{
     Lib3dsFile* f;
     Lib3dsVector *normals, *vertex;
-    GLuint vbo[2]; //0->vertex //1->normals
+    GLuint objDL;
     unsigned int nfaces;
     
     void createVBO();

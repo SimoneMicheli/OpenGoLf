@@ -29,6 +29,18 @@ void OGLevel::init(string path){
     light0->set();
     lights.push_back(light0);
     light0->enable();
+    
+    //fog
+    //glClearColor(0.5f,0.5f,0.5f,1.0f);          // We'll Clear To The Color Of The Fog ( Modified )
+    GLfloat fogColor[4]= {0.8f, 0.8f, 0.8f, 1.0f};
+    
+    glFogi(GL_FOG_MODE, GL_LINEAR);        // Fog Mode
+    glFogfv(GL_FOG_COLOR, fogColor);            // Set Fog Color
+    glFogf(GL_FOG_DENSITY, 0.005f);              // How Dense Will The Fog Be
+    glHint(GL_FOG_HINT, GL_NICEST);          // Fog Hint Value
+    glFogf(GL_FOG_START, 1.0f);             // Fog Start Depth
+    glFogf(GL_FOG_END, 20.0f);               // Fog End Depth
+    glEnable(GL_FOG);                   // Enables GL_FOG
 }
 
 //-----------------------mouse functions-----------------------
@@ -110,11 +122,11 @@ void OGLevel::drawMap(){
     glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
     glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
     
-    glPushMatrix();
+    //glPushMatrix();
     glLoadIdentity();
     
     glMatrixMode(GL_PROJECTION);
-    glPushMatrix();
+    //glPushMatrix();
     glLoadIdentity();
     
     glMatrixMode(GL_MODELVIEW);

@@ -72,12 +72,25 @@ void OGModel3DS::createVBO(){
         }
     }
     
-    glGenBuffers(2, (GLuint* ) &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsVector) * 3 * nfaces, vertex, GL_STATIC_DRAW);
+    objDL = glGenLists(1);
     
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Lib3dsVector) * 3 * nfaces, normals, GL_STATIC_DRAW);
+    glNewList(objDL, GL_COMPILE);
+    
+    glBegin(GL_TRIANGLES);
+    for (int i = 0; i < nfaces * 3; i+=3) {
+        //vertex1
+        glNormal3f(normals[i][0], normals[i][1], normals[i][2]);
+        glVertex3f(vertex[i][0], vertex[i][1], vertex[i][2]);
+        //vertex 2
+        glNormal3f(normals[i+1][0], normals[i+1][1], normals[i+1][2]);
+        glVertex3f(vertex[i+1][0], vertex[i+1][1], vertex[i+1][2]);
+        //vertex 3
+        glNormal3f(normals[i+2][0], normals[i+2][1], normals[i+2][2]);
+        glVertex3f(vertex[i+2][0], vertex[i+2][1], vertex[i+2][2]);
+    }
+    glEnd();
+    
+    glEndList();
     
     //destroy memory object
     free(normals);
@@ -97,24 +110,7 @@ void OGModel3DS::draw(){
     glScaled(scale.x, scale.y, scale.z);
     glRotated(rotation[0], rotation[1], rotation[2], rotation[3]);
     
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-    
-    //bind vertex array
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    
-    glNormalPointer(GL_FLOAT, 0, 0);
-    
-    //bind vertex array
-    glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    
-    glVertexPointer(3, GL_FLOAT, 0, 0);
-    
-    //render triangle
-    glDrawArrays(GL_TRIANGLES, 0, nfaces* 3);
-    
-    glDisableClientState(GL_VERTEX_ARRAY);
-    glDisableClientState(GL_NORMAL_ARRAY);
+    glCallList(objDL);
     
     glPopMatrix();
 }
