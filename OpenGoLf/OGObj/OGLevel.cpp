@@ -56,12 +56,32 @@ void OGLevel::mousePassiveMotionFunction(int x, int y){
     activeLevel->oldMousePos.y = y;
     glutPostRedisplay();
 }
+void *multiThread(void *args);
+pthread_t pth;
+pthread_mutex_t mutex;
+int i=0;
 
+string convertInt(int number)
+{
+    if (number == 0)
+        return "0";
+    string temp="";
+    string returnvalue="";
+    while (number>0)
+    {
+        temp+=number%10+48;
+        number/=10;
+    }
+    for (int i=0;i<temp.length();i++)
+        returnvalue+=temp[temp.length()-i-1];
+    return returnvalue;
+}
 
 //--------------------launch display function-----------------
 void OGLevel::launchDisplay(){
     //activeLevel->drawMap();
-
+    int v;
+    
     glClearColor(0.376, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -73,7 +93,15 @@ void OGLevel::launchDisplay(){
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
     
-    activeLevel->drawMap();
+    pthread_mutex_lock(&mutex);
+    v = i;
+    pthread_mutex_unlock(&mutex);
+    
+    string s = convertInt(v);
+    
+    //activeLevel->drawMap();
+    
+    renderString(s.c_str());
     
     glutSwapBuffers();
     
@@ -167,9 +195,23 @@ double OGLevel::time_diff(timeval before, timeval now){
 
 //---------------------mouse click--------------------
 
+
 void OGLevel::mouseClickFunction(int button,int state, int x, int y){
+    glutPassiveMotionFunc(NULL); //disattivo rotazione
+    
+    if (state == GLUT_DOWN && button == GLUT_LEFT_BUTTON){
+        
+        pthread_mutex_init(&mutex, NULL);
+        
+        pthread_create(&pth, NULL, multiThread, NULL);
+        
+        //pthread_mutex_lock(&mutex);
+        //pthread_create(&pth, NULL, multiThread, "processing...");
+    }
     
     if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
+        //pthread_mutex_unlock(&mutex);
+        //pthread_cancel(pth);
         //copy old object
         //activeLevel->oldBall = new OGBall(0,0,0);
         *activeLevel->oldBall = *activeLevel->ball;
@@ -179,7 +221,7 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
         printf("old: %f\n",activeLevel->pov->getDirection().x);
         //return;
         
-        glutPassiveMotionFunc(NULL); //disattivo rotazione
+        
         
         activeLevel->physic->shoot(10);
         gettimeofday(&OGLevel::before,NULL);
@@ -187,6 +229,21 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
         glutPostRedisplay();    
     }
     
+}
+
+void *multiThread(void *args){
+    for(;;){
+        printf("multithread: %i\n",i);
+        string s = "multithread "+i;
+        pthread_mutex_lock(&mutex);
+        i++;
+        pthread_mutex_unlock(&mutex);
+        //renderString(s.c_str());
+        //sleep(500);
+        //glutPostRedisplay();
+        usleep(10000);
+    }
+    printf("out");
 }
 
 OGLevel::~OGLevel(){

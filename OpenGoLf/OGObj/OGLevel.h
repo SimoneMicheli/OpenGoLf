@@ -20,6 +20,8 @@
 #include "OGLevel.h"
 #include <sys/time.h>
 #include <vector>
+#include <pthread.h>
+#include <stream.h>
 
 class OGLevel : public OGAmbient {
     
