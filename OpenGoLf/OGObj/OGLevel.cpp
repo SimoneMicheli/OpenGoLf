@@ -25,6 +25,9 @@ void OGLevel::init(string path){
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
     
+    //default club
+    club = OGClub::DRIVER;
+    
     OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,50.0,50.0f,0.0f);
     light0->set();
     lights.push_back(light0);
@@ -60,8 +63,6 @@ void OGLevel::mousePassiveMotionFunction(int x, int y){
 
 //--------------------launch display function-----------------
 void OGLevel::launchDisplay(){
-    //activeLevel->drawMap();
-
     glClearColor(0.376, 0.77, 1, 1.0);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -72,7 +73,9 @@ void OGLevel::launchDisplay(){
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
+    //renderString(activeLevel->club.toString().c_str());
     
+    //renderString("pippo");
     activeLevel->drawMap();
     
     glutSwapBuffers();
@@ -98,7 +101,7 @@ void OGLevel::followDisplay(){
     
     activeLevel->physic->update(dtime);
     
-    if (activeLevel->ball->getSpeed().length() < 0.01){
+    if (activeLevel->ball->getSpeed().length() < 0.015){
         glutDisplayFunc(OGLevel::launchDisplay);
         glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
     }
@@ -171,23 +174,27 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
     
     if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
         //copy old object
-        //activeLevel->oldBall = new OGBall(0,0,0);
         *activeLevel->oldBall = *activeLevel->ball;
         *activeLevel->oldPov = *activeLevel->pov;
         
-        printf("std: %f\n",activeLevel->ball->getSpeed().x);
-        printf("old: %f\n",activeLevel->pov->getDirection().x);
-        //return;
-        
         glutPassiveMotionFunc(NULL); //disattivo rotazione
         
-        activeLevel->physic->shoot(10);
+        activeLevel->physic->shoot(3 * activeLevel->club.getPower(), activeLevel->club.getAngle());
         gettimeofday(&OGLevel::before,NULL);
         glutDisplayFunc(OGLevel::followDisplay);
         glutPostRedisplay();    
     }
     
 }
+
+//----------------------key press---------------------
+void OGLevel::keyPress(unsigned char key, int x, int y){
+    if (key == 'c' || key == 'C') {
+        activeLevel->club++;
+        glutPostRedisplay();
+    }
+}
+
 
 OGLevel::~OGLevel(){
     activeLevel = NULL;

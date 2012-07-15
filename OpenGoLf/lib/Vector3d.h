@@ -131,7 +131,9 @@ struct Vector3d
    {
        double len = length();
        if (len ==0) {
-           return Vector3d();
+           x=0;
+           y=0;
+           z=0;
        }
        x = x / len;
        y = y / len;

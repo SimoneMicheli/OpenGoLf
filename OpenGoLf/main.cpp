@@ -56,7 +56,7 @@ int main(int argc, char** argv){
     
     //glutDisplayFunc(display);
     glutReshapeFunc(resize);
-    //glutKeyboardFunc(getKey);
+    glutKeyboardFunc(OGLevel::keyPress);
     //glutMotionFunc(mouseMove);
     //glutMouseFunc(mouseClick);
     

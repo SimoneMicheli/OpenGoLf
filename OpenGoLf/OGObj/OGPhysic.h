@@ -23,7 +23,7 @@ class OGPhysic : public OGObject{
 public:
     OGPhysic(OGBall*, OGTerrain*, OGPov*);
     void update(double time);
-    void shoot(float power);
+    void shoot(float power, int angle);
     bool terrainEdge();
     
 private:

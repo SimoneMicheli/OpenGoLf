@@ -11,6 +11,7 @@
 		BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDF7020215A470F800C5ED4F /* OpenGoLf.1 */; };
 		BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020915A4710600C5ED4F /* OpenGL.framework */; };
 		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
+		FC164A3E15B2BDB90066FE1B /* OGClub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC164A3D15B2BDB90066FE1B /* OGClub.cpp */; };
 		FC35FB0A15ADAD9E0038799D /* OGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAF915ADAD9E0038799D /* OGBall.cpp */; };
 		FC35FB0B15ADAD9E0038799D /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFD15ADAD9E0038799D /* OGLevel.cpp */; };
 		FC35FB0C15ADAD9E0038799D /* OGLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFF15ADAD9E0038799D /* OGLight.cpp */; };
@@ -61,6 +62,7 @@
 		BDF7020915A4710600C5ED4F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDF7020B15A4710D00C5ED4F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		BDF7021015A471FA00C5ED4F /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
+		FC164A3D15B2BDB90066FE1B /* OGClub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGClub.cpp; sourceTree = "<group>"; };
 		FC35FAF815ADAD9E0038799D /* OGAmbient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGAmbient.h; sourceTree = "<group>"; };
 		FC35FAF915ADAD9E0038799D /* OGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGBall.cpp; sourceTree = "<group>"; };
 		FC35FAFA15ADAD9E0038799D /* OGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGBall.h; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		BDF701F115A470F800C5ED4F = {
 			isa = PBXGroup;
 			children = (
+				FC164A3D15B2BDB90066FE1B /* OGClub.cpp */,
 				FC35FAF715ADAD9E0038799D /* OGObj */,
 				FCEF87C415A71DC8003EE787 /* texture */,
 				BDF7020F15A471FA00C5ED4F /* lib */,
@@ -318,6 +321,7 @@
 				FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */,
 				FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */,
 				FCFC07C915B011170083BE0A /* Util.cpp in Sources */,
+				FC164A3E15B2BDB90066FE1B /* OGClub.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

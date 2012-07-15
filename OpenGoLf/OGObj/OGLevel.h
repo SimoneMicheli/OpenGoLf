@@ -18,6 +18,7 @@
 #include "OGPhysic.h"
 #include "OGObject.h"
 #include "OGLevel.h"
+#include "OGClub.h"
 #include <sys/time.h>
 #include <vector>
 
@@ -33,6 +34,7 @@ public:
     void static launchDisplay();
     void static followDisplay();
     void static mouseClickFunction(int,int,int,int);
+    void static keyPress(unsigned char, int, int);
     
 private:
     static OGLevel* activeLevel;
@@ -41,6 +43,7 @@ private:
     OGProjection *projection;
     OGPhysic *physic;
     vector<OGLight*> lights;
+    OGClub club;
     static struct timeval before,now,launchTime;
     double static time_diff(timeval before, timeval now);
     
