@@ -4,10 +4,32 @@
 
 OGLevel* OGLevel::activeLevel=NULL;
 struct timeval OGLevel::before,OGLevel::now,OGLevel::launchTime;
+bool OGLevel::shooting=false;
 
 OGLevel::OGLevel(){
     activeLevel = this;
     oldMousePos = Vector3d();
+    
+    fogColor[0] = 0.8;
+    fogColor[1] = 0.8;
+    fogColor[2] = 0.8;
+    fogColor[3] = 1.0;
+    
+    GLboolean fogEnabled;
+    glGetBooleanv(GL_FOG, &fogEnabled);
+    if (fogEnabled) {
+        skyColor = fogColor;
+    }else {
+        skyColor = new GLfloat[4];
+        skyColor[0]=0.376;
+        skyColor[1]=0.77;
+        skyColor[2]=1.0;
+        skyColor[3]=1.0;
+    }
+    
+    fogDensity = 0.5;
+    fogStart = 5.0;
+    fogEnd = 60.0;
 }
 
 void OGLevel::init(string path){
@@ -34,16 +56,20 @@ void OGLevel::init(string path){
     light0->enable();
     
     //fog
-    //glClearColor(0.5f,0.5f,0.5f,1.0f);          // We'll Clear To The Color Of The Fog ( Modified )
-    GLfloat fogColor[4]= {0.8f, 0.8f, 0.8f, 1.0f};
     
     glFogi(GL_FOG_MODE, GL_LINEAR);        // Fog Mode
     glFogfv(GL_FOG_COLOR, fogColor);            // Set Fog Color
-    glFogf(GL_FOG_DENSITY, 0.005f);              // How Dense Will The Fog Be
+    glFogf(GL_FOG_DENSITY, fogDensity);              // How Dense Will The Fog Be
     glHint(GL_FOG_HINT, GL_NICEST);          // Fog Hint Value
-    glFogf(GL_FOG_START, 1.0f);             // Fog Start Depth
-    glFogf(GL_FOG_END, 20.0f);               // Fog End Depth
-    glEnable(GL_FOG);                   // Enables GL_FOG
+    glFogf(GL_FOG_START, fogStart);             // Fog Start Depth
+    glFogf(GL_FOG_END, fogEnd);               // Fog End Depth
+    
+    //set event function
+    glutKeyboardFunc(OGLevel::keyPress);
+    glutDisplayFunc(OGLevel::launchDisplay);
+    glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+    glutMotionFunc(OGLevel::mouseMotionFunction);
+    glutMouseFunc(OGLevel::mouseClickFunction);
 }
 
 //-----------------------mouse functions-----------------------
@@ -60,10 +86,23 @@ void OGLevel::mousePassiveMotionFunction(int x, int y){
     glutPostRedisplay();
 }
 
+void OGLevel::mouseMotionFunction(int x, int y){
+    //recupera la posizione del mouse all'inizo dopo il primo movimento
+    if (activeLevel->oldMousePos.x != 0 || activeLevel->oldMousePos.y != 0) {
+        double a = (activeLevel->oldMousePos.y - (double) y) / 1;
+        double b = (activeLevel->oldMousePos.x - (double) x) / 1;
+        activeLevel->pov->addRotation(a, b);
+    }
+    
+    activeLevel->oldMousePos.x = x;
+    activeLevel->oldMousePos.y = y;
+    glutPostRedisplay();
+}
+
 
 //--------------------launch display function-----------------
 void OGLevel::launchDisplay(){
-    glClearColor(0.376, 0.77, 1, 1.0);
+    glClearColor(activeLevel->skyColor[0], activeLevel->skyColor[1], activeLevel->skyColor[2],activeLevel->skyColor[3]);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -73,10 +112,9 @@ void OGLevel::launchDisplay(){
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
-    //renderString(activeLevel->club.toString().c_str());
-    
-    //renderString("pippo");
-    activeLevel->drawMap();
+    renderString(activeLevel->club.toString().c_str());
+    printf("pow: %f\n", activeLevel->launchPower);
+    //activeLevel->drawMap();
     
     glutSwapBuffers();
     
@@ -84,7 +122,7 @@ void OGLevel::launchDisplay(){
 
 //---------------------follow display--------------------------
 void OGLevel::followDisplay(){
-    glClearColor(0.376, 0.77, 1, 1.0);
+    glClearColor(activeLevel->skyColor[0], activeLevel->skyColor[1], activeLevel->skyColor[2],activeLevel->skyColor[3]);
     glClearDepth(1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -102,8 +140,7 @@ void OGLevel::followDisplay(){
     activeLevel->physic->update(dtime);
     
     if (activeLevel->ball->getSpeed().length() < 0.015){
-        glutDisplayFunc(OGLevel::launchDisplay);
-        glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+        activeLevel->restoreLaunch();
     }
     
     activeLevel->pov->lookAt();
@@ -168,21 +205,31 @@ double OGLevel::time_diff(timeval before, timeval now){
     return diff;
 }
 
+//---------------------launch count time--------------------
+void OGLevel::timer(int args){
+    activeLevel->launchPower += 0.01;
+    if (activeLevel->launchPower>=1) {
+        activeLevel->shoot();
+    }
+    glutPostRedisplay();
+    if (activeLevel->count) {
+        glutTimerFunc(TIMER_LOOP, OGLevel::timer, 0);
+    }
+}
+
 //---------------------mouse click--------------------
 
 void OGLevel::mouseClickFunction(int button,int state, int x, int y){
+    if (state == GLUT_DOWN && button == GLUT_LEFT_BUTTON && !shooting){
+        activeLevel->launchPower = 0;
+        activeLevel->count = true;
+        activeLevel->timer(0);
+    }
     
     if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
-        //copy old object
-        *activeLevel->oldBall = *activeLevel->ball;
-        *activeLevel->oldPov = *activeLevel->pov;
-        
-        glutPassiveMotionFunc(NULL); //disattivo rotazione
-        
-        activeLevel->physic->shoot(3 * activeLevel->club.getPower(), activeLevel->club.getAngle());
-        gettimeofday(&OGLevel::before,NULL);
-        glutDisplayFunc(OGLevel::followDisplay);
-        glutPostRedisplay();    
+        if (!shooting) 
+            activeLevel->shoot();
+        shooting = false;
     }
     
 }
@@ -195,6 +242,30 @@ void OGLevel::keyPress(unsigned char key, int x, int y){
     }
 }
 
+//---------------------shoot function----------------
+void OGLevel::shoot(){
+    count = false;
+    shooting = true;
+    //copy obj
+    *oldBall = *ball;
+    *oldPov = *pov;
+    
+    glutPassiveMotionFunc(NULL); //disattivo rotazione
+    glutMotionFunc(NULL);
+    
+    physic->shoot(launchPower * club.getPower(), club.getAngle());
+    gettimeofday(&OGLevel::before,NULL);
+    glutDisplayFunc(OGLevel::followDisplay);
+    glutPostRedisplay();
+}
+
+//-----------------restore launch function----------
+void OGLevel::restoreLaunch(){
+    count = true;
+    glutDisplayFunc(OGLevel::launchDisplay);
+    glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+    glutMotionFunc(OGLevel::mouseMotionFunction);
+}
 
 OGLevel::~OGLevel(){
     activeLevel = NULL;

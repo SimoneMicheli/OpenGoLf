@@ -47,7 +47,7 @@ void resize(int x, int y);
 
 int main(int argc, char** argv){
     glutInit(&argc,argv);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowSize(W_WIDTH, W_HEIGHT);
     glutInitWindowPosition(100, 100);
     glutCreateWindow(argv[0]);
@@ -82,6 +82,7 @@ void init(){
     glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
+    glEnable(GL_FOG);                   // Enables GL_FOG
 	
     //enable wireframe
     //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
