@@ -30,6 +30,7 @@ OGLevel::OGLevel(){
     fogDensity = 0.5;
     fogStart = 5.0;
     fogEnd = 60.0;
+    launchPower = 0;
 }
 
 void OGLevel::init(string path){
@@ -117,17 +118,16 @@ void OGLevel::launchDisplay(){
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
     
+    activeLevel->drawPower(activeLevel->launchPower,activeLevel->club.toString().c_str());
     
     Vector3d dir = activeLevel->pov->getDirection().getNormalized(); 
     
     float angle = dir.dot( Vector3d(200,0,200).getNormalized() );
     angle = acosf(angle );
     printf("angl:%f",180 * angle / M_PI);
+    
     activeLevel->map->drawMap(angle + (M_PI));
     activeLevel->wind->drawWind(Vector3d(1,1,1));
-    
-    renderString(activeLevel->club.toString().c_str());
-    printf("pow: %f\n", activeLevel->launchPower);
     
     glutSwapBuffers();
     
@@ -152,7 +152,7 @@ void OGLevel::followDisplay(){
     
     activeLevel->physic->update(dtime);
     
-    if (activeLevel->ball->getSpeed().length() < 0.015){
+    if (activeLevel->ball->getSpeed().length() < 0.01){
         activeLevel->restoreLaunch();
     }
     
@@ -164,6 +164,78 @@ void OGLevel::followDisplay(){
     
     glutSwapBuffers();
     glutPostRedisplay();
+}
+
+void OGLevel::drawPower(float power, const char* str){
+    
+    GLdouble modelMatrix[16], projMatrix[16];
+    GLboolean depth,light,texture;
+
+    power = 10.0 - (power * 10.0);
+    
+    //save opengl state
+    glGetBooleanv(GL_DEPTH_TEST, &depth);
+    glGetBooleanv(GL_LIGHTING, &light);
+    glGetBooleanv(GL_TEXTURE_2D, &texture);
+    
+    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
+    
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    
+    glViewport(0, 0, 70, 140);
+    glOrtho(0, 5, 10, 0, 0, 1);
+    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    //disable opengl state
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+    glDisable(GL_TEXTURE_2D);
+    
+    //print text
+    glColor3f(1, 1, 1);
+    glRasterPos2f(0,0);
+    
+    for (int i = 0; i < strlen(str); i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, str[i]);
+        
+    if (power != 10.0) {
+        //draw bar
+        glBegin(GL_QUADS);
+        glColor3f(1, 0, 0);
+        glVertex2d(0, 0);
+        glVertex2d(2, 0);
+        glColor3f(0, 0, 1);
+        glVertex2d(2, 10);
+        glVertex2d(0, 10);
+        glEnd();
+
+        //draw arrow
+        glTranslated(2, power, 0);
+        glColor3f(0,0,0);
+        glBegin(GL_TRIANGLES);
+        glVertex2d(0, 0);
+        glVertex2d(1, -0.5);
+        glVertex2d(1, 0.5);
+        glEnd();
+    }
+        
+    //reload old state
+    glLoadMatrixd(modelMatrix);
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixd(projMatrix);
+    glMatrixMode(GL_MODELVIEW);
+    
+    //enable opengl state
+    if (depth)
+        glEnable(GL_DEPTH_TEST);
+    if (light)
+        glEnable(GL_LIGHTING);
+    if (texture)
+        glEnable(GL_TEXTURE_2D);
 }
 
 //-------------------display map viewport----------------------
@@ -275,6 +347,7 @@ void OGLevel::shoot(){
 //-----------------restore launch function----------
 void OGLevel::restoreLaunch(){
     count = true;
+    activeLevel->launchPower = 0;
     glutDisplayFunc(OGLevel::launchDisplay);
     glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
     glutMotionFunc(OGLevel::mouseMotionFunction);

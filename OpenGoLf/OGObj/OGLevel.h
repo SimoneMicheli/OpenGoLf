@@ -57,6 +57,7 @@ private:
     bool static shooting;
     void shoot();
     void restoreLaunch();
+    void drawPower(float power, const char* str);
     
     Vector3d oldMousePos;
     
