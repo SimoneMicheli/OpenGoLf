@@ -19,6 +19,7 @@
 #include "OGObject.h"
 #include "OGLevel.h"
 #include "OGClub.h"
+#include "OGCompass.h"
 #include <sys/time.h>
 #include <vector>
 
@@ -47,6 +48,7 @@ private:
     OGProjection *projection;
     OGPhysic *physic;
     vector<OGLight*> lights;
+    OGCompass *wind,*map;
     OGClub club;
     float launchPower;
     bool count;

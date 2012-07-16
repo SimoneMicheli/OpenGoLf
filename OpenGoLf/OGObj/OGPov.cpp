@@ -94,7 +94,7 @@ void OGPov::setDirection(Vector3d direction){
 }
 
 Vector3d OGPov::getDirection(){
-    return pos - look;
+    return look;
 }
 
 void OGPov::setRotation(double a,double b){

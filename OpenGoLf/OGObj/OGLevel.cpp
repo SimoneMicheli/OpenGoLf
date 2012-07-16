@@ -47,6 +47,10 @@ void OGLevel::init(string path){
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
     
+    //
+    map = new OGCompass(0, W_HEIGHT- 130, 150, 150);
+    wind = new OGCompass(W_WIDTH - 150, W_HEIGHT-130, 150, 150);
+    
     //default club
     club = OGClub::DRIVER;
     
@@ -112,9 +116,18 @@ void OGLevel::launchDisplay(){
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
     activeLevel->ball->draw();
+    
+    
+    Vector3d dir = activeLevel->pov->getDirection().getNormalized(); 
+    
+    float angle = dir.dot( Vector3d(200,0,200).getNormalized() );
+    angle = acosf(angle );
+    printf("angl:%f",180 * angle / M_PI);
+    activeLevel->map->drawMap(angle + (M_PI));
+    activeLevel->wind->drawWind(Vector3d(1,1,1));
+    
     renderString(activeLevel->club.toString().c_str());
     printf("pow: %f\n", activeLevel->launchPower);
-    //activeLevel->drawMap();
     
     glutSwapBuffers();
     

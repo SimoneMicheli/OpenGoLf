@@ -102,7 +102,7 @@ bool OGPhysic::terrainEdge(){
 }
 
 void OGPhysic::shoot(float power, int angle){
-    Vector3d direction = pov->getPosition() - pov->getDirection();
+    Vector3d direction = pov->getDirection();
     direction.y = cos(angle);
     direction = direction.getNormalized() * power;
     Vector3d p = ball->getPosition();

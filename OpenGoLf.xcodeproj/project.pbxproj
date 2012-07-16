@@ -11,7 +11,6 @@
 		BDF7020315A470F800C5ED4F /* OpenGoLf.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = BDF7020215A470F800C5ED4F /* OpenGoLf.1 */; };
 		BDF7020A15A4710600C5ED4F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020915A4710600C5ED4F /* OpenGL.framework */; };
 		BDF7020C15A4710D00C5ED4F /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7020B15A4710D00C5ED4F /* GLUT.framework */; };
-		FC164A3E15B2BDB90066FE1B /* OGClub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC164A3D15B2BDB90066FE1B /* OGClub.cpp */; };
 		FC35FB0A15ADAD9E0038799D /* OGBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAF915ADAD9E0038799D /* OGBall.cpp */; };
 		FC35FB0B15ADAD9E0038799D /* OGLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFD15ADAD9E0038799D /* OGLevel.cpp */; };
 		FC35FB0C15ADAD9E0038799D /* OGLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC35FAFF15ADAD9E0038799D /* OGLight.cpp */; };
@@ -38,6 +37,8 @@
 		FC42DA1715AF1799006954EF /* lib3ds_util.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0215AF1799006954EF /* lib3ds_util.c */; };
 		FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0315AF1799006954EF /* lib3ds_vector.c */; };
 		FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0415AF1799006954EF /* lib3ds_viewport.c */; };
+		FC7DB32E15B341B200A1A94B /* OGClub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7DB32D15B341B200A1A94B /* OGClub.cpp */; };
+		FC7DB33115B3420000A1A94B /* OGCompass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7DB33015B3420000A1A94B /* OGCompass.cpp */; };
 		FCE7ABD315AF15970057CB87 /* OGModel3DS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */; };
 		FCFC07C915B011170083BE0A /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCFC07C815B011170083BE0A /* Util.cpp */; };
 /* End PBXBuildFile section */
@@ -62,7 +63,6 @@
 		BDF7020915A4710600C5ED4F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BDF7020B15A4710D00C5ED4F /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		BDF7021015A471FA00C5ED4F /* Vector3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3d.h; sourceTree = "<group>"; };
-		FC164A3D15B2BDB90066FE1B /* OGClub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGClub.cpp; sourceTree = "<group>"; };
 		FC35FAF815ADAD9E0038799D /* OGAmbient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGAmbient.h; sourceTree = "<group>"; };
 		FC35FAF915ADAD9E0038799D /* OGBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGBall.cpp; sourceTree = "<group>"; };
 		FC35FAFA15ADAD9E0038799D /* OGBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGBall.h; sourceTree = "<group>"; };
@@ -108,6 +108,9 @@
 		FC42DA0415AF1799006954EF /* lib3ds_viewport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_viewport.c; sourceTree = "<group>"; };
 		FC42DA0515AF1799006954EF /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
 		FC42DA0615AF1799006954EF /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		FC7DB32D15B341B200A1A94B /* OGClub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGClub.cpp; sourceTree = "<group>"; };
+		FC7DB32F15B341C600A1A94B /* OGCompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGCompass.h; sourceTree = "<group>"; };
+		FC7DB33015B3420000A1A94B /* OGCompass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGCompass.cpp; sourceTree = "<group>"; };
 		FCE7ABD015AF15220057CB87 /* OGModel3DS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGModel3DS.h; sourceTree = "<group>"; };
 		FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGModel3DS.cpp; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
@@ -131,7 +134,6 @@
 		BDF701F115A470F800C5ED4F = {
 			isa = PBXGroup;
 			children = (
-				FC164A3D15B2BDB90066FE1B /* OGClub.cpp */,
 				FC35FAF715ADAD9E0038799D /* OGObj */,
 				FCEF87C415A71DC8003EE787 /* texture */,
 				BDF7020F15A471FA00C5ED4F /* lib */,
@@ -174,6 +176,7 @@
 		FC35FAF715ADAD9E0038799D /* OGObj */ = {
 			isa = PBXGroup;
 			children = (
+				FC7DB32D15B341B200A1A94B /* OGClub.cpp */,
 				FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */,
 				FC35FAF815ADAD9E0038799D /* OGAmbient.h */,
 				FC35FAF915ADAD9E0038799D /* OGBall.cpp */,
@@ -196,6 +199,8 @@
 				FC35FB1815ADBD930038799D /* OGPhysic.h */,
 				FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */,
 				FCE7ABD015AF15220057CB87 /* OGModel3DS.h */,
+				FC7DB32F15B341C600A1A94B /* OGCompass.h */,
+				FC7DB33015B3420000A1A94B /* OGCompass.cpp */,
 			);
 			name = OGObj;
 			path = OpenGoLf/OGObj;
@@ -321,7 +326,8 @@
 				FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */,
 				FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */,
 				FCFC07C915B011170083BE0A /* Util.cpp in Sources */,
-				FC164A3E15B2BDB90066FE1B /* OGClub.cpp in Sources */,
+				FC7DB32E15B341B200A1A94B /* OGClub.cpp in Sources */,
+				FC7DB33115B3420000A1A94B /* OGCompass.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
