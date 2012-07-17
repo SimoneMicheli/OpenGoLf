@@ -111,6 +111,7 @@
 		FC7DB32D15B341B200A1A94B /* OGClub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGClub.cpp; sourceTree = "<group>"; };
 		FC7DB32F15B341C600A1A94B /* OGCompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGCompass.h; sourceTree = "<group>"; };
 		FC7DB33015B3420000A1A94B /* OGCompass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGCompass.cpp; sourceTree = "<group>"; };
+		FCC9402915B469DA005DF4E0 /* terrain0.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = terrain0.dat; path = OpenGoLf/models/terrain0.dat; sourceTree = SOURCE_ROOT; };
 		FCE7ABD015AF15220057CB87 /* OGModel3DS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGModel3DS.h; sourceTree = "<group>"; };
 		FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGModel3DS.cpp; sourceTree = "<group>"; };
 		FCEF87C515A71DC8003EE787 /* TXgrass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXgrass.h; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 				FC35FB0615ADAD9E0038799D /* OGProjection.h */,
 				FC35FB0715ADAD9E0038799D /* OGRoom.h */,
 				FC35FB0815ADAD9E0038799D /* OGTerrain.cpp */,
+				FCC9402915B469DA005DF4E0 /* terrain0.dat */,
 				FC35FB0915ADAD9E0038799D /* OGTerrain.h */,
 				FC35FB1815ADBD930038799D /* OGPhysic.h */,
 				FC35FB1A15ADBFC40038799D /* OGPhysic.cpp */,

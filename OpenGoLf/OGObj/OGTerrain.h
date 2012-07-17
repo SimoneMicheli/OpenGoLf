@@ -12,6 +12,7 @@
 #include "OGObject.h"
 #include "OGModel3DS.h"
 #include <fstream>
+#include <sstream>
 #include <stdlib.h>
 #include <string.h>
 #include <vector>
@@ -54,7 +55,8 @@ private:
     void initTexture();
     GLuint createModelsDL();
     void readModelsFromFile();
-    Vector3d modelInitPosition(double x, double z);
+    void loadModel(char type, double x, double z, double angle);
+    Vector3d modelInitPosition(double x, double z, double offset);
 
 public:
     int getHScale();

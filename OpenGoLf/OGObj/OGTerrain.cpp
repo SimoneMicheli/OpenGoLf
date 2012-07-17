@@ -244,16 +244,74 @@ GLuint OGTerrain::createModelsDL(){
     return modelsDL;
 }
 
+
+template<typename T> T StringToNumber(const std::string& numberAsString)
+{
+    T valor;
+    
+    std::stringstream stream(numberAsString);
+    stream >> valor;
+    return valor;
+}
+
 void OGTerrain::readModelsFromFile(){
-    OGModel3DS *model = new OGModel3DS("/Volumes/Personal/xcode/3ds/tree.3ds");
-    Vector3d pos = modelInitPosition(100, 100);
-    model->setPosition(pos);
-    model->setRotation(-90, 1, 0, 0);
-    model->setScale(0.0001, 0.0001, 0.0001);
+    ifstream file;
+    
+    file.open("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat", ios::binary | ios::in);
+    
+    if (!file){
+        printf("can't open model file\n");
+        return;
+    }
+    
+    string line;
+    
+    while (getline(file, line)) {
+        
+        stringstream linestream(line);
+        string info;
+        double x,z,angle;
+        char type;
+        
+        linestream>>info;
+        type = info.c_str()[0];
+        linestream>>info;
+        x = StringToNumber<double>(info);
+        linestream>>info;
+        z = StringToNumber<double>(info);
+        linestream>>info;
+        angle = StringToNumber<double>(info);
+        loadModel(type, x, z, angle);
+    }
+    
+    file.close();
+}
+
+void OGTerrain::loadModel(char type, double x, double z, double angle){
+    OGModel3DS *model;
+    switch (type) {
+        case 'T':
+            model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tree.3ds");
+            model->setPosition(modelInitPosition(x, z, 0));
+            printf("nagle %f\n",angle);
+            model->setRotation(-90, 1, 0, 0);
+            model->setScale(0.0001, 0.0001, 0.0001);
+            break;
+        
+        case 'B':
+            model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds");
+            model->setPosition(modelInitPosition(x, z, 0.3));
+            model->setRotation(angle, 0, 1, 0);
+            model->setRotation(90, 1, 0, 0);
+            model->setScale(0.001, 0.001, 0.001);
+            break;
+        default:
+            return;
+    }
     models.push_back(model);
 }
 
-Vector3d OGTerrain::modelInitPosition(double x, double z){
+Vector3d OGTerrain::modelInitPosition(double x, double z, double offset){
     Vector3d newPos = Vector3d(x,0,z) * getHScale(); //posizione nell'immagine scalata
     
     Vector3d v1 = vertex[(int)(floor(newPos.z) * (int)getTerrainWidth() + floor(newPos.x))];
@@ -261,7 +319,7 @@ Vector3d OGTerrain::modelInitPosition(double x, double z){
     Vector3d v3 = vertex[(int)(floor(newPos.z +1) * (int)getTerrainWidth() + floor(newPos.x))];
     
     Vector3d center = (v1+v2+v3)/3;
-    return Vector3d(x,center.y,z);
+    return Vector3d(x,center.y+offset,z);
 }
 
 OGTerrain::~OGTerrain(){
