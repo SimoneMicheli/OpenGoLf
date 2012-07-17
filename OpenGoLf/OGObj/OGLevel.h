@@ -26,9 +26,9 @@
 #define TIMER_LOOP 10
 
 class OGLevel : public OGAmbient {
-    
+
 public:
-    
+
     OGLevel();
     ~OGLevel();
     void init(string);
@@ -40,7 +40,7 @@ public:
     void static mouseClickFunction(int,int,int,int);
     void static keyPress(unsigned char, int, int);
     void static timer(int);
-    
+
 private:
     static OGLevel* activeLevel;
     OGTerrain *terrain;
@@ -58,11 +58,11 @@ private:
     void shoot();
     void restoreLaunch();
     void drawPower(float power, const char* str);
-    
+
     Vector3d oldMousePos;
-    
+
     void drawMap();
-    
+
     //fog property
     bool enableFog;
     GLfloat fogColor[4],*skyColor,fogDensity,fogStart,fogEnd;

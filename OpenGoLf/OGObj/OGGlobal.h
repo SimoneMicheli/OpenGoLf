@@ -10,8 +10,8 @@
 #define OpenGoLf_OGGlobal_h
 
 
-#define W_WIDTH 900
-#define W_HEIGHT 600
+#define W_WIDTH 1300
+#define W_HEIGHT 700
 #define DEBUGGING false
 #define BALL_DIST_X -0.8
 #define BALL_DIST_Y +0.3
@@ -22,10 +22,20 @@
 
 
 #define TERRAIN_PATH "./terrains/terrain_small.bmp"
+#define TREE "./models/tree.3ds"
+#define BUSH "./models/bush.3ds"
+#define TERRAIN "./models/terrain0.dat"
+#define STEP 0.1 //step per la barra di caricamento
+
+
 
 #else
 
+#define TREE  "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tree.3ds"
+#define BUSH  "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds"
+#define TERRAIN "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat"
 #define TERRAIN_PATH "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain_small.bmp"
+#define STEP 0.01 //step per la barra di caricamento
 
 #endif
 

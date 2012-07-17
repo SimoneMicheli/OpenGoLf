@@ -1,24 +1,29 @@
 # depslib dependency file v1.0
-1342011762 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.cpp
+1342528986 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.cpp
 	<iostream>
 	"OGLevel.h"
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.h
+1342528652 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.h
 	"OGAmbient.h"
 	<string.h>
 	<stdlib.h>
 	"OGLight.h"
-	"OGGlobal.h"
 	"OGBall.h"
 	"OGProjection.h"
+	"OGPhysic.h"
+	"OGObject.h"
+	"OGLevel.h"
+	"OGClub.h"
+	"OGCompass.h"
+	<sys/time.h>
 	<vector>
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogambient.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogambient.h
 	"OGObject.h"
 	"OGPov.h"
 	"OGTerrain.h"
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogobject.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogobject.h
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
@@ -26,6 +31,8 @@
 	<OpenGL/glu.h>
 	<GLUT/glut.h>
 	"Vector3d.h"
+	"OGGlobal.h"
+	"Util.h"
 
 1066732914 c:\freeglut\include\gl\glut.h
 	"freeglut_std.h"
@@ -36,53 +43,56 @@
 	<GL/glu.h>
 	<stdlib.h>
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\vector3d.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\vector3d.h
 	<math.h>
 
-1342012173 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogpov.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogpov.h
 	"OGObject.h"
 	"Vector3d.h"
 	<math.h>
 
-1342012155 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogterrain.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogterrain.h
 	"OGObject.h"
+	"OGModel3DS.h"
 	<fstream>
+	<sstream>
 	<stdlib.h>
 	<string.h>
 	<vector>
 	"../texture/TXgrass.h"
+	"../texture/TXwater.h"
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txgrass.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txgrass.h
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.h
 	"OGObject.h"
 
-1342012567 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
+1342528986 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
 
-1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.h
 	"OGObject.h"
 	"Vector3d.h"
 
-1342012233 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogprojection.h
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogprojection.h
 	"OGObject.h"
 
-1342011762 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.cpp
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.cpp
 	<iostream>
 	"OGLight.h"
 
-1342012260 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogpov.cpp
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogpov.cpp
 	<iostream>
 	"OGPov.h"
 
-1342012289 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogprojection.cpp
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogprojection.cpp
 	<iostream>
 	"OGProjection.h"
 
-1342011762 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogterrain.cpp
+1342527733 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogterrain.cpp
 	<iostream>
 	"OGTerrain.h"
 
-1342011762 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\main.cpp
+1342527054 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\main.cpp
 	<iostream>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -91,16 +101,140 @@
 	<OpenGL/glu.h>
 	<GLUT/glut.h>
 	"Vector3d.h"
-	"OGAmbient.h"
-	"OGRoom.h"
 	"OGLevel.h"
-	"OGTerrain.h"
-	"OGGlobal.h"
 
 1342011762 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
 	"OGAmbient.h"
 
-1342011762 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.cpp
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.cpp
 	<iostream>
 	"OGBall.h"
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\util.h
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogclub.cpp
+	<iostream>
+	"OGClub.h"
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogclub.h
+	"OGObject.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogcompass.cpp
+	<iostream>
+	"OGCompass.h"
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogcompass.h
+	"OGObject.h"
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.h
+	"OGObject.h"
+	"../lib/lib3ds/lib3ds.h"
+	<assert.h>
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds.h
+	<stddef.h>
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txwater.h
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogphysic.h
+	"OGObject.h"
+	"Vector3d.h"
+	<math.h>
+	"OGBall.h"
+	"OGTerrain.h"
+	"OGPov.h"
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1342528759 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.cpp
+	<iostream>
+	"OGModel3DS.h"
+	<stdio.h>
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogphysic.cpp
+	<iostream>
+	"OGPhysic.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\util.cpp
+	<iostream>
+	<GL/gl.h>
+	<GL/glu.h>
+	<GL/glut.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GLUT/glut.h>
+	"Vector3d.h"
+	"OGObject.h"
+	"OGLevel.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_atmosphere.c
+	"lib3ds_impl.h"
+
+1342526758 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_impl.h
+	"lib3ds.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<string.h>
+	<math.h>
+	<float.h>
+	<assert.h>
+	<setjmp.h>
+	<stdarg.h>
+	<stdint.h>
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_background.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_camera.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_chunk.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_chunktable.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_file.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_io.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_light.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_material.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_math.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_matrix.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_mesh.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_node.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_quat.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_shadow.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_track.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_util.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_vector.c
+	"lib3ds_impl.h"
+
+1342526758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\lib\lib3ds\lib3ds_viewport.c
+	"lib3ds_impl.h"
 

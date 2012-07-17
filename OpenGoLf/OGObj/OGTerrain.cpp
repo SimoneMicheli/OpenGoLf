@@ -15,14 +15,14 @@ OGTerrain::OGTerrain(string path){
 
     hole.radius = 0.108;
     yOffset = 0.003;
-    
+
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
-    
+
     readModelsFromFile();
     modelsDL = createModelsDL();
     initWaterTexture();
-    
+
     holeDL = createHoleDL();
 }
 
@@ -37,14 +37,14 @@ void OGTerrain::draw(){
     glVertex3f(1000, yOffset,1000);
     glVertex3f(-1000, yOffset ,1000);
     glEnd();
-    
+
     //show terrain
     glCallList(terrainDL);
-    
+
     //show loaded objects
     glDisable(GL_TEXTURE_2D);
     glCallList(modelsDL);
-    
+
     //show hole
     glCallList(holeDL);
     glEnable(GL_TEXTURE_2D);
@@ -192,7 +192,7 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glEnd();
 
     }
-    
+
     glEndList();
 
     return terrainDL;
@@ -236,13 +236,13 @@ GLuint OGTerrain::createModelsDL(){
     //create models DisplayList
     GLuint modelsDL = glGenLists(1);
     glNewList(modelsDL, GL_COMPILE);
-    
+
     for (int i=0; i<models.size(); i++) {
         models[i]->draw();
     }
-    
+
     glEndList();
-    
+
     return modelsDL;
 }
 
@@ -250,7 +250,7 @@ GLuint OGTerrain::createModelsDL(){
 template<typename T> T StringToNumber(const std::string& numberAsString)
 {
     T valor;
-    
+
     std::stringstream stream(numberAsString);
     stream >> valor;
     return valor;
@@ -258,7 +258,7 @@ template<typename T> T StringToNumber(const std::string& numberAsString)
 
 GLuint OGTerrain::createHoleDL(){
     GLuint list = glGenLists(1);
-    
+
     glNewList(list, GL_COMPILE);
 
     glPushMatrix();
@@ -266,31 +266,31 @@ GLuint OGTerrain::createHoleDL(){
     glRotated(90, 1, 0, 0);
     glutSolidCone(hole.radius, 1, 10, 10);
     glPopMatrix();
-    
+
     glEndList();
-    
+
     return list;
 }
 
 void OGTerrain::readModelsFromFile(){
     ifstream file;
-    
-    file.open("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat", ios::binary | ios::in);
-    
+
+    file.open(TERRAIN, ios::binary | ios::in);
+
     if (!file){
         printf("can't open model file\n");
         return;
     }
-    
+
     string line;
-    
+
     while (getline(file, line)) {
-        
+
         stringstream linestream(line);
         string info;
         double x,z,angle;
         char type;
-        
+
         linestream>>info;
         type = info.c_str()[0];
         linestream>>info;
@@ -301,7 +301,7 @@ void OGTerrain::readModelsFromFile(){
         angle = StringToNumber<double>(info);
         loadModel(type, x, z, angle);
     }
-    
+
     file.close();
 }
 
@@ -309,14 +309,15 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
     OGModel3DS *model;
     switch (type) {
         case 'T':{
-            model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tree.3ds");
+            model = new OGModel3DS(TREE);
             model->setPosition(modelInitPosition(x, z, 0));
             model->setRotation(-90, 1, 0, 0);
             model->setScale(0.0001, 0.0001, 0.0001);
             break;
         }
         case 'B':{
-            model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds");
+
+            model = new OGModel3DS(BUSH);
             model->setPosition(modelInitPosition(x, z, 0.3));
             model->setRotation(angle, 0, 1, 0);
             model->setRotation(90, 1, 0, 0);
@@ -338,11 +339,11 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
 
 Vector3d OGTerrain::modelInitPosition(double x, double z, double offset){
     Vector3d newPos = Vector3d(x,0,z) * getHScale(); //posizione nell'immagine scalata
-    
+
     Vector3d v1 = vertex[(int)(floor(newPos.z) * (int)getTerrainWidth() + floor(newPos.x))];
     Vector3d v2 = vertex[(int)(floor(newPos.z) * (int)getTerrainWidth() + floor(newPos.x + 1))];
     Vector3d v3 = vertex[(int)(floor(newPos.z +1) * (int)getTerrainWidth() + floor(newPos.x))];
-    
+
     Vector3d center = (v1+v2+v3)/3;
     return Vector3d(x,center.y+offset,z);
 }

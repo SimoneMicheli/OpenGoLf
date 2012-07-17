@@ -53,14 +53,21 @@
 		<Unit filename="OGObj\OGAmbient.h" />
 		<Unit filename="OGObj\OGBall.cpp" />
 		<Unit filename="OGObj\OGBall.h" />
+		<Unit filename="OGObj\OGClub.cpp" />
 		<Unit filename="OGObj\OGClub.h" />
+		<Unit filename="OGObj\OGCompass.cpp" />
+		<Unit filename="OGObj\OGCompass.h" />
 		<Unit filename="OGObj\OGGlobal.h" />
 		<Unit filename="OGObj\OGLevel.cpp" />
 		<Unit filename="OGObj\OGLevel.h" />
 		<Unit filename="OGObj\OGLight.cpp" />
 		<Unit filename="OGObj\OGLight.h" />
 		<Unit filename="OGObj\OGMaterial.h" />
+		<Unit filename="OGObj\OGModel3DS.cpp" />
+		<Unit filename="OGObj\OGModel3DS.h" />
 		<Unit filename="OGObj\OGObject.h" />
+		<Unit filename="OGObj\OGPhysic.cpp" />
+		<Unit filename="OGObj\OGPhysic.h" />
 		<Unit filename="OGObj\OGPov.cpp" />
 		<Unit filename="OGObj\OGPov.h" />
 		<Unit filename="OGObj\OGProjection.cpp" />
@@ -68,9 +75,72 @@
 		<Unit filename="OGObj\OGRoom.h" />
 		<Unit filename="OGObj\OGTerrain.cpp" />
 		<Unit filename="OGObj\OGTerrain.h" />
+		<Unit filename="lib\Util.cpp" />
+		<Unit filename="lib\Util.h" />
 		<Unit filename="lib\Vector3d.h" />
+		<Unit filename="lib\lib3ds\lib3ds.h" />
+		<Unit filename="lib\lib3ds\lib3ds_atmosphere.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_background.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_camera.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_chunk.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_chunktable.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_file.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_impl.h" />
+		<Unit filename="lib\lib3ds\lib3ds_io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_light.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_material.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_math.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_matrix.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_mesh.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_node.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_quat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_shadow.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_track.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_vector.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="lib\lib3ds\lib3ds_viewport.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="texture\TXgrass.h" />
+		<Unit filename="texture\TXgrass_old.h" />
+		<Unit filename="texture\TXwater.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
