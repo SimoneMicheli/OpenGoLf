@@ -13,12 +13,17 @@ OGTerrain::OGTerrain(string path){
     H_SCALE = 5;
     V_SCALE = 15;
 
+    hole.radius = 0.108;
+    yOffset = 0.003;
+    
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
     
     readModelsFromFile();
     modelsDL = createModelsDL();
     initWaterTexture();
+    
+    holeDL = createHoleDL();
 }
 
 void OGTerrain::draw(){
@@ -39,6 +44,9 @@ void OGTerrain::draw(){
     //show loaded objects
     glDisable(GL_TEXTURE_2D);
     glCallList(modelsDL);
+    
+    //show hole
+    glCallList(holeDL);
     glEnable(GL_TEXTURE_2D);
 }
 
@@ -248,6 +256,22 @@ template<typename T> T StringToNumber(const std::string& numberAsString)
     return valor;
 }
 
+GLuint OGTerrain::createHoleDL(){
+    GLuint list = glGenLists(1);
+    
+    glNewList(list, GL_COMPILE);
+
+    glPushMatrix();
+	glTranslated(hole.x, hole.y + 0.5, hole.z);
+    glRotated(90, 1, 0, 0);
+    glutSolidCone(hole.radius, 1, 10, 10);
+    glPopMatrix();
+    
+    glEndList();
+    
+    return list;
+}
+
 void OGTerrain::readModelsFromFile(){
     ifstream file;
     
@@ -284,21 +308,28 @@ void OGTerrain::readModelsFromFile(){
 void OGTerrain::loadModel(char type, double x, double z, double angle){
     OGModel3DS *model;
     switch (type) {
-        case 'T':
+        case 'T':{
             model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tree.3ds");
             model->setPosition(modelInitPosition(x, z, 0));
-            printf("nagle %f\n",angle);
             model->setRotation(-90, 1, 0, 0);
             model->setScale(0.0001, 0.0001, 0.0001);
             break;
-        
-        case 'B':
+        }
+        case 'B':{
             model = new OGModel3DS("/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds");
             model->setPosition(modelInitPosition(x, z, 0.3));
             model->setRotation(angle, 0, 1, 0);
             model->setRotation(90, 1, 0, 0);
             model->setScale(0.001, 0.001, 0.001);
             break;
+        }
+        case 'H':{
+            Vector3d p = modelInitPosition(x, z, 0);
+            hole.x = p.x;
+            hole.y = p.y;
+            hole.z = p.z;
+            return;
+        }
         default:
             return;
     }
@@ -323,4 +354,8 @@ OGTerrain::~OGTerrain(){
 
 float OGTerrain::getYOffset(){
     return yOffset;
+}
+
+OGHole OGTerrain::getHole(){
+    return hole;
 }

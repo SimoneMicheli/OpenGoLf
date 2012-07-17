@@ -41,7 +41,8 @@ void OGPhysic::update(double time){
     }else{
         //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
-        Vector3d fat = -normV * (-fp.y * friction); //attrito radente terreno
+        //Vector3d fat = normV * (fp.y * friction); //attrito radente terreno
+        Vector3d fat = normV * terrainNorm.dot(fp);
         
         //calcolo forza peso parallela
         Vector3d fpp = fp.length() * terrainNorm + Vector3d(0,-1,0);
@@ -107,6 +108,16 @@ bool OGPhysic::terrainEdge(){
 bool OGPhysic::waterCollision(){
     float yOffset = terrain->getYOffset();
     if (ball->getPosition().y - ball->getRadius() < yOffset) {
+        return true;
+    }
+    return false;
+}
+
+bool OGPhysic::holeCollision(){
+    OGHole hole = terrain->getHole();
+    Vector3d pos = ball->getPosition();
+    bool dist = (pow(pos.x - hole.x,2) + pow(pos.z - hole.z , 2)) <= pow(hole.radius, 2);    
+    if (pos.y - ball->getRadius() < hole.y +0.2 && dist) {
         return true;
     }
     return false;

@@ -21,6 +21,10 @@
 
 using namespace std;
 
+struct OGHole{
+    double x,y,z,radius;
+};
+
 class OGTerrain : public OGObject{
 private:
     struct BMPHeader{
@@ -41,11 +45,12 @@ private:
     };
 
     GLuint terrainDL;
-    GLuint modelsDL;
+    GLuint modelsDL, holeDL;
     int H_SCALE;
     int V_SCALE;
 
     BMPHeader header;
+    OGHole hole;
 
     //vector<OGTexture*> texture;
     GLuint texture0, waterTex;
@@ -55,11 +60,12 @@ private:
     void computeNormals(BMPHeader &header, Vector3d* &vertex, Vector3d* &normals);
     void initTexture();
     GLuint createModelsDL();
+    GLuint createHoleDL();
     void readModelsFromFile();
     void initWaterTexture();
     void loadModel(char type, double x, double z, double angle);
     Vector3d modelInitPosition(double x, double z, double offset);
-    float yOffset = 0.003;
+    float yOffset;
 
 public:
     int getHScale();
@@ -69,6 +75,7 @@ public:
     unsigned int getTerrainWidth();
     unsigned int getTerrainHeight();
     float getYOffset();
+    OGHole getHole();
     Vector3d *vertex, *normals;
     vector<OGModel3DS*> models;
 };

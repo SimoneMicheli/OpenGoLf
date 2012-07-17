@@ -25,6 +25,7 @@ public:
     void update(double time);
     void shoot(float power, int angle);
     bool edgeCollision();
+    bool holeCollision();
     
 private:
     float viscosity, friction, gravity, elasticity;

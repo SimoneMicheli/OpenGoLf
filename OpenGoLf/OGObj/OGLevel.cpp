@@ -124,7 +124,7 @@ void OGLevel::launchDisplay(){
     
     float angle = dir.dot( Vector3d(200,0,200).getNormalized() );
     angle = acosf(angle );
-    printf("angl:%f",180 * angle / M_PI);
+    //printf("angl:%f",180 * angle / M_PI);
     
     activeLevel->map->drawMap(angle + (M_PI));
     activeLevel->wind->drawWind(Vector3d(1,1,1));
@@ -153,7 +153,11 @@ void OGLevel::followDisplay(){
     activeLevel->physic->update(dtime);
     
     if (activeLevel->ball->getSpeed().length() < 0.01){
-        activeLevel->restoreLaunch();
+        if (activeLevel->physic->holeCollision()) {
+            //back to room
+            printf("fine");
+        }else
+            activeLevel->restoreLaunch();
     }
     
     activeLevel->pov->lookAt();
