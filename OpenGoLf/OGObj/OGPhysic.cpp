@@ -11,11 +11,11 @@
 
 OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     viscosity = 0.02;
-    friction = 1;
+    friction = 0.4;
     gravity = -9.81;
     elasticity = 0.5;
     srand ( time(NULL) );
-    const int MAX_WIND = 20;
+    const int MAX_WIND = 10;
     wind = Vector3d((rand() % MAX_WIND) - (MAX_WIND /2),0,(rand() % MAX_WIND) - (MAX_WIND / 2));
     printf("wind: x:%f, y:%f z:%f",wind.x,wind.y,wind.z);
     //wind = Vector3d(1,0,0);
@@ -43,7 +43,7 @@ void OGPhysic::update(double time){
         //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
         //Vector3d fat = normV * (fp.y * friction); //attrito radente terreno
-        Vector3d fat = normV * terrainNorm.dot(fp);
+        Vector3d fat = normV * terrainNorm.dot(fp) * friction;
         
         //calcolo forza peso parallela
         Vector3d fpp = fp.length() * terrainNorm + Vector3d(0,-1,0);
