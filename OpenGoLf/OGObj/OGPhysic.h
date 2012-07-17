@@ -24,7 +24,7 @@ public:
     OGPhysic(OGBall*, OGTerrain*, OGPov*);
     void update(double time);
     void shoot(float power, int angle);
-    bool terrainEdge();
+    bool edgeCollision();
     
 private:
     float viscosity, friction, gravity, elasticity;
@@ -35,6 +35,8 @@ private:
     bool oldCollision;
     
     bool terrainCollision(Vector3d &vertex, Vector3d &normal);
+    bool terrainEdge();
+    bool waterCollision();
     bool objCollision();
 };
 

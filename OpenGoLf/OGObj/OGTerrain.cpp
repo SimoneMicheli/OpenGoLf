@@ -18,9 +18,22 @@ OGTerrain::OGTerrain(string path){
     
     readModelsFromFile();
     modelsDL = createModelsDL();
+    initWaterTexture();
 }
 
 void OGTerrain::draw(){
+    glBindTexture(GL_TEXTURE_2D, waterTex);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    //draw water
+    glBegin(GL_QUADS);
+    glNormal3f(0, 1, 0);
+    glVertex3f(-1000, yOffset, -1000);
+    glVertex3f(1000, yOffset, -1000);
+    glVertex3f(1000, yOffset,1000);
+    glVertex3f(-1000, yOffset ,1000);
+    glEnd();
+    
+    //show terrain
     glCallList(terrainDL);
     
     //show loaded objects
@@ -139,7 +152,6 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     //crate DL
     glNewList(terrainDL,GL_COMPILE);
 
-    glColor3f(0, 0, 0);
     initTexture();
     glBindTexture(GL_TEXTURE_2D, texture0);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
@@ -173,38 +185,20 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
 
     }
     
-    //show normals
-    /*for (int r=0; r < 8 - 1; r++) {
-
-        glBegin(GL_LINES);
-
-        for (int c=0; c < 8; c++) {
-            float s = c * c_step;
-            float t = r * r_step;
-
-            v1 = vertex[ (r * header.width) + c];
-            v2 = vertex[ ((r+1) * header.width) + c];
-            n1 = normals [ (r * header.width) + c];
-            n2 = normals [ ((r+1) * header.width) + c];
-
-            
-            glVertex3d(v1.x, v1.y, v1.z);
-            glVertex3d(n1.x + v1.x, n1.y + v1.y, n1.z + v1.z);
-            
-            glVertex3d(v2.x, v2.y, v2.z);
-            glNormal3f(n2.x + v1.x, n2.y + v2.y, n2.z + v2.z);
-        }
-
-        glEnd();
-
-    }*/
-    
-    
-
-    printf("finish\n");
     glEndList();
 
     return terrainDL;
+}
+
+void OGTerrain::initWaterTexture(){
+    glGenTextures(1, &waterTex);
+    glBindTexture(GL_TEXTURE_2D, waterTex);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, TXwater.width, TXwater.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXwater.pixel_data);
 }
 
 void OGTerrain::initTexture(){
@@ -325,4 +319,8 @@ Vector3d OGTerrain::modelInitPosition(double x, double z, double offset){
 OGTerrain::~OGTerrain(){
     free(vertex);
     free(normals);
+}
+
+float OGTerrain::getYOffset(){
+    return yOffset;
 }

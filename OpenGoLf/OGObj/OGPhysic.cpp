@@ -39,7 +39,6 @@ void OGPhysic::update(double time){
         ball->setSpeed(ball->getSpeed() + (acc * time));
         pos = ball->getPosition() + (ball->getSpeed() * time);
     }else{
-        renderString("collision");
         //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
         Vector3d fat = -normV * (-fp.y * friction); //attrito radente terreno
@@ -88,6 +87,10 @@ bool OGPhysic::terrainCollision(Vector3d &vertex, Vector3d &normal){
     }
 }
 
+bool OGPhysic::edgeCollision(){
+    return terrainEdge() || waterCollision();
+}
+
 bool OGPhysic::terrainEdge(){
     Vector3d position = ball->getPosition() * terrain->getHScale();
     unsigned int width = terrain->getTerrainWidth();
@@ -99,6 +102,14 @@ bool OGPhysic::terrainEdge(){
     
     return false;
     
+}
+
+bool OGPhysic::waterCollision(){
+    float yOffset = terrain->getYOffset();
+    if (ball->getPosition().y - ball->getRadius() < yOffset) {
+        return true;
+    }
+    return false;
 }
 
 void OGPhysic::shoot(float power, int angle){

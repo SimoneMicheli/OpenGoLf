@@ -145,7 +145,7 @@ void OGLevel::followDisplay(){
     gettimeofday(&OGLevel::now,NULL);
     double dtime = time_diff(OGLevel::before,OGLevel::now);
     
-    if (activeLevel->physic->terrainEdge()){
+    if (activeLevel->physic->edgeCollision()){
         *activeLevel->ball = *activeLevel->oldBall;
         *activeLevel->pov = *activeLevel->oldPov;
     }
