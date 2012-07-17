@@ -50,9 +50,6 @@ private:
 
 };
 
-
-
-
 inline std::string OGClub::toString() const{
     return c_string;
 }

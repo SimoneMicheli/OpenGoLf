@@ -14,11 +14,13 @@
 class OGMaterial : public OGObject{
     
 public:
-    float ambient[3],diffuse[3],specular[3],emission[3],shininess;
+    float *ambient,*diffuse,*specular,*emission;
+    float shininess;
     
+    OGMaterial(float ambient[],float diffuse[],float specular[],float emission[], float shininess);
     void init();
     
 private:
-}
+};
 
 #endif

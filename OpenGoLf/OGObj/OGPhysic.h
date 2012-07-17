@@ -26,6 +26,7 @@ public:
     void shoot(float power, int angle);
     bool edgeCollision();
     bool holeCollision();
+    Vector3d getWind();
     
 private:
     float viscosity, friction, gravity, elasticity;

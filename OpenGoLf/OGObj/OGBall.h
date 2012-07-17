@@ -12,11 +12,14 @@
 
 #include "OGObject.h"
 #include "Vector3d.h"
+#include "../texture/TXball.h"
 
 class OGBall : public OGObject{
 private:
     double radius,mass;
     Vector3d position, speed;
+    GLuint texture;
+    void initTexture();
     
 public:
     OGBall();

@@ -10,33 +10,24 @@
 #include "OGTerrain.h"
 
 OGTerrain::OGTerrain(string path){
-    H_SCALE = 5;
-    V_SCALE = 15;
+    H_SCALE = 10;
+    V_SCALE = 50;
 
     hole.radius = 0.108;
     yOffset = 0.003;
 
+    initWaterTexture();
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
 
     readModelsFromFile();
     modelsDL = createModelsDL();
-    initWaterTexture();
 
     holeDL = createHoleDL();
 }
 
 void OGTerrain::draw(){
-    glBindTexture(GL_TEXTURE_2D, waterTex);
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-    //draw water
-    glBegin(GL_QUADS);
-    glNormal3f(0, 1, 0);
-    glVertex3f(-1000, yOffset, -1000);
-    glVertex3f(1000, yOffset, -1000);
-    glVertex3f(1000, yOffset,1000);
-    glVertex3f(-1000, yOffset ,1000);
-    glEnd();
+    
 
     //show terrain
     glCallList(terrainDL);
@@ -192,6 +183,21 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glEnd();
 
     }
+    
+    glBindTexture(GL_TEXTURE_2D, waterTex);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    //draw water
+    glBegin(GL_QUADS);
+    glNormal3f(0, 1, 0);
+    glTexCoord2d(0, 0);
+    glVertex3f(-1000, yOffset, -1000);
+    glTexCoord2d(1000, 0);
+    glVertex3f(1000, yOffset, -1000);
+    glTexCoord2d(1000, 1000);
+    glVertex3f(1000, yOffset,1000);
+    glTexCoord2d(0, 1000);
+    glVertex3f(-1000, yOffset ,1000);
+    glEnd();
 
     glEndList();
 
@@ -261,12 +267,21 @@ GLuint OGTerrain::createHoleDL(){
 
     glNewList(list, GL_COMPILE);
 
+    //glPushMatrix();
+	//glTranslated(hole.x, hole.y+2.10 , hole.z);
+    //glRotated(90, 1, 0, 0);
+    //glutSolidCone(hole.radius, 2, 45, 45);
+    //glTranslated(0, -0.02 , 0);
+    //glPopMatrix();
     glPushMatrix();
-	glTranslated(hole.x, hole.y + 0.5, hole.z);
-    glRotated(90, 1, 0, 0);
-    glutSolidCone(hole.radius, 1, 10, 10);
+    glDisable(GL_LIGHTING);
+    glColor3f(0,0,0);
+    glTranslated(hole.x, hole.y+0.01 , hole.z);
+    glScalef(1, 0.01, 1);
+    glutSolidSphere(hole.radius, 10, 10);
     glPopMatrix();
-
+    glEnable(GL_LIGHTING);
+    
     glEndList();
 
     return list;
@@ -310,7 +325,8 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
     switch (type) {
         case 'T':{
             model = new OGModel3DS(TREE);
-            model->setPosition(modelInitPosition(x, z, 0));
+            Vector3d pos = modelInitPosition(x, z, 0);
+            model->setPosition(pos);
             model->setRotation(-90, 1, 0, 0);
             model->setScale(0.0001, 0.0001, 0.0001);
             break;

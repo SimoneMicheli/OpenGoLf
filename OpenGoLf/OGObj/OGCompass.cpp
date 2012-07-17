@@ -82,7 +82,7 @@ GLuint OGCompass::createArrowDL(){
 
 
 void OGCompass::drawWind(Vector3d v){
-    float angle = (180 * - v.beta() / M_PI) - 90;
+    float angle = (180 * v.beta() / M_PI) - 90;
     
     GLdouble modelMatrix[16], projMatrix[16];
     
@@ -122,7 +122,7 @@ void OGCompass::drawWind(Vector3d v){
     
     //draw arrow
     glPushMatrix();
-    glRotated(angle, 0, 0, 1);
+    glRotated(-angle, 0, 0, 1);
     glCallList(arrowDL);
     glPopMatrix();
     
@@ -143,7 +143,7 @@ void OGCompass::drawWind(Vector3d v){
 }
 
 void OGCompass::drawMap(float angle){
-    angle = (180 * angle / M_PI) - 90;
+    angle = (180 * angle / M_PI) ;
     
     GLdouble modelMatrix[16], projMatrix[16];
     

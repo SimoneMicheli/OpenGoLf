@@ -15,9 +15,10 @@ OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     gravity = -9.81;
     elasticity = 0.5;
     srand ( time(NULL) );
-    const int MAX_WIND = 4;
-    wind = Vector3d((rand() % MAX_WIND),0,(rand() % MAX_WIND));
-    wind = Vector3d();
+    const int MAX_WIND = 20;
+    wind = Vector3d((rand() % MAX_WIND) - (MAX_WIND /2),0,(rand() % MAX_WIND) - (MAX_WIND / 2));
+    printf("wind: x:%f, y:%f z:%f",wind.x,wind.y,wind.z);
+    //wind = Vector3d(1,0,0);
     this->ball = ball;
     this->terrain = terrain;
     this->pov = pov;
@@ -57,6 +58,8 @@ void OGPhysic::update(double time){
         
         ball->setSpeed(speed);
     }
+    
+    
     
     ball->setPosition(pos.x, pos.y, pos.z);
     //update pov
@@ -123,13 +126,17 @@ bool OGPhysic::holeCollision(){
     return false;
 }
 
+Vector3d OGPhysic::getWind(){
+    return wind;
+}
+
 void OGPhysic::shoot(float power, int angle){
     Vector3d direction = pov->getDirection();
-    direction.y = cos(angle);
+    direction.y = sin(angle);
     direction = direction.getNormalized() * power;
     Vector3d p = ball->getPosition();
     ball->setSpeed(0,0,0);
-    ball->setPosition(p.x, p.y + 0.25, p.z);
+    ball->setPosition(p.x, p.y + ball->getRadius() + 0.01, p.z);
     ball->setSpeed(direction.x, direction.y, direction.z);
     
 }

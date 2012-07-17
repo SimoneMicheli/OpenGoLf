@@ -43,7 +43,7 @@ void OGLevel::init(string path){
     oldBall = new OGBall();
     pov = new OGPov(5,0,5); //initial pov
     oldPov = new OGPov();
-    pov->setRotation(-10, -90);
+    pov->setRotation(-10, -45);
 
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
@@ -55,7 +55,7 @@ void OGLevel::init(string path){
     //default club
     club = OGClub::DRIVER;
 
-    OGLight *light0 = new OGLight(GL_LIGHT0,0.0f,50.0,50.0f,0.0f);
+    OGLight *light0 = new OGLight(GL_LIGHT0,50.0f,50.0,50.0f,0.0f);
     light0->set();
     lights.push_back(light0);
     light0->enable();
@@ -120,14 +120,20 @@ void OGLevel::launchDisplay(){
 
     activeLevel->drawPower(activeLevel->launchPower,activeLevel->club.toString().c_str());
 
+    Vector3d k =(Vector3d(6,0,6) - activeLevel->pov->getPosition()).getNormalized();
     Vector3d dir = activeLevel->pov->getDirection().getNormalized();
+    
+    float st;
+    
+    st = k.x*dir.x + k.z*dir.z;
 
-    float angle = dir.dot( Vector3d(200,0,200).getNormalized() );
-    angle = acosf(angle );
-    //printf("angl:%f",180 * angle / M_PI);
+    float angle = k.dot( activeLevel->pov->getDirection().getNormalized() );
+    angle = acosf(st );
+    printf("angl:%f\n",180 * angle / M_PI);
+    printf("angl:%f\n", angle );
 
-    activeLevel->map->drawMap(angle + (M_PI));
-    activeLevel->wind->drawWind(Vector3d(1,1,1));
+    activeLevel->map->drawMap(angle);
+    activeLevel->wind->drawWind(activeLevel->physic->getWind());
 
     glutSwapBuffers();
 
@@ -156,6 +162,7 @@ void OGLevel::followDisplay(){
         if (activeLevel->physic->holeCollision()) {
             //back to room
             printf("fine");
+            activeLevel->restoreLaunch();
         }else
             activeLevel->restoreLaunch();
     }

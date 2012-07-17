@@ -14,6 +14,7 @@ OGBall::OGBall(){
     mass = 0.4555555;
     position = Vector3d();
     speed =Vector3d();
+    initTexture();
 }
 
 OGBall::OGBall(const OGBall &ball){
@@ -21,6 +22,7 @@ OGBall::OGBall(const OGBall &ball){
     mass = 0.4555555;
     position = ball.position;
     speed = ball.speed;
+    initTexture();
 }
 
 OGBall & OGBall::operator=(const OGBall &ball){
@@ -38,6 +40,7 @@ OGBall::OGBall(Vector3d pos){
     mass = 0.4555555;
     position = pos;
     speed =Vector3d();
+    initTexture();
 }
 
 OGBall::OGBall(double x, double y, double z){
@@ -45,6 +48,18 @@ OGBall::OGBall(double x, double y, double z){
     mass = 0.4555555;
     position = Vector3d(x,y,z);
     speed =Vector3d();
+    initTexture();
+}
+
+void OGBall::initTexture(){
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, TXball.width, TXball.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXball.pixel_data);
 }
 
 void OGBall::setPosition(double x, double y, double z){
@@ -80,9 +95,27 @@ Vector3d OGBall::getSpeed(){
 }
 
 void OGBall::draw(){
+    //glDisable(GL_TEXTURE_2D);
     glPushMatrix();
-    glColor3b(0.333, 0.0, 0.0);
+
     glTranslated(position.x,position.y + radius, position.z);
-    glutSolidSphere(radius, 15, 15);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    
+    
+    //glEnable(GL_TEXTURE_2D);
+    
+    GLUquadricObj *sphere = gluNewQuadric();
+    gluQuadricDrawStyle( sphere, GLU_FILL);
+    gluQuadricNormals( sphere, GLU_SMOOTH);
+    gluQuadricOrientation( sphere, GLU_OUTSIDE);
+    gluQuadricTexture( sphere, GL_TRUE);
+    glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+    glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+    glColor3f(0.0, 1.0, 0.0);
+    gluSphere( sphere, radius, 20, 20);
+    
+    
+    //glutSolidSphere(radius, 20, 20);
     glPopMatrix();
 }

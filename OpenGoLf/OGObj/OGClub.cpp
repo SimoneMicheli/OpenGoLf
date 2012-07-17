@@ -11,8 +11,8 @@
 
 const int OGClub::length = 3;
 const std::string OGClub::e_name[]={"Driver","Wedge","Putter"};
-const int OGClub::e_power[]={20,5,1};
-const int OGClub::e_angle[]={45,20,5};
+const int OGClub::e_power[]={30,10,5};
+const int OGClub::e_angle[]={45,80,0};
 
 OGClub::OGClub(){
     c_enum = DRIVER;
