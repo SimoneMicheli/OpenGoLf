@@ -44,6 +44,7 @@ public:
 
 private:
     static OGLevel* activeLevel;
+    OGPov* pov, *oldPov, *eagle;
     OGTerrain *terrain;
     OGBall *ball, *oldBall;
     OGProjection *projection;
@@ -56,16 +57,18 @@ private:
     static struct timeval before,now,launchTime;
     double static time_diff(timeval before, timeval now);
     bool static shooting;
+    bool enabledEagleView;
+    
     void shoot();
     void restoreLaunch();
     void drawPower(float power, const char* str);
+    void toggleEagleView();
 
     Vector3d oldMousePos;
 
     void drawMap();
 
     //fog property
-    bool enableFog;
     GLfloat fogColor[4],*skyColor,fogDensity,fogStart,fogEnd;
 };
 

@@ -16,7 +16,7 @@
 class OGAmbient : public OGObject{
 public:
     
-    OGPov* pov, *oldPov; //
+    
     
     /*virtual void init();
     virtual void display();

@@ -34,19 +34,24 @@ OGLevel::OGLevel(){
     fogStart = 5.0;
     fogEnd = 60.0;
     launchPower = 0;
+    enabledEagleView = false;
 }
 
 void OGLevel::init(string path){
     projection = new OGProjection();
     float aspect = (float) W_WIDTH/(float) W_HEIGHT;
-    projection->setPerspective(60.0f, aspect, 0.1f, 100.0f);
+    projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
     terrain = new OGTerrain(path);
-    ball = new OGBall(5,0,5);
+    ball = new OGBall(5,1,5);
     oldBall = new OGBall();
-    pov = new OGPov(5,0,5); //initial pov
+    pov = new OGPov(5,1,5); //initial pov
     oldPov = new OGPov();
     pov->setRotation(-10, -45);
+    
+    //eagle view POV
+    eagle = new OGPov(5,60,5);
+    eagle->setRotation(-45, -45);
 
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
@@ -346,8 +351,14 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
 
 //----------------------key press---------------------
 void OGLevel::keyPress(unsigned char key, int x, int y){
+    //change club
     if (key == 'c' || key == 'C') {
         activeLevel->club++;
+        glutPostRedisplay();
+    }
+    //toggle eagle view
+    if (key == 'e' || key == 'E') {
+        activeLevel->toggleEagleView();
         glutPostRedisplay();
     }
 }
@@ -378,12 +389,30 @@ void OGLevel::restoreLaunch(){
     glutMotionFunc(OGLevel::mouseMotionFunction);
 }
 
+//----------------eagle view-----------------------
+void OGLevel::toggleEagleView(){
+    if (!enabledEagleView) {
+        enabledEagleView = true;
+        *oldPov = *pov;
+        *pov = *eagle;
+    }else {
+        enabledEagleView = false;
+        *pov = *oldPov;
+    }
+}
+
 OGLevel::~OGLevel(){
     activeLevel = NULL;
     delete terrain;
     delete ball;
+    delete oldBall;
     delete projection;
     delete physic;
+    delete pov;
+    delete oldPov;
+    delete eagle;
+    delete wind;
+    delete map;
     while (!lights.empty())
     {
         delete lights.back();

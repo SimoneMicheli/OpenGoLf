@@ -14,7 +14,7 @@ OGTerrain::OGTerrain(string path){
     V_SCALE = 50;
 
     hole.radius = 0.108;
-    yOffset = 0.003;
+    yOffset = 0.045;
 
     initWaterTexture();
     terrainFromImage(path.c_str(), header, vertex, normals);
@@ -367,6 +367,11 @@ Vector3d OGTerrain::modelInitPosition(double x, double z, double offset){
 OGTerrain::~OGTerrain(){
     free(vertex);
     free(normals);
+    while (!models.empty())
+    {
+        delete models.back();
+        models.pop_back();
+    }
 }
 
 float OGTerrain::getYOffset(){
