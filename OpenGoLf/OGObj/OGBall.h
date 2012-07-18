@@ -20,7 +20,7 @@ private:
     Vector3d position, speed;
     GLuint texture;
     void initTexture();
-    
+
 public:
     OGBall();
     OGBall(const OGBall &ball); //costruttore di copia

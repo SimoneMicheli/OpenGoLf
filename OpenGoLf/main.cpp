@@ -25,11 +25,13 @@
 
 #include "Vector3d.h"
 
+#include "OGRoom.h"
 #include "OGLevel.h"
 
 
 //----------global var---------------------
 OGLevel *level;
+OGRoom *room;
 int W_WIDTH = 900;
 int W_HEIGHT = 800;
 int pippo = 0;
@@ -46,11 +48,13 @@ int main(int argc, char** argv){
 
     init();
 
-    glutReshapeFunc(OGLevel::resize);
-    glutKeyboardFunc(OGLevel::keyPress);
-    glutDisplayFunc(OGLevel::launchDisplay);
-    glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
-    glutMouseFunc(OGLevel::mouseClickFunction);
+    glutReshapeFunc(OGRoom::resize);
+    glutDisplayFunc(OGRoom::roomDisplay);
+    //glutDisplayFunc(OGLevel::launchDisplay);
+    //glutReshapeFunc(OGLevel::resize);
+    //glutKeyboardFunc(OGLevel::keyPress);
+    //glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+    //glutMouseFunc(OGLevel::mouseClickFunction);
 
     if (DEBUGGING)
      glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); //enable wireframe
@@ -77,6 +81,8 @@ void init(){
 
     //-----------------------------------------------------
     level = new OGLevel();
-    level->init(TERRAIN_PATH,MODELS);
+    room = new OGRoom();
+    room->init();
+    //level->init(TERRAIN_PATH,MODELS);
 }
 

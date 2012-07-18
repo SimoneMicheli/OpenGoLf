@@ -28,8 +28,15 @@ void OGLight::setPosition(double x, double y, double z, double t){
     position[3]=t;
 }
 
+void OGLight::setDirection(double x, double y, double z){
+    direction[0]=x;
+    direction[1]=y;
+    direction[2]=z;
+}
+
 void OGLight::set(){
     glLightfv(number, GL_POSITION, position);
+    glLightfv(number,GL_SPOT_DIRECTION,direction);
 }
 
 

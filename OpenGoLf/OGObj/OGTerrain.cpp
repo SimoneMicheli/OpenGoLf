@@ -27,7 +27,7 @@ OGTerrain::OGTerrain(string path, string modelPath){
 }
 
 void OGTerrain::draw(){
-    
+
 
     //show terrain
     glCallList(terrainDL);
@@ -184,7 +184,7 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
         glEnd();
 
     }
-    
+
     glBindTexture(GL_TEXTURE_2D, waterTex);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     //draw water
@@ -268,21 +268,33 @@ GLuint OGTerrain::createHoleDL(){
 
     glNewList(list, GL_COMPILE);
 
-    //glPushMatrix();
-	//glTranslated(hole.x, hole.y+2.10 , hole.z);
-    //glRotated(90, 1, 0, 0);
-    //glutSolidCone(hole.radius, 2, 45, 45);
-    //glTranslated(0, -0.02 , 0);
-    //glPopMatrix();
-    glPushMatrix();
+
     glDisable(GL_LIGHTING);
+    glPushMatrix();
     glColor3f(0,0,0);
     glTranslated(hole.x, hole.y+0.01 , hole.z);
     glScalef(1, 0.01, 1);
     glutSolidSphere(hole.radius, 10, 10);
     glPopMatrix();
+
     glEnable(GL_LIGHTING);
-    
+    glPushMatrix();
+    glColor3f(1,1,1);
+    float rodDim = 0.03;
+    glTranslated(hole.x+hole.radius+(rodDim/2), hole.y+rodDim*100*0.5 , hole.z);
+    glScalef(1, 100, 1);
+    glutSolidCube(rodDim);
+    glPopMatrix();
+    glDisable(GL_LIGHTING);
+    glPushMatrix();
+    glColor3f(1,0,0);
+    glTranslated(hole.x+hole.radius+(rodDim/2), hole.y+rodDim*100-0.16 , hole.z+0.24);
+    glScalef(0.1, 1, 1.5);
+    glutSolidCube(0.31);
+    glPopMatrix();
+    glEnable(GL_LIGHTING);
+
+
     glEndList();
 
     return list;
@@ -345,6 +357,7 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
             Vector3d p = modelInitPosition(x, z, 0);
             hole.x = p.x;
             hole.y = p.y;
+            printf("%f",p.y);
             hole.z = p.z;
             return;
         }

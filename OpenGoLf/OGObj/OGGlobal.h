@@ -22,6 +22,7 @@
 #define TERRAIN_PATH "./terrains/terrain_small.bmp"
 #define TREE "./models/tree.3ds"
 #define BUSH "./models/bush.3ds"
+#define DOOR "./models/door.3ds"
 #define MODELS "./models/terrain0.dat"
 #define STEP 0.1 //step per la barra di caricamento
 

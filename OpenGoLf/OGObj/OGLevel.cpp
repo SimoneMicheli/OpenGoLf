@@ -43,12 +43,12 @@ void OGLevel::init(string path, string modelPath){
     projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
     terrain = new OGTerrain(path, modelPath);
-    ball = new OGBall(5,1,5);
+    ball = new OGBall(30.5,6.14,30);
     oldBall = new OGBall();
-    pov = new OGPov(5,1,5); //initial pov
+    pov = new OGPov(30,6.14,30); //initial pov
     oldPov = new OGPov();
     pov->setRotation(-10, -45);
-    
+
     //eagle view POV
     eagle = new OGPov(5,60,5);
     eagle->setRotation(-45, -45);
@@ -141,9 +141,9 @@ void OGLevel::launchDisplay(){
 
     /*Vector3d k =(Vector3d(6,0,6) - activeLevel->pov->getPosition()).getNormalized();
     Vector3d dir = activeLevel->pov->getDirection().getNormalized();
-    
+
     float st;
-    
+
     st = k.x*dir.x + k.z*dir.z;
 
     float angle = k.dot( activeLevel->pov->getDirection().getNormalized() );

@@ -72,6 +72,7 @@
 		<Unit filename="OGObj\OGPov.h" />
 		<Unit filename="OGObj\OGProjection.cpp" />
 		<Unit filename="OGObj\OGProjection.h" />
+		<Unit filename="OGObj\OGRoom.cpp" />
 		<Unit filename="OGObj\OGRoom.h" />
 		<Unit filename="OGObj\OGTerrain.cpp" />
 		<Unit filename="OGObj\OGTerrain.h" />

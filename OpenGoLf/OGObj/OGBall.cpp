@@ -84,7 +84,7 @@ double OGBall::getMass(){
 
 double OGBall::getRadius(){
     return radius;
-} 
+}
 
 Vector3d OGBall::getPosition(){
     return position;
@@ -101,10 +101,10 @@ void OGBall::draw(){
     glTranslated(position.x,position.y + radius, position.z);
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-    
-    
+
+
     //glEnable(GL_TEXTURE_2D);
-    
+
     GLUquadricObj *sphere = gluNewQuadric();
     gluQuadricDrawStyle( sphere, GLU_FILL);
     gluQuadricNormals( sphere, GLU_SMOOTH);
@@ -114,8 +114,8 @@ void OGBall::draw(){
     glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
     glColor3f(0.0, 1.0, 0.0);
     gluSphere( sphere, radius, 20, 20);
-    
-    
+
+
     //glutSolidSphere(radius, 20, 20);
     glPopMatrix();
 }
