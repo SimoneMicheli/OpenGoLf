@@ -139,7 +139,7 @@ void OGLevel::launchDisplay(){
 
     activeLevel->drawPower(activeLevel->launchPower,activeLevel->club.toString().c_str());
 
-    Vector3d k =(Vector3d(6,0,6) - activeLevel->pov->getPosition()).getNormalized();
+    /*Vector3d k =(Vector3d(6,0,6) - activeLevel->pov->getPosition()).getNormalized();
     Vector3d dir = activeLevel->pov->getDirection().getNormalized();
     
     float st;
@@ -149,9 +149,9 @@ void OGLevel::launchDisplay(){
     float angle = k.dot( activeLevel->pov->getDirection().getNormalized() );
     angle = acosf(st );
     printf("angl:%f\n",180 * angle / M_PI);
-    printf("angl:%f\n", angle );
+    printf("angl:%f\n", angle );*/
 
-    activeLevel->map->drawMap(angle);
+    activeLevel->map->drawMap(0);
     activeLevel->wind->drawWind(activeLevel->physic->getWind());
 
     glutSwapBuffers();
@@ -344,7 +344,6 @@ void OGLevel::mouseClickFunction(int button,int state, int x, int y){
     if (state == GLUT_UP && button == GLUT_LEFT_BUTTON) {
         if (!shooting)
             activeLevel->shoot();
-        shooting = false;
     }
 
 }
@@ -357,7 +356,7 @@ void OGLevel::keyPress(unsigned char key, int x, int y){
         glutPostRedisplay();
     }
     //toggle eagle view
-    if (key == 'e' || key == 'E') {
+    if ((key == 'e' || key == 'E') && !shooting) {
         activeLevel->toggleEagleView();
         glutPostRedisplay();
     }
@@ -373,7 +372,6 @@ void OGLevel::shoot(){
 
     glutPassiveMotionFunc(NULL); //disattivo rotazione
     glutMotionFunc(NULL);
-    printf("%f",launchPower);
     physic->shoot(launchPower * club.getPower(), club.getAngle());
     gettimeofday(&OGLevel::before,NULL);
     glutDisplayFunc(OGLevel::followDisplay);
@@ -383,6 +381,7 @@ void OGLevel::shoot(){
 //-----------------restore launch function----------
 void OGLevel::restoreLaunch(){
     count = true;
+    shooting = false;
     activeLevel->launchPower = 0;
     glutDisplayFunc(OGLevel::launchDisplay);
     glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
@@ -393,11 +392,13 @@ void OGLevel::restoreLaunch(){
 void OGLevel::toggleEagleView(){
     if (!enabledEagleView) {
         enabledEagleView = true;
+        glutMouseFunc(NULL);
         *oldPov = *pov;
         *pov = *eagle;
     }else {
         enabledEagleView = false;
         *pov = *oldPov;
+        glutMouseFunc(OGLevel::mouseClickFunction);
     }
 }
 

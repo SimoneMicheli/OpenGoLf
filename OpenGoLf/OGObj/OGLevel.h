@@ -2,7 +2,7 @@
 //  OGLevel.h
 //  OpenGoLf
 //
-//  Created by Fulvio Micheli on 04/07/12.
+//  Created by Simone Micheli on 04/07/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 

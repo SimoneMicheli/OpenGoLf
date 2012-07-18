@@ -24,29 +24,18 @@
 #endif
 
 #include "Vector3d.h"
-//#include "OGAmbient.h"
-//#include "OGRoom.h"
+
 #include "OGLevel.h"
-//#include "OGTerrain.h"
-//#include "OGGlobal.h"
-//#include "OGObject.h"
 
-/*int main(int argc, const char * argv[]){
-
-
-}*/
 
 //----------global var---------------------
 OGLevel *level;
 int W_WIDTH = 900;
 int W_HEIGHT = 800;
 int pippo = 0;
-//extern int W_WIDTH;
-//extern int W_HEIGHT;
 //-----------------------------------------
 
 void init();
-//void resize(int x, int y);
 
 int main(int argc, char** argv){
     glutInit(&argc,argv);
@@ -57,12 +46,8 @@ int main(int argc, char** argv){
 
     init();
 
-    //glutDisplayFunc(display);
     glutReshapeFunc(OGLevel::resize);
     glutKeyboardFunc(OGLevel::keyPress);
-    //glutMotionFunc(mouseMove);
-    //glutMouseFunc(mouseClick);
-
     glutDisplayFunc(OGLevel::launchDisplay);
     glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
@@ -95,9 +80,3 @@ void init(){
     level->init(TERRAIN_PATH);
 }
 
-/*void resize(int x, int y){
-
-    W_WIDTH = x;
-    W_HEIGHT = y;
-    glutPostRedisplay();
-}*/
