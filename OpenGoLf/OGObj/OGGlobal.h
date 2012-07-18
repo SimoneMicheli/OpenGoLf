@@ -22,7 +22,7 @@
 #define TERRAIN_PATH "./terrains/terrain_small.bmp"
 #define TREE "./models/tree.3ds"
 #define BUSH "./models/bush.3ds"
-#define TERRAIN "./models/terrain0.dat"
+#define MODELS "./models/terrain0.dat"
 #define STEP 0.1 //step per la barra di caricamento
 
 
@@ -31,7 +31,7 @@
 
 #define TREE  "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tree.3ds"
 #define BUSH  "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds"
-#define TERRAIN "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat"
+#define MODELS "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat"
 #define TERRAIN_PATH "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain_small.bmp"
 #define STEP 0.01 //step per la barra di caricamento
 

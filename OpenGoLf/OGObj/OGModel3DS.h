@@ -19,7 +19,7 @@ class  OGModel3DS : public OGObject{
     GLuint objDL;
     unsigned int nfaces;
     
-    void createVBO();
+    void createDL();
     unsigned int getFaces();
     Vector3d scale;
     double rotation[4];

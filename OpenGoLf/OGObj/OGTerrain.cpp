@@ -9,7 +9,7 @@
 #include <iostream>
 #include "OGTerrain.h"
 
-OGTerrain::OGTerrain(string path){
+OGTerrain::OGTerrain(string path, string modelPath){
     H_SCALE = 10;
     V_SCALE = 50;
 
@@ -20,7 +20,7 @@ OGTerrain::OGTerrain(string path){
     terrainFromImage(path.c_str(), header, vertex, normals);
     terrainDL = createTerrainDL(header, vertex, normals);
 
-    readModelsFromFile();
+    readModelsFromFile(modelPath);
     modelsDL = createModelsDL();
 
     holeDL = createHoleDL();
@@ -33,10 +33,11 @@ void OGTerrain::draw(){
     glCallList(terrainDL);
 
     //show loaded objects
-    glDisable(GL_TEXTURE_2D);
+    //
     glCallList(modelsDL);
 
     //show hole
+    glDisable(GL_TEXTURE_2D);
     glCallList(holeDL);
     glEnable(GL_TEXTURE_2D);
 }
@@ -287,10 +288,10 @@ GLuint OGTerrain::createHoleDL(){
     return list;
 }
 
-void OGTerrain::readModelsFromFile(){
+void OGTerrain::readModelsFromFile(string path){
     ifstream file;
 
-    file.open(TERRAIN, ios::binary | ios::in);
+    file.open(path.c_str(), ios::binary | ios::in);
 
     if (!file){
         printf("can't open model file\n");

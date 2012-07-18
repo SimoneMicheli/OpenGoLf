@@ -61,7 +61,7 @@ private:
     void initTexture();
     GLuint createModelsDL();
     GLuint createHoleDL();
-    void readModelsFromFile();
+    void readModelsFromFile(string);
     void initWaterTexture();
     void loadModel(char type, double x, double z, double angle);
     Vector3d modelInitPosition(double x, double z, double offset);
@@ -69,7 +69,7 @@ private:
 
 public:
     int getHScale();
-    OGTerrain(string);
+    OGTerrain(string, string);
     ~OGTerrain();
     void draw();
     unsigned int getTerrainWidth();

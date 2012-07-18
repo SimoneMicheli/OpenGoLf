@@ -77,6 +77,6 @@ void init(){
 
     //-----------------------------------------------------
     level = new OGLevel();
-    level->init(TERRAIN_PATH);
+    level->init(TERRAIN_PATH,MODELS);
 }
 

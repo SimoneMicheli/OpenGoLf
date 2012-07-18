@@ -27,7 +27,7 @@ OGModel3DS::OGModel3DS(std::string fileName){
     rotation[2]=0;
     rotation[3]=0;
     printf(" ");
-    createVBO();
+    createDL();
 
 }
 
@@ -44,7 +44,7 @@ unsigned int OGModel3DS::getFaces(){
     return faces;
 }
 
-void OGModel3DS::createVBO(){
+void OGModel3DS::createDL(){
 
     assert(f != NULL);
 

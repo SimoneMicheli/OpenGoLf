@@ -1,6 +1,6 @@
 /* GIMP RGB C-Source image dump (TXtree.c) */
 
-static const struct {
+static const struct{
   unsigned int 	 width;
   unsigned int 	 height;
   unsigned int 	 bytes_per_pixel; /* 3:RGB, 4:RGBA */ 

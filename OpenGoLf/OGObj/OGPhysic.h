@@ -34,7 +34,7 @@ private:
     OGBall *ball;
     OGTerrain *terrain;
     OGPov *pov;
-    bool oldCollision;
+    //bool oldCollision;
     
     bool terrainCollision(Vector3d &vertex, Vector3d &normal);
     bool terrainEdge();

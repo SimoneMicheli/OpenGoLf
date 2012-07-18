@@ -17,8 +17,6 @@ OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     srand ( time(NULL) );
     const int MAX_WIND = 10;
     wind = Vector3d((rand() % MAX_WIND) - (MAX_WIND /2),0,(rand() % MAX_WIND) - (MAX_WIND / 2));
-    printf("wind: x:%f, y:%f z:%f",wind.x,wind.y,wind.z);
-    //wind = Vector3d(1,0,0);
     this->ball = ball;
     this->terrain = terrain;
     this->pov = pov;

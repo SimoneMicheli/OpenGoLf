@@ -37,12 +37,12 @@ OGLevel::OGLevel(){
     enabledEagleView = false;
 }
 
-void OGLevel::init(string path){
+void OGLevel::init(string path, string modelPath){
     projection = new OGProjection();
     float aspect = (float) W_WIDTH/(float) W_HEIGHT;
     projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
-    terrain = new OGTerrain(path);
+    terrain = new OGTerrain(path, modelPath);
     ball = new OGBall(5,1,5);
     oldBall = new OGBall();
     pov = new OGPov(5,1,5); //initial pov

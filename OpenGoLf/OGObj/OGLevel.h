@@ -31,7 +31,7 @@ public:
 
     OGLevel();
     ~OGLevel();
-    void init(string);
+    void init(string,string);
 
     void static mousePassiveMotionFunction(int, int);
     void static mouseMotionFunction(int,int);
