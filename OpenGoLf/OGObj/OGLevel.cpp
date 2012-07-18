@@ -2,6 +2,9 @@
 
 #include "OGLevel.h"
 
+extern int W_WIDTH;
+extern int W_HEIGHT;
+
 OGLevel* OGLevel::activeLevel=NULL;
 struct timeval OGLevel::before,OGLevel::now,OGLevel::launchTime;
 bool OGLevel::shooting=false;
@@ -75,6 +78,17 @@ void OGLevel::init(string path){
     glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
     glutMotionFunc(OGLevel::mouseMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
+}
+
+void OGLevel::resize(int x, int y){
+    W_WIDTH = x;
+    W_HEIGHT = y;
+    float aspect = (float) W_WIDTH/(float) W_HEIGHT;
+    activeLevel->projection->setAspect(aspect);
+    activeLevel->projection->init();
+    activeLevel->map->setPosition(0, W_HEIGHT- 130);
+    activeLevel->wind->setPosition(W_WIDTH - 150, W_HEIGHT-130);
+    glutPostRedisplay();
 }
 
 //-----------------------mouse functions-----------------------

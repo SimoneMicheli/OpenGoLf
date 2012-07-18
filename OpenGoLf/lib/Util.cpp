@@ -33,6 +33,9 @@ typedef int32_t LONG;
 #include "OGObject.h"
 #include "OGLevel.h"
 
+extern int W_WIDTH;
+extern int W_HEIGHT;
+
 void renderString(const char* string)
 { 
     //save modelview

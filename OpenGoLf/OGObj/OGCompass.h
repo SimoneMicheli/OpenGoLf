@@ -16,6 +16,7 @@ public:
     OGCompass(int x, int y, int width, int height);
     void drawWind(Vector3d v);
     void drawMap(float angle);
+    void setPosition(int, int);
     
 private:
     int width, height, x,y;

@@ -38,12 +38,15 @@
 
 //----------global var---------------------
 OGLevel *level;
+int W_WIDTH = 900;
+int W_HEIGHT = 800;
+int pippo = 0;
 //extern int W_WIDTH;
 //extern int W_HEIGHT;
 //-----------------------------------------
 
 void init();
-void resize(int x, int y);
+//void resize(int x, int y);
 
 int main(int argc, char** argv){
     glutInit(&argc,argv);
@@ -55,7 +58,7 @@ int main(int argc, char** argv){
     init();
 
     //glutDisplayFunc(display);
-    glutReshapeFunc(resize);
+    glutReshapeFunc(OGLevel::resize);
     glutKeyboardFunc(OGLevel::keyPress);
     //glutMotionFunc(mouseMove);
     //glutMouseFunc(mouseClick);
@@ -92,9 +95,9 @@ void init(){
     level->init(TERRAIN_PATH);
 }
 
-void resize(int x, int y){
+/*void resize(int x, int y){
 
-    //W_WIDTH = x;
-    //W_HEIGHT = y;
+    W_WIDTH = x;
+    W_HEIGHT = y;
     glutPostRedisplay();
-}
+}*/

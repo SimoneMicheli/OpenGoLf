@@ -29,6 +29,10 @@ void OGProjection::setOrtho(float p_near,float p_far ,float left ,float right, f
     init();
 }
 
+void OGProjection::setAspect(float aspect){
+    this->aspect = aspect;
+}
+
 void OGProjection::init(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

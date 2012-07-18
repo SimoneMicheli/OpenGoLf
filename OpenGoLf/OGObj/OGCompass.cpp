@@ -20,6 +20,11 @@ OGCompass::OGCompass(int x, int y, int width, int height){
     
 }
 
+void OGCompass::setPosition(int x, int y){
+    this->x = x;
+    this->y = y;
+}
+
 GLuint OGCompass::createCircleDL(float r, int num_segments) 
 { 
 	float theta = 2 * 3.1415926 / float(num_segments); 

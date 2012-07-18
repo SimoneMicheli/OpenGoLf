@@ -37,6 +37,7 @@ public:
     void static mouseMotionFunction(int,int);
     void static launchDisplay();
     void static followDisplay();
+    void static resize(int,int);
     void static mouseClickFunction(int,int,int,int);
     void static keyPress(unsigned char, int, int);
     void static timer(int);

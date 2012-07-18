@@ -23,6 +23,7 @@ public:
   //OGProjection();
   void setPerspective(float ,float,float,float);
   void setOrtho(float, float, float, float, float, float);
+  void setAspect(float);
   void init();
 
 private:
