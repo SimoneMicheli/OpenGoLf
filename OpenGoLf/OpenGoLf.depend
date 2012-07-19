@@ -67,7 +67,7 @@
 1342646846 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.h
 	"OGObject.h"
 
-1342679734 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
+1342697499 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
 
 1342646143 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.h
 	"OGObject.h"
@@ -105,7 +105,7 @@
 	"OGRoom.h"
 	"OGLevel.h"
 
-1342681977 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
+1342682126 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
 	"OGLevel.h"
 	"OGAmbient.h"
 	"OGProjection.h"
@@ -154,7 +154,7 @@
 	<stdlib.h>
 	<time.h>
 
-1342613483 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.cpp
+1342697499 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.cpp
 	<iostream>
 	"OGModel3DS.h"
 	<stdio.h>
@@ -247,7 +247,7 @@
 
 1342613483 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txball.h
 
-1342679517 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
+1342701441 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
 	<iostream>
 	"OGRoom.h"
 

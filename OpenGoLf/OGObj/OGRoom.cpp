@@ -21,7 +21,7 @@ OGRoom::OGRoom(){
     activeRoom->loadDoor(0,0,4,0); //campo 2
     activeRoom->loadDoor(0,0,8,0); //campo 3
 
-    activeRoom->loadDoor(2,0,10,180); //esci dal gioco
+    activeRoom->loadDoor(2,0,10,90); //esci dal gioco
 
     modelsDL = createModelsDL();
 
@@ -117,12 +117,7 @@ void OGRoom::roomDisplay(){
     activeRoom->pov->lookAt();
     glEnable(GL_LIGHTING);
 
-    //non va
-    if(activeRoom->locked){
-        renderString("Locked");
-    }else{
-        renderString("Unlocked");
-    }
+
 
     activeRoom->drawRoom();
     glCallList(activeRoom->modelsDL);
@@ -133,6 +128,12 @@ void OGRoom::roomDisplay(){
         glutSolidSphere(radiusBall,70,70);
     glPopMatrix();*/
 
+    //non va
+    if(activeRoom->locked){
+        renderString("Locked");
+    }else{
+        renderString("Unlocked");
+    }
     glutSwapBuffers();
     glutPostRedisplay();
 }
@@ -195,40 +196,32 @@ void OGRoom::loadCabinet(double x, double y, double z, double angle){
 void OGRoom::drawRoom(){
 
     activeRoom->materialWall();
-    glBegin(GL_QUAD_STRIP);
+    glBegin(GL_QUADS);
         glNormal3f(0.0f,0.0f,1.0f);
         glVertex3d(0, 0, 0);
         glVertex3d(10, 0, 0);
-        glVertex3d(0, 10, 0);
         glVertex3d(10, 10, 0);
-    glEnd();
-    glBegin(GL_QUAD_STRIP);
+        glVertex3d(0, 10, 0);
         glNormal3f(1.0f,0.0f,0.0f);
         glVertex3d(0, 0, 0);
         glVertex3d(0, 0, 10);
-        glVertex3d(0, 10, 0);
         glVertex3d(0, 10, 10);
-    glEnd();
-    glBegin(GL_QUAD_STRIP);
+        glVertex3d(0, 10, 0);
          glNormal3f(0.0f,1.0f,0.0f);
         glVertex3d(0, 0, 0);
         glVertex3d(0, 0, 10);
-        glVertex3d(10, 0, 0);
         glVertex3d(10, 0, 10);
-    glEnd();
-    glBegin(GL_QUAD_STRIP);
+        glVertex3d(10, 0, 0);
         glNormal3f(0.0f,0.0f,-1.0f);
         glVertex3d(0, 0, 10);
         glVertex3d(10, 0, 10);
-        glVertex3d(0, 10, 10);
         glVertex3d(10, 10, 10);
-    glEnd();
-    glBegin(GL_QUAD_STRIP);
+        glVertex3d(0, 10, 10);
         glNormal3f(-1.0f,0.0f,0.0f);
         glVertex3d(10, 0, 0);
         glVertex3d(10, 0, 10);
-        glVertex3d(10, 10, 0);
         glVertex3d(10, 10, 10);
+        glVertex3d(10, 10, 0);
     glEnd();
 }
 
@@ -269,6 +262,20 @@ void OGRoom::keyPress(unsigned char key, int x, int y){
         }else{
             glutPassiveMotionFunc(NULL);
             activeRoom->locked=true;
+        }
+    }
+    if (key == 'w'){
+        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*0.2;
+        if(newPos.x<9.8 && newPos.x>0.2 && newPos.z>0.2 && newPos.z<9.8){
+
+        activeRoom->pov->setPosition(newPos);
+        }
+    }
+    if (key == 's'){
+        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*-0.2;
+        if(newPos.x<9.8 && newPos.x>0.2 && newPos.z>0.2 && newPos.z<9.8){
+
+        activeRoom->pov->setPosition(newPos);
         }
     }
 }
