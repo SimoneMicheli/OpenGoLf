@@ -143,7 +143,7 @@ void OGRoom::roomDisplay(){
 
 
 
-void OGRoom::drawVase(double x, double y, double z, double angle){
+void OGRoom::loadVase(double x, double y, double z, double angle){
 
     OGModel3DS *model = new OGModel3DS(VASE);
     Vector3d pos = Vector3d(x, y, z);
@@ -155,7 +155,7 @@ void OGRoom::drawVase(double x, double y, double z, double angle){
     models.push_back(model);
 }
 
-void OGRoom::drawDoor(double x, double y, double z, double angle){
+void OGRoom::loadDoor(double x, double y, double z, double angle){
 
     OGModel3DS *model = new OGModel3DS(DOOR);
     Vector3d pos = Vector3d(x, y, z);
@@ -167,7 +167,7 @@ void OGRoom::drawDoor(double x, double y, double z, double angle){
     models.push_back(model);
 }
 
-void OGRoom::drawArmchair(double x, double y, double z, double angle){
+void OGRoom::loadArmchair(double x, double y, double z, double angle){
 
     OGModel3DS *model = new OGModel3DS(ARMCHAIR);
     Vector3d pos = Vector3d(x, y, z);
@@ -180,7 +180,7 @@ void OGRoom::drawArmchair(double x, double y, double z, double angle){
 }
 
 
-void OGRoom::drawCabinet(double x, double y, double z, double angle){
+void OGRoom::loadCabinet(double x, double y, double z, double angle){
 
     OGModel3DS *model = new OGModel3DS(CABINET);
     Vector3d pos = Vector3d(x, y, z);

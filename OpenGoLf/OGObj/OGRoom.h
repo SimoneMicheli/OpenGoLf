@@ -49,6 +49,12 @@ private:
     void loadArmchair(double x, double y, double z, double angle);
     void loadCabinet(double x, double y, double z, double angle);
     void loadDoor(double x, double y, double z, double angle);
+    
+    //draw functions 
+    /*void drawCabinet(double x, double y, double z, double angle);
+    void drawArmchair(double x, double y, double z, double angle);
+    void drawDoor(double x, double y, double z, double angle);
+    void drawVase(double x, double y, double z, double angle);*/
 
 };
 

@@ -37,6 +37,7 @@
 		FC42DA1715AF1799006954EF /* lib3ds_util.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0215AF1799006954EF /* lib3ds_util.c */; };
 		FC42DA1815AF1799006954EF /* lib3ds_vector.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0315AF1799006954EF /* lib3ds_vector.c */; };
 		FC42DA1915AF1799006954EF /* lib3ds_viewport.c in Sources */ = {isa = PBXBuildFile; fileRef = FC42DA0415AF1799006954EF /* lib3ds_viewport.c */; };
+		FC54207A15B8073B00E3C0A6 /* OGRoom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC54207915B8073B00E3C0A6 /* OGRoom.cpp */; };
 		FC7DB32E15B341B200A1A94B /* OGClub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7DB32D15B341B200A1A94B /* OGClub.cpp */; };
 		FC7DB33115B3420000A1A94B /* OGCompass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC7DB33015B3420000A1A94B /* OGCompass.cpp */; };
 		FCC7443015B5A4B600F8B8A4 /* OGMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCC7442F15B5A4B600F8B8A4 /* OGMaterial.cpp */; };
@@ -109,6 +110,7 @@
 		FC42DA0415AF1799006954EF /* lib3ds_viewport.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib3ds_viewport.c; sourceTree = "<group>"; };
 		FC42DA0515AF1799006954EF /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
 		FC42DA0615AF1799006954EF /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		FC54207915B8073B00E3C0A6 /* OGRoom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGRoom.cpp; sourceTree = "<group>"; };
 		FC7DB32D15B341B200A1A94B /* OGClub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGClub.cpp; sourceTree = "<group>"; };
 		FC7DB32F15B341C600A1A94B /* OGCompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OGCompass.h; sourceTree = "<group>"; };
 		FC7DB33015B3420000A1A94B /* OGCompass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OGCompass.cpp; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		FC35FAF715ADAD9E0038799D /* OGObj */ = {
 			isa = PBXGroup;
 			children = (
+				FC54207915B8073B00E3C0A6 /* OGRoom.cpp */,
 				FC7DB32D15B341B200A1A94B /* OGClub.cpp */,
 				FCE7ABD215AF15970057CB87 /* OGModel3DS.cpp */,
 				FC35FAF815ADAD9E0038799D /* OGAmbient.h */,
@@ -334,6 +337,7 @@
 				FC7DB32E15B341B200A1A94B /* OGClub.cpp in Sources */,
 				FC7DB33115B3420000A1A94B /* OGCompass.cpp in Sources */,
 				FCC7443015B5A4B600F8B8A4 /* OGMaterial.cpp in Sources */,
+				FC54207A15B8073B00E3C0A6 /* OGRoom.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
