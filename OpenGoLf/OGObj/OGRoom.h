@@ -27,19 +27,28 @@ public:
     void static roomDisplay();
     void static resize(int,int);
     void static mouseClickFunction(int,int,int,int);
-    //void static keyPress(unsigned char, int, int);
+    void static keyPress(unsigned char, int, int);
 
     vector<OGModel3DS*> models;
 
 private:
     static OGRoom* activeRoom;
+    GLuint modelsDL;
     OGPov* pov;
     GLuint createModelsDL();
     OGProjection *projection;
     vector<OGLight*> lights;
+    bool locked;
     Vector3d oldMousePos;
     void materialWall();
-    void drawBall(double x, double y, double z, double angle);
+    void drawRoom();
+
+
+    //object in room
+    void loadVase(double x, double y, double z, double angle);
+    void loadArmchair(double x, double y, double z, double angle);
+    void loadCabinet(double x, double y, double z, double angle);
+    void loadDoor(double x, double y, double z, double angle);
 
 };
 

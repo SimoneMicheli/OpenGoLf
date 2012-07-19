@@ -11,6 +11,35 @@ OGRoom* OGRoom::activeRoom=NULL;
 OGRoom::OGRoom(){
     activeRoom = this;
     oldMousePos = Vector3d();
+    locked=true;
+
+    activeRoom->loadCabinet(0,0,1,90);
+    activeRoom->loadVase(2,0,0.5,270);
+    activeRoom->loadArmchair(4,0,0.7,180);
+
+    activeRoom->loadDoor(0,0,6,0); //campo 1
+    activeRoom->loadDoor(0,0,4,0); //campo 2
+    activeRoom->loadDoor(0,0,8,0); //campo 3
+
+    activeRoom->loadDoor(2,0,10,180); //esci dal gioco
+
+    modelsDL = createModelsDL();
+
+
+}
+
+GLuint OGRoom::createModelsDL(){
+    //create models DisplayList
+    GLuint modelsDL = glGenLists(1);
+    glNewList(modelsDL, GL_COMPILE);
+
+    for (int i=0; i<models.size(); i++) {
+        models[i]->draw();
+    }
+
+    glEndList();
+
+    return modelsDL;
 }
 
 void OGRoom::init(){
@@ -19,7 +48,7 @@ void OGRoom::init(){
     projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
     pov = new OGPov(5,1.80,5); //initial pov
-    pov->setRotation(0, 0);
+    pov->setRotation(0, 135);
 
     OGLight *light0 = new OGLight(GL_LIGHT0,5,5,5,1);
     light0->setDirection(0,1,0);
@@ -27,12 +56,23 @@ void OGRoom::init(){
     lights.push_back(light0);
     light0->enable();
 
+    OGLight *light1 = new OGLight(GL_LIGHT1,50,50,50,0);
+    light1->set();
+    lights.push_back(light1);
+    light1->enable();
 
-    //glutKeyboardFunc(OGRoom::keyPress);
+    OGLight *light2 = new OGLight(GL_LIGHT2,0,5,0,1);
+    light2->setDirection(1,-1,1);
+    light2->set();
+    lights.push_back(light2);
+    light2->enable();
+
+
     glutDisplayFunc(OGRoom::roomDisplay);
     glutPassiveMotionFunc(OGRoom::mousePassiveMotionFunction);
     glutMotionFunc(OGRoom::mouseMotionFunction);
-    glutMouseFunc(OGRoom::mouseClickFunction);
+    //glutMouseFunc(OGRoom::mouseClickFunction);
+    glutKeyboardFunc(OGRoom::keyPress);
 }
 
 void OGRoom::resize(int x, int y){
@@ -46,32 +86,20 @@ void OGRoom::resize(int x, int y){
 
 //-----------------------mouse functions-----------------------
 void OGRoom::mousePassiveMotionFunction(int x, int y){
-     //recupera la posizione del mouse all'inizo dopo il primo movimento
-    if(x<0.1*W_WIDTH || x>0.9*W_WIDTH){
-        if (activeRoom->oldMousePos.x != 0 || activeRoom->oldMousePos.y != 0) {
-            double a = (activeRoom->oldMousePos.y - (double) y) / 0.2;
-            double b = (activeRoom->oldMousePos.x - (double) x) / 0.2;
-            activeRoom->pov->addRotation(0, b); //disabilito rotazione su giu
-        }
-
-        activeRoom->oldMousePos.x = x;
-        activeRoom->oldMousePos.y = y;
-        glutPostRedisplay();
-    }
-}
-
-void OGRoom::mouseMotionFunction(int x, int y){
-    //recupera la posizione del mouse all'inizo dopo il primo movimento
     if (activeRoom->oldMousePos.x != 0 || activeRoom->oldMousePos.y != 0) {
-        double a = (activeRoom->oldMousePos.y - (double) y) / 1;
-        double b = (activeRoom->oldMousePos.x - (double) x) / 1;
-        activeRoom->pov->addRotation(0, b); //disabilito rotazione su giu
+        double b = (activeRoom->oldMousePos.x - (double) x) / 1.5;
+        activeRoom->pov->addRotation(0, -b); //disabilito rotazione su giu
     }
 
     activeRoom->oldMousePos.x = x;
     activeRoom->oldMousePos.y = y;
     glutPostRedisplay();
 }
+
+void OGRoom::mouseMotionFunction(int x, int y){
+    //nothing
+}
+
 
 
 
@@ -87,14 +115,86 @@ void OGRoom::roomDisplay(){
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
     activeRoom->pov->lookAt();
+    glEnable(GL_LIGHTING);
+
+    //non va
+    if(activeRoom->locked){
+        renderString("Locked");
+    }else{
+        renderString("Unlocked");
+    }
+
+    activeRoom->drawRoom();
+    glCallList(activeRoom->modelsDL);
+
+    /*glPushMatrix();
+        glColor3f(0.2,0.2,0.2);
+        glTranslatef(radiusBall,radiusBall,radiusBall);
+        glutSolidSphere(radiusBall,70,70);
+    glPopMatrix();*/
+
+    glutSwapBuffers();
+    glutPostRedisplay();
+}
 
 
 
+//---------------------mouse click--------------------
+
+
+
+void OGRoom::drawVase(double x, double y, double z, double angle){
+
+    OGModel3DS *model = new OGModel3DS(VASE);
+    Vector3d pos = Vector3d(x, y, z);
+    model->setPosition(pos);
+    model->setRotation(angle, 0, 1, 0);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.01, 0.01, 0.01);
+    model->draw();
+    models.push_back(model);
+}
+
+void OGRoom::drawDoor(double x, double y, double z, double angle){
+
+    OGModel3DS *model = new OGModel3DS(DOOR);
+    Vector3d pos = Vector3d(x, y, z);
+    model->setPosition(pos);
+    model->setRotation(angle, 0, 1, 0);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.01, 0.01, 0.01);
+    model->draw();
+    models.push_back(model);
+}
+
+void OGRoom::drawArmchair(double x, double y, double z, double angle){
+
+    OGModel3DS *model = new OGModel3DS(ARMCHAIR);
+    Vector3d pos = Vector3d(x, y, z);
+    model->setPosition(pos);
+    model->setRotation(angle, 0, 1, 0);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.03, 0.03, 0.03);
+    model->draw();
+    models.push_back(model);
+}
+
+
+void OGRoom::drawCabinet(double x, double y, double z, double angle){
+
+    OGModel3DS *model = new OGModel3DS(CABINET);
+    Vector3d pos = Vector3d(x, y, z);
+    model->setPosition(pos);
+    model->setRotation(angle, 0, 1, 0);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.01, 0.01, 0.01);
+    model->draw();
+    models.push_back(model);
+}
+
+void OGRoom::drawRoom(){
 
     activeRoom->materialWall();
-
-
-
     glBegin(GL_QUAD_STRIP);
         glNormal3f(0.0f,0.0f,1.0f);
         glVertex3d(0, 0, 0);
@@ -130,52 +230,7 @@ void OGRoom::roomDisplay(){
         glVertex3d(10, 10, 0);
         glVertex3d(10, 10, 10);
     glEnd();
-
-
-
-
-    glEnable(GL_LIGHTING);
-
-
-
-
-
-
-    activeRoom->drawBall(1,0,1,0);
-
-
-    /*glPushMatrix();
-        glColor3f(0.2,0.2,0.2);
-        glTranslatef(radiusBall,radiusBall,radiusBall);
-        glutSolidSphere(radiusBall,70,70);
-    glPopMatrix();*/
-
-    glutSwapBuffers();
-    glutPostRedisplay();
 }
-
-
-
-//---------------------mouse click--------------------
-
-void OGRoom::mouseClickFunction(int button,int state, int x, int y){
-    //glutDisplayFunc(activeRoom->OGLevel::launchDisplay);
-
-   //nothing
-}
-
-
-void OGRoom::drawBall(double x, double y, double z, double angle){
-
-    OGModel3DS *model = new OGModel3DS(TREE);
-    Vector3d pos = Vector3d(x, y, z);
-    model->setPosition(pos);
-    model->setRotation(angle, 0, 1, 0);
-    model->setRotation(-90, 1, 0, 0);
-    model->setScale(0.0001, 0.0001, 0.0001);
-    model->draw();
-}
-
 
 
 OGRoom::~OGRoom(){
@@ -192,7 +247,7 @@ OGRoom::~OGRoom(){
 
 void OGRoom::materialWall() {
     float mat_specular[] = {1.0f, 1.0f, 1.0f, 1.0f};
-    float mat_diffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    float mat_diffuse[] = {0.8f, 0.8f, 1.0f, 1.0f};
     float mat_ambient[] = {0.7f, 0.7f, 0.7f, 1.0f};
 
     float mat_shininess = 100.0;
@@ -202,4 +257,18 @@ void OGRoom::materialWall() {
     glMaterialfv( GL_FRONT_AND_BACK, GL_DIFFUSE, mat_diffuse );
     glMaterialf ( GL_FRONT_AND_BACK, GL_SHININESS, mat_shininess );
 
+}
+
+
+void OGRoom::keyPress(unsigned char key, int x, int y){
+
+    if (key == 'l' || key == 'L') {
+        if(activeRoom->locked){
+            glutPassiveMotionFunc(OGRoom::mousePassiveMotionFunction);
+            activeRoom->locked=false;
+        }else{
+            glutPassiveMotionFunc(NULL);
+            activeRoom->locked=true;
+        }
+    }
 }

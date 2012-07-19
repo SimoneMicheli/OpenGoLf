@@ -22,9 +22,17 @@
 #define TERRAIN_PATH "./terrains/terrain_small.bmp"
 #define TREE "./models/tree.3ds"
 #define BUSH "./models/bush.3ds"
-#define DOOR "./models/door.3ds"
 #define MODELS "./models/terrain0.dat"
 #define STEP 0.1 //step per la barra di caricamento
+
+
+
+//object in room
+#define VASE "./models/vase.3ds"
+#define DOOR "./models/door.3ds"
+#define ARMCHAIR "./models/armchair.3ds"
+#define CABINET "./models/cabinet.3ds"
+
 
 
 
@@ -35,6 +43,14 @@
 #define MODELS "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat"
 #define TERRAIN_PATH "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain_small.bmp"
 #define STEP 0.01 //step per la barra di caricamento
+
+//object in room
+#define VASE "./models/vase.3ds"
+#define DOOR "./models/door.3ds"
+#define ARMCHAIR "./models/armchair.3ds"
+#define CABINET "./models/cabinet.3ds"
+
+
 
 #endif
 
