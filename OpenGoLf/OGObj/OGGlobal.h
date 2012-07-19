@@ -56,6 +56,7 @@
 #define DOOR "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/door.3ds"
 #define ARMCHAIR "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/armchair.3ds"
 #define CABINET "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/cabinet.3ds"
+#define LAMP "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/lamp.3ds"
 
 
 

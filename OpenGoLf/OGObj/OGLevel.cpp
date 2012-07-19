@@ -180,8 +180,8 @@ void OGLevel::followDisplay(){
     if (activeLevel->ball->getSpeed().length() < 0.3){
         if (activeLevel->physic->holeCollision()) {
             //back to room
-            printf("fine");
-            activeLevel->restoreLaunch();
+            //printf("fine");
+            //activeLevel->restoreLaunch();
         }else
             activeLevel->restoreLaunch();
     }

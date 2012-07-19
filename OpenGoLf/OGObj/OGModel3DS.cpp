@@ -15,6 +15,8 @@ OGModel3DS::OGModel3DS(std::string fileName){
     f=NULL;
 
     f = lib3ds_file_open(fileName.c_str());
+    
+    printf("model: %s",fileName.c_str());
 
     if (!f) {
         throw strcat("Unable to load %s", fileName.c_str());
