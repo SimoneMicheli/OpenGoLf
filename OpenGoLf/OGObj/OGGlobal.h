@@ -32,6 +32,7 @@
 #define DOOR "./models/door.3ds"
 #define ARMCHAIR "./models/armchair.3ds"
 #define CABINET "./models/cabinet.3ds"
+#define LAMP "./models/lamp.3ds"
 
 
 

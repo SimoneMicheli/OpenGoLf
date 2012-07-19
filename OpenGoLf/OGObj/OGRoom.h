@@ -49,6 +49,7 @@ private:
     void loadArmchair(double x, double y, double z, double angle);
     void loadCabinet(double x, double y, double z, double angle);
     void loadDoor(double x, double y, double z, double angle);
+    void loadLamp(double x, double y, double z, double angle);
 
 };
 

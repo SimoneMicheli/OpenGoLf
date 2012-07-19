@@ -16,9 +16,17 @@ OGRoom::OGRoom(){
     activeRoom->loadCabinet(0,0,1,90);
     activeRoom->loadVase(2,0,0.5,270);
     activeRoom->loadArmchair(4,0,0.7,180);
+    activeRoom->loadArmchair(5.2,0,0.7,180);
+    activeRoom->loadArmchair(6.4,0,0.7,180);
 
-    activeRoom->loadDoor(0,0,6,0); //campo 1
-    activeRoom->loadDoor(0,0,4,0); //campo 2
+
+    activeRoom->loadLamp(0.3,0,3,1);
+    activeRoom->loadLamp(0.3,0,5,1);
+    activeRoom->loadLamp(0.3,0,7,1);
+
+
+    activeRoom->loadDoor(0,0,4,0); //campo 1
+    activeRoom->loadDoor(0,0,6,0); //campo 2
     activeRoom->loadDoor(0,0,8,0); //campo 3
 
     activeRoom->loadDoor(2,0,10,90); //esci dal gioco
@@ -189,6 +197,19 @@ void OGRoom::loadCabinet(double x, double y, double z, double angle){
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
     model->setScale(0.01, 0.01, 0.01);
+    model->draw();
+    models.push_back(model);
+}
+
+
+void OGRoom::loadLamp(double x, double y, double z, double angle){
+
+    OGModel3DS *model = new OGModel3DS(LAMP);
+    Vector3d pos = Vector3d(x, y, z);
+    model->setPosition(pos);
+    model->setRotation(angle, 0, 1, 0);
+    model->setRotation(-90, 1, 0, 0);
+    model->setScale(0.001, 0.001, 0.001);
     model->draw();
     models.push_back(model);
 }
