@@ -16,6 +16,7 @@
 #include <vector>
 #include "OGLight.h"
 
+
 class OGRoom : public OGAmbient{
 public:
 
@@ -26,12 +27,13 @@ public:
     void static mouseMotionFunction(int,int);
     void static roomDisplay();
     void static resize(int,int);
-    void static mouseClickFunction(int,int,int,int);
+    void static mouseClickFunction(int, int ,int,int);
     void static keyPress(unsigned char, int, int);
 
     vector<OGModel3DS*> models;
 
 private:
+    OGLevel *level;
     static OGRoom* activeRoom;
     GLuint modelsDL;
     OGPov* pov;
@@ -42,6 +44,7 @@ private:
     Vector3d oldMousePos;
     void materialWall();
     void drawRoom();
+    void startPicking(int,int);
 
 
     //object in room

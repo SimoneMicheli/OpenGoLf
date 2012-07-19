@@ -13,11 +13,11 @@
 	<File name="OGObj\OGCompass.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="1048" topLine="168" />
 	</File>
-	<File name="OGObj\OGGlobal.h" open="1" top="0" tabpos="9">
-		<Cursor position="739" topLine="21" />
+	<File name="OGObj\OGGlobal.h" open="0" top="0" tabpos="9">
+		<Cursor position="371" topLine="9" />
 	</File>
-	<File name="OGObj\OGLevel.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="10143" topLine="341" />
+	<File name="OGObj\OGLevel.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="10204" topLine="42" />
 	</File>
 	<File name="OGObj\OGLevel.h" open="0" top="0" tabpos="3">
 		<Cursor position="965" topLine="34" />
@@ -28,7 +28,7 @@
 	<File name="OGObj\OGLight.h" open="0" top="0" tabpos="0">
 		<Cursor position="584" topLine="12" />
 	</File>
-	<File name="OGObj\OGModel3DS.cpp" open="1" top="0" tabpos="5">
+	<File name="OGObj\OGModel3DS.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="2824" topLine="112" />
 	</File>
 	<File name="OGObj\OGPhysic.cpp" open="0" top="0" tabpos="10">
@@ -41,27 +41,27 @@
 		<Cursor position="230" topLine="0" />
 	</File>
 	<File name="OGObj\OGProjection.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="751" topLine="18" />
+		<Cursor position="902" topLine="10" />
 	</File>
 	<File name="OGObj\OGProjection.h" open="0" top="0" tabpos="4">
 		<Cursor position="603" topLine="8" />
 	</File>
 	<File name="OGObj\OGRoom.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="551" topLine="12" />
+		<Cursor position="4459" topLine="335" />
 	</File>
 	<File name="OGObj\OGRoom.h" open="1" top="0" tabpos="2">
-		<Cursor position="1323" topLine="34" />
+		<Cursor position="785" topLine="24" />
 	</File>
-	<File name="OGObj\OGTerrain.cpp" open="1" top="0" tabpos="7">
+	<File name="OGObj\OGTerrain.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="719" topLine="21" />
 	</File>
-	<File name="OGObj\OGTerrain.h" open="1" top="0" tabpos="8">
+	<File name="OGObj\OGTerrain.h" open="0" top="0" tabpos="8">
 		<Cursor position="967" topLine="27" />
 	</File>
-	<File name="lib\Util.cpp" open="1" top="0" tabpos="6">
+	<File name="lib\Util.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1273" topLine="34" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="4">
+	<File name="main.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="959" topLine="43" />
 	</File>
 </CodeBlocks_layout_file>

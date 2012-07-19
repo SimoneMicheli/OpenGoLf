@@ -14,6 +14,13 @@
 #define BALL_DIST_X -0.8
 #define BALL_DIST_Y +0.3
 #define BALL_DIST_Z -0.8
+#define LEVEL1 1
+#define LEVEL2 2
+#define LEVEL3 3
+#define BUFSIZE 512
+
+
+
 
 
 #ifdef WIN32
