@@ -45,6 +45,7 @@ private:
     void materialWall();
     void drawRoom();
     void startPicking(int,int);
+    void reinit();
 
 
     //object in room

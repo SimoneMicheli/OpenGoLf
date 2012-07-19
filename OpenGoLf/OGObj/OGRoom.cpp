@@ -85,8 +85,6 @@ void OGRoom::init(){
     */
 
     glutDisplayFunc(OGRoom::roomDisplay);
-    //glutPassiveMotionFunc(OGRoom::mousePassiveMotionFunction);
-    //glutMotionFunc(OGRoom::mouseMotionFunction);
     glutMouseFunc(OGRoom::mouseClickFunction);
     glutKeyboardFunc(OGRoom::keyPress);
 }
@@ -337,10 +335,15 @@ void OGRoom::materialWall() {
 
 }
 
+void OGRoom::reinit(){
+    glutDisplayFunc(OGRoom::roomDisplay);
+    glutMouseFunc(OGRoom::mouseClickFunction);
+    glutKeyboardFunc(OGRoom::keyPress);
+    delete level;
+}
+
 
 void OGRoom::keyPress(unsigned char key, int x, int y){
-
-
     if (key == 'w'){
         Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*0.2;
         if(newPos.x<9.8 && newPos.x>0.2 && newPos.z>0.2 && newPos.z<9.8){
