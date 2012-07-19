@@ -15,10 +15,9 @@ OGModel3DS::OGModel3DS(std::string fileName){
     f=NULL;
 
     f = lib3ds_file_open(fileName.c_str());
-    printf("filename: %s\n",fileName.c_str());
 
     if (!f) {
-        throw strcat("Unable to load ", fileName.c_str());
+        throw strcat("Unable to load %s", fileName.c_str());
     }
 
     position = Vector3d();
