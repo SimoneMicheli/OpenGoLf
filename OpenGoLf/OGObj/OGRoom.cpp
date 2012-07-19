@@ -26,13 +26,11 @@ OGRoom::OGRoom(){
     activeRoom->loadArmchair(6.4,0,0.7,180);
 
 
-    activeRoom->loadLamp(0.3,0,3,1);
-    activeRoom->loadLamp(0.3,0,5,1);
-    activeRoom->loadLamp(0.3,0,7,1);
+    activeRoom->loadLamp(0.3,0,9.7,1); //oggetto n°8
+    activeRoom->loadLamp(9.7,0,0.3,1);
+    activeRoom->loadLamp(9.7,0,9.7,1);
 
 
-
-    activeRoom->loadDoor(2,0,10,90); //esci dal gioco
 
     modelsDL = createModelsDL();
 
@@ -47,7 +45,12 @@ GLuint OGRoom::createModelsDL(){
     for (int i=0; i<models.size(); i++) {
         printf("name: %i\n",i);
         glPushName(i);
+        //activeRoom->materialDoor();
+        glDisable(GL_LIGHTING);
+        // http://devernay.free.fr/cours/opengl/materials.html
+        glColor3f(0.2125,0.1275,0.054);
         models[i]->draw();
+        glEnable(GL_LIGHTING);
         glPopName();
     }
 
@@ -65,24 +68,11 @@ void OGRoom::init(){
     pov->setRotation(0, 90);
 
     OGLight *light0 = new OGLight(GL_LIGHT0,5,5,5,1);
-    light0->setDirection(-1,0,0);
+    light0->setDirection(0,1,0);
     light0->set();
     lights.push_back(light0);
     light0->enable();
 
-    OGLight *light1 = new OGLight(GL_LIGHT1,5,5,5,1);
-    light1->setDirection(-1,0,0);
-    light1->set();
-    lights.push_back(light1);
-    light1->enable();
-
-    /*
-    OGLight *light2 = new OGLight(GL_LIGHT2,0,5,0,1);
-    light2->setDirection(1,-1,1);
-    light2->set();
-    lights.push_back(light2);
-    light2->enable();
-    */
 
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
@@ -179,6 +169,12 @@ void OGRoom::startPicking(int x, int y){
         case 1:
             break;
         case 2:
+            break;
+        case 8:
+            glDisable(GL_LIGHT0);
+            break;
+        case 9:
+            glDisable(GL_LIGHT1);
             break;
         default:
             break;
@@ -335,6 +331,21 @@ void OGRoom::materialWall() {
 
 }
 
+void OGRoom::materialDoor() {
+    float mat_specular[] = {0.633f, 0.727811f, 0.633f};
+    float mat_diffuse[] = {0.07568f, 0.61424f, 0.07568f};
+    float mat_ambient[] = {0.0215f, 0.1745f, 0.0215f, 1.0f};
+
+    float mat_shininess = 0.6;
+
+    glMaterialfv( GL_FRONT, GL_AMBIENT, mat_ambient );
+    glMaterialfv( GL_FRONT, GL_DIFFUSE, mat_diffuse );
+    glMaterialfv( GL_FRONT, GL_SPECULAR, mat_specular );
+    glMaterialf ( GL_FRONT, GL_SHININESS, mat_shininess*128 );
+
+}
+
+
 void OGRoom::reinit(){
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
@@ -346,16 +357,22 @@ void OGRoom::reinit(){
 void OGRoom::keyPress(unsigned char key, int x, int y){
     if (key == 'w'){
         Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*0.2;
-        if(newPos.x<9.8 && newPos.x>0.2 && newPos.z>0.2 && newPos.z<9.8){
+        if(newPos.x<9 && newPos.x>0.5 && newPos.z>0.5 && newPos.z<9){
 
         activeRoom->pov->setPosition(newPos);
         }
     }
     if (key == 's'){
         Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*-0.2;
-        if(newPos.x<9.8 && newPos.x>0.2 && newPos.z>0.2 && newPos.z<9.8){
+        if(newPos.x<9 && newPos.x>0.5 && newPos.z>0.5 && newPos.z<9){
 
         activeRoom->pov->setPosition(newPos);
         }
+    }
+    if (key == 'a'){
+        activeRoom->pov->addRotation(0, -10);
+    }
+    if (key == 'd'){
+        activeRoom->pov->addRotation(0, +10);
     }
 }

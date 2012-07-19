@@ -105,7 +105,7 @@
 	"OGRoom.h"
 	"OGLevel.h"
 
-1342713809 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
+1342716609 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
 	"OGLevel.h"
 	"OGAmbient.h"
 	"OGProjection.h"
@@ -247,7 +247,7 @@
 
 1342613483 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txball.h
 
-1342712611 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
+1342717795 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
 	<iostream>
 	"OGRoom.h"
 
