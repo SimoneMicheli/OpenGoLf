@@ -69,7 +69,7 @@
 1342788622 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.h
 	"OGObject.h"
 
-1342788622 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
+1342798409 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogglobal.h
 
 1342788622 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogball.h
 	"OGObject.h"
@@ -107,7 +107,7 @@
 	"OGRoom.h"
 	"OGLevel.h"
 
-1342788622 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
+1342798376 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
 	"OGLevel.h"
 	"OGAmbient.h"
 	"OGProjection.h"
@@ -136,7 +136,7 @@
 	"OGObject.h"
 	<sstream>
 
-1342788622 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.h
+1342793943 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.h
 	"OGObject.h"
 	"../lib/lib3ds/lib3ds.h"
 	<assert.h>
@@ -157,7 +157,7 @@
 	<stdlib.h>
 	<time.h>
 
-1342788798 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.cpp
+1342794708 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogmodel3ds.cpp
 	<iostream>
 	"OGModel3DS.h"
 	<stdio.h>
@@ -250,7 +250,7 @@
 
 1342788623 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txball.h
 
-1342788622 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
+1342798500 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
 	<iostream>
 	"OGRoom.h"
 

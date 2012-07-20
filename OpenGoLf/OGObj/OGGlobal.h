@@ -27,18 +27,18 @@
 
 
 #define TERRAIN_PATH "./terrains/terrain_small.bmp"
+#define TERRAIN0 "./terrains/terrain0.bmp"
+#define TERRAIN1 "./terrains/terrain1.bmp"
+#define TERRAIN2 "./terrains/terrain2.bmp"
 #define TREE "./models/tree.3ds"
 #define BUSH "./models/bush.3ds"
 #define MODELS "./models/terrain0.dat"
 #define STEP 0.1 //step per la barra di caricamento
 
-
-
 //object in room
 #define VASE "./models/vase.3ds"
 #define DOOR "./models/door.3ds"
 #define ARMCHAIR "./models/armchair.3ds"
-#define CABINET "./models/cabinet.3ds"
 #define LAMP "./models/lamp.3ds"
 
 
@@ -50,6 +50,10 @@
 #define BUSH  "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/bush.3ds"
 #define MODELS "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/terrain0.dat"
 #define TERRAIN_PATH "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain_small.bmp"
+#define TERRAIN0 "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain0.bmp"
+#define TERRAIN1 "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain1.bmp"
+#define TERRAIN2 "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/terrains/terrain2.bmp"
+
 #define STEP 0.01 //step per la barra di caricamento
 
 #define VASE "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/vase.3ds"
@@ -57,6 +61,7 @@
 #define ARMCHAIR "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/armchair.3ds"
 #define CABINET "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/cabinet.3ds"
 #define LAMP "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/lamp.3ds"
+#define TV "/Volumes/Personal/xcode/OpenGoLf/OpenGoLf/models/tv.3ds"
 
 
 

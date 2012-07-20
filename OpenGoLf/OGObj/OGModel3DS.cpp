@@ -117,6 +117,7 @@ void OGModel3DS::draw(){
 
     glTranslated(position.x, position.y, position.z);
     glScaled(scale.x, scale.y, scale.z);
+    glRotated(rotation2[0], rotation2[1], rotation2[2], rotation2[3]);
     glRotated(rotation[0], rotation[1], rotation[2], rotation[3]);
 
     glCallList(objDL);
@@ -142,6 +143,14 @@ void OGModel3DS::setRotation(double angle, double x, double y, double z){
     rotation[2]=y;
     rotation[3]=z;
 }
+
+void OGModel3DS::setRotation2(double angle, double x, double y, double z){
+    rotation2[0]=angle;
+    rotation2[1]=x;
+    rotation2[2]=y;
+    rotation2[3]=z;
+}
+
 
 double* OGModel3DS::getRotation(){
     return rotation;

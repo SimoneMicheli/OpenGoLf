@@ -18,13 +18,14 @@ class  OGModel3DS : public OGObject{
     Lib3dsVector *normals, *vertex;
     GLuint objDL;
     unsigned int nfaces;
-    
+
     void createDL();
     unsigned int getFaces();
     Vector3d scale;
     double rotation[4];
+    double rotation2[4];
     Vector3d position;
-    
+
 public:
     OGModel3DS(std::string fileName);
     void draw();
@@ -32,6 +33,7 @@ public:
     void setScale(Vector3d v);
     Vector3d getScale();
     void setRotation(double angle,double x,double y,double z);
+    void setRotation2(double angle,double x,double y,double z);
     double* getRotation();
     void setPosition(double x, double y, double z);
     void setPosition(Vector3d v);

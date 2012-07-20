@@ -13,8 +13,8 @@
 	<File name="OGObj\OGCompass.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1635" topLine="168" />
 	</File>
-	<File name="OGObj\OGGlobal.h" open="0" top="0" tabpos="9">
-		<Cursor position="371" topLine="9" />
+	<File name="OGObj\OGGlobal.h" open="1" top="0" tabpos="3">
+		<Cursor position="894" topLine="27" />
 	</File>
 	<File name="OGObj\OGLevel.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="9554" topLine="163" />
@@ -28,14 +28,20 @@
 	<File name="OGObj\OGLight.h" open="0" top="0" tabpos="0">
 		<Cursor position="584" topLine="12" />
 	</File>
-	<File name="OGObj\OGModel3DS.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="703" topLine="12" />
+	<File name="OGObj\OGModel3DS.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="3018" topLine="6" />
+	</File>
+	<File name="OGObj\OGModel3DS.h" open="0" top="0" tabpos="0">
+		<Cursor position="879" topLine="18" />
+	</File>
+	<File name="OGObj\OGObject.h" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="18" />
 	</File>
 	<File name="OGObj\OGPhysic.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="3749" topLine="99" />
 	</File>
 	<File name="OGObj\OGPov.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="1827" topLine="60" />
+		<Cursor position="1299" topLine="99" />
 	</File>
 	<File name="OGObj\OGPov.h" open="0" top="0" tabpos="2">
 		<Cursor position="230" topLine="0" />
@@ -46,11 +52,11 @@
 	<File name="OGObj\OGProjection.h" open="0" top="0" tabpos="4">
 		<Cursor position="603" topLine="8" />
 	</File>
-	<File name="OGObj\OGRoom.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="9596" topLine="355" />
+	<File name="OGObj\OGRoom.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="7202" topLine="263" />
 	</File>
-	<File name="OGObj\OGRoom.h" open="0" top="0" tabpos="3">
-		<Cursor position="1074" topLine="38" />
+	<File name="OGObj\OGRoom.h" open="1" top="0" tabpos="2">
+		<Cursor position="1080" topLine="41" />
 	</File>
 	<File name="OGObj\OGTerrain.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="9401" topLine="338" />

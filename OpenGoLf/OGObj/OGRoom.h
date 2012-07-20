@@ -28,6 +28,7 @@ public:
     void static mouseClickFunction(int, int ,int,int);
     void static keyPress(unsigned char, int, int);
     void reInit();
+    bool wind, fog;
     static OGRoom* activeRoom;
 
     vector<OGModel3DS*> models;
@@ -44,6 +45,9 @@ private:
     void materialWall();
     void materialDoor();
     void materialArmchair();
+    void materialVase();
+    void materialLamp();
+    void materialArmchairActived();
     void drawRoom();
     void startPicking(int,int);
     GLdouble projMat[16],modelMat[16];
