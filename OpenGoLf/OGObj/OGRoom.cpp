@@ -50,7 +50,6 @@ GLuint OGRoom::createModelsDL(){
         activeRoom->materialArmchair();
         }
         //glDisable(GL_LIGHTING);
-        // http://devernay.free.fr/cours/opengl/materials.html
         glColor3f(0.2125,0.1275,0.054);
         models[i]->draw();
         glEnable(GL_LIGHTING);
@@ -146,30 +145,39 @@ void OGRoom::startPicking(int x, int y){
 
     
     switch(name){
-        case 0:
+        case 0:{
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
 
             glutPostRedisplay();
             break;
+        }
         case 1:
             break;
         case 2:
             break;
-        case 8:
-            if(button == GLUT_LEFT_BUTTON){
+        case 8:{
+            GLboolean status;
+            glGetBooleanv(GL_LIGHT0, &status);
+            if(!status){
                 glEnable(GL_LIGHT0);
             }else{
                 glDisable(GL_LIGHT0);
             }
+            glutPostRedisplay();
             break;
-        case 9:
-            if(button == GLUT_LEFT_BUTTON){
+        }
+        case 9:{
+            GLboolean status;
+            glGetBooleanv(GL_LIGHT1, &status);
+            if(!status){
                 glEnable(GL_LIGHT1);
             }else{
                 glDisable(GL_LIGHT1);
             }
+            glutPostRedisplay();
             break;
+        }
         default:
             break;
     }

@@ -82,13 +82,13 @@ void OGModel3DS::createDL(){
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < nfaces * 3; i+=3) {
         //vertex1
-        glNormal3f(-normals[i][0], -normals[i][1], -normals[i][2]);
+        glNormal3f(normals[i][0], normals[i][1], normals[i][2]);
         glVertex3f(vertex[i][0], vertex[i][1], vertex[i][2]);
         //vertex 2
-        glNormal3f(-normals[i+1][0], -normals[i+1][1], -normals[i+1][2]);
+        glNormal3f(normals[i+1][0], normals[i+1][1], normals[i+1][2]);
         glVertex3f(vertex[i+1][0], vertex[i+1][1], vertex[i+1][2]);
         //vertex 3
-        glNormal3f(-normals[i+2][0], -normals[i+2][1], -normals[i+2][2]);
+        glNormal3f(normals[i+2][0], normals[i+2][1], normals[i+2][2]);
         glVertex3f(vertex[i+2][0], vertex[i+2][1], vertex[i+2][2]);
     }
     glEnd();
