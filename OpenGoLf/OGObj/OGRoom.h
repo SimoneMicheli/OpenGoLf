@@ -8,7 +8,7 @@
 
 #ifndef OpenGoLf_OGRoom_h
 #define OpenGoLf_OGRoom_h
-
+class OGLevel;
 #include "OGLevel.h"
 #include "OGAmbient.h"
 #include "OGProjection.h"
@@ -29,12 +29,13 @@ public:
     void static resize(int,int);
     void static mouseClickFunction(int, int ,int,int);
     void static keyPress(unsigned char, int, int);
+    void reInit();
+    static OGRoom* activeRoom;
 
     vector<OGModel3DS*> models;
 
 private:
     OGLevel *level;
-    static OGRoom* activeRoom;
     GLuint modelsDL;
     OGPov* pov;
     GLuint createModelsDL();
@@ -45,7 +46,7 @@ private:
     void materialWall();
     void drawRoom();
     void startPicking(int,int);
-    void reinit();
+    GLdouble projMat[16],modelMat[16];
 
 
     //object in room

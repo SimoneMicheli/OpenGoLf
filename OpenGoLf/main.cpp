@@ -30,11 +30,10 @@
 
 
 //----------global var---------------------
-OGLevel *level;
+//OGLevel *level;
 OGRoom *room;
 int W_WIDTH = 900;
 int W_HEIGHT = 800;
-int pippo = 0;
 //-----------------------------------------
 
 void init();
@@ -48,8 +47,8 @@ int main(int argc, char** argv){
 
     init();
 
-    glutReshapeFunc(OGRoom::resize);
-    glutDisplayFunc(OGRoom::roomDisplay);
+    //glutReshapeFunc(OGRoom::resize);
+    //glutDisplayFunc(OGRoom::roomDisplay);
     //glutDisplayFunc(OGLevel::launchDisplay);
     //glutReshapeFunc(OGLevel::resize);
     //glutKeyboardFunc(OGLevel::keyPress);
@@ -80,7 +79,7 @@ void init(){
     //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 
     //-----------------------------------------------------
-    level = new OGLevel();
+    //level = new OGLevel();
     room = new OGRoom();
     room->init();
     //level->init(TERRAIN_PATH,MODELS);

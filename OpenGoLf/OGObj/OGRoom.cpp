@@ -112,7 +112,10 @@ void OGRoom::mouseMotionFunction(int x, int y){
 }
 
 void OGRoom::mouseClickFunction(int button, int status, int x, int y){
-    activeRoom->startPicking(x,y);
+    if (button == GLUT_LEFT_BUTTON && status == GLUT_UP) {
+        activeRoom->startPicking(x,y);
+    }
+    
 }
 
 
@@ -128,14 +131,10 @@ void OGRoom::startPicking(int x, int y){
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
-    system("cls");
+
     gluPickMatrix(x-1,viewport[3]-y-1,2,2,viewport);
-    //projection->init();
-    extern int W_WIDTH;
-    extern int W_HEIGHT;
     float aspect = (float)viewport[2]/(float)viewport[3];
     gluPerspective(60.0f,aspect,0.1,150);
-    printf("w %i h:%i %i %i %f\n",viewport[2],viewport[3],W_WIDTH,W_HEIGHT,aspect);
     glMatrixMode(GL_MODELVIEW);
     roomDisplay();
 
@@ -145,30 +144,19 @@ void OGRoom::startPicking(int x, int y){
     glPopMatrix();
     hits = glRenderMode(GL_RENDER);
 
-    printf("hits: %i\n",hits);
     int max=-1,name=-1;
     for (int i = 0; i < hits; i++){
- 		printf(	"Number: %d\n"
- 				"Min Z: %d\n"
- 				"Max Z: %d\n"
- 				"Name on stack: %i\n",
- 				(GLubyte)selectBuf[i * 4],
- 				(GLubyte)selectBuf[i * 4 + 1],
- 				(GLubyte)selectBuf[i * 4 + 2],
- 				(GLuint)selectBuf[i * 4 + 3]
- 				);
-
+ 		
         if(max <= (GLubyte)selectBuf[i * 4 + 1]){
             max = (GLubyte)selectBuf[i * 4 + 1];
             name = (GLubyte)selectBuf[i * 4 + 3];
         }
     }
- 	printf("\n");
-    printf("max: %i name: %i",max,name);
-
     glMatrixMode(GL_MODELVIEW);
 
 
+    glGetDoublev(GL_PROJECTION, projMat);
+    glGetDoublev(GL_MODELVIEW, modelMat);
     switch(name){
         case 0:
             level = new OGLevel();
@@ -195,23 +183,27 @@ void OGRoom::roomDisplay(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glLoadIdentity();
+    
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
     activeRoom->pov->lookAt();
     glEnable(GL_LIGHTING);
+    
+    double x = activeRoom->pov->getDirection().x;
+    double y = activeRoom->pov->getDirection().y; 
+    double z = activeRoom->pov->getDirection().z;
+    printf("po: x:%f y:%f z:%f",x,y,z);
+    //printf("int: ",activeRoom->pov->getPosition(),activeRoom->pov->getDirection());
 
     activeRoom->drawRoom();
+    glPushMatrix();
+    glTranslated(1, 0, 5);
+    glutSolidCube(1);
+    glPopMatrix();
     glCallList(activeRoom->modelsDL);
 
     glutSwapBuffers();
-    glutPostRedisplay();
 }
-
-
-
-//---------------------mouse click--------------------
-
-
 
 void OGRoom::loadVase(double x, double y, double z, double angle){
 
@@ -335,11 +327,20 @@ void OGRoom::materialWall() {
 
 }
 
-void OGRoom::reinit(){
+void OGRoom::reInit(){
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
     glutKeyboardFunc(OGRoom::keyPress);
+    
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glLoadMatrixd(projMat);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glLoadMatrixd(modelMat);
+    
     delete level;
+    glutPostRedisplay();
 }
 
 
@@ -358,4 +359,5 @@ void OGRoom::keyPress(unsigned char key, int x, int y){
         activeRoom->pov->setPosition(newPos);
         }
     }
+    glutPostRedisplay();
 }

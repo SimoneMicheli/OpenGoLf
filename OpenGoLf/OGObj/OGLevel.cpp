@@ -177,11 +177,11 @@ void OGLevel::followDisplay(){
 
     activeLevel->physic->update(dtime);
 
-    if (activeLevel->ball->getSpeed().length() < 0.3){
+    if (activeLevel->ball->getSpeed().length() < 0.1){
         if (activeLevel->physic->holeCollision()) {
             //back to room
-            //printf("fine");
-            //activeLevel->restoreLaunch();
+            OGRoom::activeRoom->reInit();
+            return;
         }else
             activeLevel->restoreLaunch();
     }

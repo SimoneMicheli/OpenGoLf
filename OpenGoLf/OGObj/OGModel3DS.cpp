@@ -119,8 +119,8 @@ void OGModel3DS::draw(){
 }
 
 OGModel3DS::~OGModel3DS(){
-    free(normals);
-    free(vertex);
+    //free(normals);
+    //free(vertex);
 }
 
 void OGModel3DS::setScale(double x, double y, double z){
