@@ -4,26 +4,26 @@
 	<File name="OGObj\OGAmbient.h" open="0" top="0" tabpos="0">
 		<Cursor position="282" topLine="10" />
 	</File>
-	<File name="OGObj\OGBall.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="194" topLine="87" />
+	<File name="OGObj\OGBall.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="2842" topLine="98" />
 	</File>
 	<File name="OGObj\OGBall.h" open="0" top="0" tabpos="0">
 		<Cursor position="175" topLine="10" />
 	</File>
-	<File name="OGObj\OGCompass.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="1048" topLine="168" />
+	<File name="OGObj\OGCompass.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="1635" topLine="168" />
 	</File>
 	<File name="OGObj\OGGlobal.h" open="0" top="0" tabpos="9">
 		<Cursor position="371" topLine="9" />
 	</File>
-	<File name="OGObj\OGLevel.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="10204" topLine="42" />
+	<File name="OGObj\OGLevel.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="9554" topLine="163" />
 	</File>
 	<File name="OGObj\OGLevel.h" open="0" top="0" tabpos="3">
 		<Cursor position="965" topLine="34" />
 	</File>
-	<File name="OGObj\OGLight.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="896" topLine="19" />
+	<File name="OGObj\OGLight.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="864" topLine="27" />
 	</File>
 	<File name="OGObj\OGLight.h" open="0" top="0" tabpos="0">
 		<Cursor position="584" topLine="12" />
@@ -31,8 +31,8 @@
 	<File name="OGObj\OGModel3DS.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="2824" topLine="112" />
 	</File>
-	<File name="OGObj\OGPhysic.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="1301" topLine="90" />
+	<File name="OGObj\OGPhysic.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="3749" topLine="99" />
 	</File>
 	<File name="OGObj\OGPov.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1827" topLine="60" />
@@ -46,14 +46,14 @@
 	<File name="OGObj\OGProjection.h" open="0" top="0" tabpos="4">
 		<Cursor position="603" topLine="8" />
 	</File>
-	<File name="OGObj\OGRoom.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="1152" topLine="37" />
+	<File name="OGObj\OGRoom.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="9596" topLine="355" />
 	</File>
-	<File name="OGObj\OGRoom.h" open="1" top="0" tabpos="2">
-		<Cursor position="1044" topLine="28" />
+	<File name="OGObj\OGRoom.h" open="1" top="0" tabpos="3">
+		<Cursor position="1074" topLine="38" />
 	</File>
-	<File name="OGObj\OGTerrain.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="719" topLine="21" />
+	<File name="OGObj\OGTerrain.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="9401" topLine="338" />
 	</File>
 	<File name="OGObj\OGTerrain.h" open="0" top="0" tabpos="8">
 		<Cursor position="967" topLine="27" />
@@ -61,7 +61,7 @@
 	<File name="lib\Util.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1273" topLine="34" />
 	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="959" topLine="43" />
+	<File name="main.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="978" topLine="65" />
 	</File>
 </CodeBlocks_layout_file>
