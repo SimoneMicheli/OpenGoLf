@@ -81,13 +81,16 @@ void OGModel3DS::createDL(){
 
     glBegin(GL_TRIANGLES);
     for (int i = 0; i < nfaces * 3; i+=3) {
+        glTexCoord2d(i/1000, (i + 20)/1000);
         //vertex1
         glNormal3f(normals[i][0], normals[i][1], normals[i][2]);
         glVertex3f(vertex[i][0], vertex[i][1], vertex[i][2]);
         //vertex 2
+        glTexCoord2d((i+40)/1000, (i + 60)/1000);
         glNormal3f(normals[i+1][0], normals[i+1][1], normals[i+1][2]);
         glVertex3f(vertex[i+1][0], vertex[i+1][1], vertex[i+1][2]);
         //vertex 3
+        glTexCoord2d((i+80)/1000, (i + 100)/1000);
         glNormal3f(normals[i+2][0], normals[i+2][1], normals[i+2][2]);
         glVertex3f(vertex[i+2][0], vertex[i+2][1], vertex[i+2][2]);
     }
@@ -116,11 +119,6 @@ void OGModel3DS::draw(){
     glCallList(objDL);
 
     glPopMatrix();
-}
-
-OGModel3DS::~OGModel3DS(){
-    //free(normals);
-    //free(vertex);
 }
 
 void OGModel3DS::setScale(double x, double y, double z){

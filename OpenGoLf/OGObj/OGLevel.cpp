@@ -369,9 +369,7 @@ void OGLevel::shoot(){
     //copy obj
     *oldBall = *ball;
     *oldPov = *pov;
-
-    glutPassiveMotionFunc(NULL); //disattivo rotazione
-    glutMotionFunc(NULL);
+    
     physic->shoot(launchPower * club.getPower(), club.getAngle());
     gettimeofday(&OGLevel::before,NULL);
     glutDisplayFunc(OGLevel::followDisplay);

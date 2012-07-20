@@ -148,7 +148,6 @@ void OGRoom::startPicking(int x, int y){
         case 0:{
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
-
             glutPostRedisplay();
             break;
         }

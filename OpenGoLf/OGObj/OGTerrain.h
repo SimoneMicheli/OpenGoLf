@@ -18,6 +18,7 @@
 #include <vector>
 #include "../texture/TXgrass.h"
 #include "../texture/TXwater.h"
+#include "../texture/TXtree.h"
 
 using namespace std;
 
@@ -52,8 +53,7 @@ private:
     BMPHeader header;
     OGHole hole;
 
-    //vector<OGTexture*> texture;
-    GLuint texture0, waterTex;
+    GLuint texture[2], waterTex;
 
     int terrainFromImage(const char *filename, BMPHeader &header ,Vector3d* &vertex, Vector3d* &normals);
     GLuint createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d* &normals);
@@ -63,6 +63,7 @@ private:
     GLuint createHoleDL();
     void readModelsFromFile(string);
     void initWaterTexture();
+    void initModelsTexture();
     void loadModel(char type, double x, double z, double angle);
     Vector3d modelInitPosition(double x, double z, double offset);
     float yOffset;

@@ -27,13 +27,8 @@ OGTerrain::OGTerrain(string path, string modelPath){
 }
 
 void OGTerrain::draw(){
-
-
     //show terrain
     glCallList(terrainDL);
-
-    //show loaded objects
-    //
     glCallList(modelsDL);
 
     //show hole
@@ -153,7 +148,7 @@ GLuint OGTerrain::createTerrainDL(BMPHeader &header,Vector3d* &vertex, Vector3d*
     glNewList(terrainDL,GL_COMPILE);
 
     initTexture();
-    glBindTexture(GL_TEXTURE_2D, texture0);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
     float c_step = 1.0 / ((float)header.width / 100.0);
@@ -217,14 +212,24 @@ void OGTerrain::initWaterTexture(){
 }
 
 void OGTerrain::initTexture(){
-    glGenTextures(1, &texture0);
-    glBindTexture(GL_TEXTURE_2D, texture0);
+    glGenTextures(2, texture);
+    glBindTexture(GL_TEXTURE_2D, texture[0]);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, TXgrass.width, TXgrass.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXgrass.pixel_data);
+}
+
+void OGTerrain::initModelsTexture(){
+    glBindTexture(GL_TEXTURE_2D, texture[1]);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, TXtree.width, TXtree.height, 0, GL_RGB, GL_UNSIGNED_BYTE, TXtree.pixel_data);
 }
 
 int OGTerrain::getHScale(){
@@ -241,8 +246,13 @@ unsigned int OGTerrain::getTerrainHeight(){
 
 GLuint OGTerrain::createModelsDL(){
     //create models DisplayList
+    initModelsTexture();
     GLuint modelsDL = glGenLists(1);
     glNewList(modelsDL, GL_COMPILE);
+    
+    //bind texture
+    glBindTexture(GL_TEXTURE_2D, texture[1]);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
     for (int i=0; i<models.size(); i++) {
         models[i]->draw();

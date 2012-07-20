@@ -27,7 +27,6 @@ class  OGModel3DS : public OGObject{
     
 public:
     OGModel3DS(std::string fileName);
-    ~OGModel3DS();
     void draw();
     void setScale(double x,double y, double z);
     void setScale(Vector3d v);

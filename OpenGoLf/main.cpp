@@ -46,14 +46,9 @@ int main(int argc, char** argv){
     glutCreateWindow(argv[0]);
 
     init();
-
-    //glutReshapeFunc(OGRoom::resize);
-    //glutDisplayFunc(OGRoom::roomDisplay);
-    //glutDisplayFunc(OGLevel::launchDisplay);
-    //glutReshapeFunc(OGLevel::resize);
-    //glutKeyboardFunc(OGLevel::keyPress);
-    //glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
-    //glutMouseFunc(OGLevel::mouseClickFunction);
+    
+    room = new OGRoom();
+    room->init();
 
     if (DEBUGGING)
      glPolygonMode( GL_FRONT_AND_BACK, GL_LINE ); //enable wireframe
@@ -65,7 +60,6 @@ int main(int argc, char** argv){
 }
 
 void init(){
-
     // enable depth testing
 	glEnable(GL_DEPTH_TEST);
 
@@ -74,14 +68,5 @@ void init(){
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
     //glEnable(GL_FOG);                   // Enables GL_FOG
-
-    //enable wireframe
-    //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
-
-    //-----------------------------------------------------
-    //level = new OGLevel();
-    room = new OGRoom();
-    room->init();
-    //level->init(TERRAIN_PATH,MODELS);
 }
 
