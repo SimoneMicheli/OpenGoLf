@@ -20,6 +20,7 @@
 #include "OGLevel.h"
 #include "OGClub.h"
 #include "OGCompass.h"
+#include "OGRoom.h"
 #include <sys/time.h>
 #include <vector>
 
