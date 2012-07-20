@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 #include "OGObject.h"
+#include <sstream>
 
 #ifndef OpenGoLf_OGCompass_h
 #define OpenGoLf_OGCompass_h
@@ -14,8 +15,7 @@ class OGCompass : public OGObject{
 public:
     
     OGCompass(int x, int y, int width, int height);
-    void drawWind(Vector3d v);
-    void drawMap(float angle);
+    void draw(float angle, float speed = -1);
     void setPosition(int, int);
     
 private:

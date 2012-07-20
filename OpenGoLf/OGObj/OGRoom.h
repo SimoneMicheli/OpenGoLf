@@ -39,7 +39,7 @@ private:
     GLuint createModelsDL();
     OGProjection *projection;
     vector<OGLight*> lights;
-    bool locked;
+    bool loading;
     Vector3d oldMousePos;
     void materialWall();
     void materialDoor();
@@ -47,6 +47,7 @@ private:
     void drawRoom();
     void startPicking(int,int);
     GLdouble projMat[16],modelMat[16];
+    void printLoading();
 
 
     //object in room

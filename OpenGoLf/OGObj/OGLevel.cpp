@@ -10,6 +10,8 @@ struct timeval OGLevel::before,OGLevel::now,OGLevel::launchTime;
 bool OGLevel::shooting=false;
 
 OGLevel::OGLevel(){
+    //glEnable(GL_FOG);                   // Enables GL_FOG
+    glutSetCursor(GLUT_CURSOR_NONE);    //hide mouse pointer
     activeLevel = this;
     oldMousePos = Vector3d();
 
@@ -83,6 +85,7 @@ void OGLevel::init(string path, string modelPath){
     glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
     glutMotionFunc(OGLevel::mouseMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
+    glutReshapeFunc(OGLevel::resize);
 }
 
 void OGLevel::resize(int x, int y){
@@ -138,21 +141,16 @@ void OGLevel::launchDisplay(){
     activeLevel->ball->draw();
 
     activeLevel->drawPower(activeLevel->launchPower,activeLevel->club.toString().c_str());
+   
+    Vector3d holePos = activeLevel->terrain->getHole().pos - activeLevel->pov->getPosition();
+    Vector3d dir = activeLevel->pov->getDirection();
+    double angle = holePos.beta() - dir.beta();
 
-    /*Vector3d k =(Vector3d(6,0,6) - activeLevel->pov->getPosition()).getNormalized();
-    Vector3d dir = activeLevel->pov->getDirection().getNormalized();
-
-    float st;
-
-    st = k.x*dir.x + k.z*dir.z;
-
-    float angle = k.dot( activeLevel->pov->getDirection().getNormalized() );
-    angle = acosf(st );
-    printf("angl:%f\n",180 * angle / M_PI);
-    printf("angl:%f\n", angle );*/
-
-    activeLevel->map->drawMap(0);
-    activeLevel->wind->drawWind(activeLevel->physic->getWind());
+    activeLevel->map->draw(angle);
+    
+    Vector3d wind = activeLevel->physic->getWind();
+    angle = wind.beta() - dir.beta();
+    activeLevel->wind->draw((2*M_PI)- angle, wind.length());
 
     glutSwapBuffers();
 
@@ -389,6 +387,8 @@ void OGLevel::restoreLaunch(){
 //----------------eagle view-----------------------
 void OGLevel::toggleEagleView(){
     if (!enabledEagleView) {
+        glGetBooleanv(GL_FOG, &fogStatus);
+        glDisable(GL_FOG);
         enabledEagleView = true;
         glutMouseFunc(NULL);
         *oldPov = *pov;
@@ -396,6 +396,9 @@ void OGLevel::toggleEagleView(){
     }else {
         enabledEagleView = false;
         *pov = *oldPov;
+        if (fogStatus) {
+            glEnable(GL_FOG);
+        }
         glutMouseFunc(OGLevel::mouseClickFunction);
     }
 }

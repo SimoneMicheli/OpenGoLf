@@ -9,6 +9,15 @@
 #include <iostream>
 #include "OGCompass.h"
 
+
+template<typename T> std::string NumberToString(const T number)
+{
+    std::string valor;
+    std::stringstream ss;
+    ss << number;
+    return ss.str();
+}
+
 OGCompass::OGCompass(int x, int y, int width, int height){
     this->x = x;
     this->y = y;
@@ -86,8 +95,8 @@ GLuint OGCompass::createArrowDL(){
 }
 
 
-void OGCompass::drawWind(Vector3d v){
-    float angle = (180 * v.beta() / M_PI) - 90;
+void OGCompass::draw(float angle, float speed){
+    angle = (180 * angle / M_PI) ;
     
     GLdouble modelMatrix[16], projMatrix[16];
     
@@ -117,86 +126,39 @@ void OGCompass::drawWind(Vector3d v){
     glColor3f(1, 1, 1);
     glRasterPos2f(4.2,9.5);
     
-    char *string="Wind";
-    for (int i = 0; i < strlen(string); i++)
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
+    const char *string;
     
     //center and rotate
-    glTranslated(5, 5, 0);
-    glRotated(180, 0, 0, 1);
-    
-    //draw arrow
     glPushMatrix();
-    glRotated(-angle, 0, 0, 1);
-    glCallList(arrowDL);
-    glPopMatrix();
-    
-    //reload old state
-    glLoadMatrixd(modelMatrix);
-    glMatrixMode(GL_PROJECTION);
-    glLoadMatrixd(projMatrix);
-    glMatrixMode(GL_MODELVIEW);
-    
-    //enable opengl state
-    if (depth)
-        glEnable(GL_DEPTH_TEST);
-    if (light)
-        glEnable(GL_LIGHTING);
-    if (texture)
-        glEnable(GL_TEXTURE_2D);
-    
-}
-
-void OGCompass::drawMap(float angle){
-    angle = (180 * angle / M_PI) ;
-    
-    GLdouble modelMatrix[16], projMatrix[16];
-    
-    //save opengl state
-    glGetBooleanv(GL_DEPTH_TEST, &depth);
-    glGetBooleanv(GL_LIGHTING, &light);
-    glGetBooleanv(GL_TEXTURE_2D, &texture);
-    
-    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
-    
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    
-    glViewport(x, y, width, height);
-    glOrtho(0, 10, 10, 0, 0, 1);
-    
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    
-    //disable opengl state
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
-    
-    //draw text
-    glColor3f(1, 1, 1);
-    glRasterPos2f(4.0,9.5);
-    
-    char *string="Map";
-    for (int i = 0; i < strlen(string); i++)
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
-    
-    //center and rotate
     glTranslated(5, 5, 0);
     glRotated(180, 0, 0, 1);
     
-    //draw arrow
-    glCallList(arrowDL);
+    //draw map
+    if (speed == -1) {
+        string="Map";
+        //draw arrow
+        glCallList(arrowDL);
+        
+        //drow circle
+        glRotated(angle, 0, 0, 1);
+        glTranslated(0, 3, 0);
+        glColor3f(1,1,0);
+        
+        glCallList(circleDL);
+    }else{
+        string=std::string("wind ").append(NumberToString<float>(speed)).c_str();
+        //draw arrow
+        glPushMatrix();
+        glRotated(-angle, 0, 0, 1);
+        glCallList(arrowDL);
+        glPopMatrix();
+    }
     
-    //drow circle
-    glRotated(angle, 0, 0, 1);
-    glTranslated(0, 3, 0);
-    glColor3f(1,1,0);
-    
-    glCallList(circleDL);
-    
-    
+    //print string;
+    glPopMatrix();
+    for (int i = 0; i < strlen(string); i++)
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
+
     //reload old state
     glLoadMatrixd(modelMatrix);
     glMatrixMode(GL_PROJECTION);
@@ -210,4 +172,5 @@ void OGCompass::drawMap(float angle){
         glEnable(GL_LIGHTING);
     if (texture)
         glEnable(GL_TEXTURE_2D);
+    
 }

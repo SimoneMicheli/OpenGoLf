@@ -33,10 +33,11 @@ OGRoom::OGRoom(){
 
     modelsDL = createModelsDL();
 
-
+    loading = false;
 }
 
 GLuint OGRoom::createModelsDL(){
+    glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
     //create models DisplayList
     GLuint modelsDL = glGenLists(1);
     glNewList(modelsDL, GL_COMPILE);
@@ -123,7 +124,6 @@ void OGRoom::startPicking(int x, int y){
     gluPickMatrix(x-1,viewport[3]-y-1,2,2,viewport);
     float aspect = (float)viewport[2]/(float)viewport[3];
     gluPerspective(60.0f,aspect,0.1,1500);
-    printf("w %i h:%i %i %i %f\n",viewport[2],viewport[3],W_WIDTH,W_HEIGHT,aspect);
     glMatrixMode(GL_MODELVIEW);
     roomDisplay();
 
@@ -146,6 +146,7 @@ void OGRoom::startPicking(int x, int y){
     
     switch(name){
         case 0:{
+            //load level
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
             glutPostRedisplay();
@@ -201,17 +202,32 @@ void OGRoom::roomDisplay(){
     double x = activeRoom->pov->getDirection().x;
     double y = activeRoom->pov->getDirection().y; 
     double z = activeRoom->pov->getDirection().z;
-    printf("po: x:%f y:%f z:%f",x,y,z);
+    printf("po: x:%f y:%f z:%f\n",x,y,z);
     //printf("int: ",activeRoom->pov->getPosition(),activeRoom->pov->getDirection());
 
     activeRoom->drawRoom();
-    glPushMatrix();
-    glTranslated(1, 0, 5);
-    glutSolidCube(1);
-    glPopMatrix();
     glCallList(activeRoom->modelsDL);
+    
+    activeRoom->printLoading();
 
     glutSwapBuffers();
+}
+
+void OGRoom::printLoading(){
+    if (loading) {
+        glDisable(GL_DEPTH_TEST);
+        glPushMatrix();
+        Vector3d pos = activeRoom->pov->getPosition() + (activeRoom->pov->getDirection() * 400);
+        glTranslated(pos.x, 180, pos.z);
+        glLineWidth(5);
+        glScalef(0.5, 0.5, 0.5);
+        double angle = activeRoom->pov->getBeta() * 180 / M_PI;
+        glRotatef(360 - angle - 90, 0, 1, 0);
+        glTranslatef(-350, 0, 0);
+        strokeString("LOADING");
+        glPopMatrix();
+        glEnable(GL_DEPTH_TEST);
+    }
 }
 
 void OGRoom::loadVase(double x, double y, double z, double angle){
@@ -221,8 +237,6 @@ void OGRoom::loadVase(double x, double y, double z, double angle){
     model->setPosition(pos);
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
-    //model->setScale(0.01, 0.01, 0.01);
-    model->draw();
     models.push_back(model);
 }
 
@@ -233,8 +247,6 @@ void OGRoom::loadDoor(double x, double y, double z, double angle){
     model->setPosition(pos);
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
-    //model->setScale(0.01, 0.01, 0.01);
-    model->draw();
     models.push_back(model);
 }
 
@@ -246,7 +258,6 @@ void OGRoom::loadArmchair(double x, double y, double z, double angle){
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
     model->setScale(3, 3, 3);
-    model->draw();
     models.push_back(model);
 }
 
@@ -258,8 +269,6 @@ void OGRoom::loadCabinet(double x, double y, double z, double angle){
     model->setPosition(pos);
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
-    //model->setScale(0.01, 0.01, 0.01);
-    model->draw();
     models.push_back(model);
 }
 
@@ -272,7 +281,6 @@ void OGRoom::loadLamp(double x, double y, double z, double angle){
     model->setRotation(angle, 0, 1, 0);
     model->setRotation(-90, 1, 0, 0);
     model->setScale(0.1, 0.1, 0.1);
-    model->draw();
     models.push_back(model);
 }
 
@@ -386,24 +394,24 @@ void OGRoom::reInit(){
 
 void OGRoom::keyPress(unsigned char key, int x, int y){
     if (key == 'w'){
-        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*20;
+        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*10;
         if(newPos.x<900 && newPos.x>50 && newPos.z>50 && newPos.z<900){
 
         activeRoom->pov->setPosition(newPos);
         }
     }
     if (key == 's'){
-        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*-20;
+        Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*-10;
         if(newPos.x<900 && newPos.x>50 && newPos.z>50 && newPos.z<900){
 
         activeRoom->pov->setPosition(newPos);
         }
     }
     if (key == 'a'){
-        activeRoom->pov->addRotation(0, -10);
+        activeRoom->pov->addRotation(0, -5);
     }
     if (key == 'd'){
-        activeRoom->pov->addRotation(0, +10);
+        activeRoom->pov->addRotation(0, +5);
     }
     glutPostRedisplay();
 }

@@ -29,6 +29,8 @@ public:
     void addRotation(double,double);
     void setDirection(double, double, double);
     void setDirection(Vector3d);
+    double getAlpha();
+    double getBeta();
     Vector3d getDirection();
     //imposta la pov corrente
     void lookAt();

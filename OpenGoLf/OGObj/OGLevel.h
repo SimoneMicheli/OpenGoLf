@@ -70,6 +70,7 @@ private:
     void drawMap();
 
     //fog property
+    GLboolean fogStatus;
     GLfloat fogColor[4],*skyColor,fogDensity,fogStart,fogEnd;
 };
 

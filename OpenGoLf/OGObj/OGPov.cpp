@@ -97,6 +97,14 @@ Vector3d OGPov::getDirection(){
     return look;
 }
 
+double OGPov::getAlpha(){
+    return alpha;
+}
+
+double OGPov::getBeta(){
+    return beta;
+}
+
 void OGPov::setRotation(double a,double b){
     a = a * M_PI / 180;
     b = (b + 90) * M_PI / 180;

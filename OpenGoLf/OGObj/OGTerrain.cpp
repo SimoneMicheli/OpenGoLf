@@ -282,7 +282,7 @@ GLuint OGTerrain::createHoleDL(){
     glDisable(GL_LIGHTING);
     glPushMatrix();
     glColor3f(0,0,0);
-    glTranslated(hole.x, hole.y+0.01 , hole.z);
+    glTranslated(hole.pos.x, hole.pos.y+0.01 , hole.pos.z);
     glScalef(1, 0.01, 1);
     glutSolidSphere(hole.radius, 10, 10);
     glPopMatrix();
@@ -291,14 +291,14 @@ GLuint OGTerrain::createHoleDL(){
     glPushMatrix();
     glColor3f(1,1,1);
     float rodDim = 0.03;
-    glTranslated(hole.x+hole.radius+(rodDim/2), hole.y+rodDim*100*0.5 , hole.z);
+    glTranslated(hole.pos.x+hole.radius+(rodDim/2), hole.pos.y+rodDim*100*0.5 , hole.pos.z);
     glScalef(1, 100, 1);
     glutSolidCube(rodDim);
     glPopMatrix();
     glDisable(GL_LIGHTING);
     glPushMatrix();
     glColor3f(1,0,0);
-    glTranslated(hole.x+hole.radius+(rodDim/2), hole.y+rodDim*100-0.16 , hole.z+0.24);
+    glTranslated(hole.pos.x+hole.radius+(rodDim/2), hole.pos.y+rodDim*100-0.16 , hole.pos.z+0.24);
     glScalef(0.1, 1, 1.5);
     glutSolidCube(0.31);
     glPopMatrix();
@@ -351,7 +351,7 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
             Vector3d pos = modelInitPosition(x, z, 0);
             model->setPosition(pos);
             model->setRotation(-90, 1, 0, 0);
-            model->setScale(0.0001, 0.0001, 0.0001);
+            model->setScale(0.0003, 0.0003, 0.0003);
             break;
         }
         case 'B':{
@@ -365,10 +365,7 @@ void OGTerrain::loadModel(char type, double x, double z, double angle){
         }
         case 'H':{
             Vector3d p = modelInitPosition(x, z, 0);
-            hole.x = p.x;
-            hole.y = p.y;
-            printf("%f",p.y);
-            hole.z = p.z;
+            hole.pos = p;
             return;
         }
         default:

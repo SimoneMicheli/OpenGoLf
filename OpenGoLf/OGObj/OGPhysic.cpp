@@ -40,7 +40,6 @@ void OGPhysic::update(double time){
     }else{
         //attrito radente
         Vector3d normV = ball->getSpeed().getNormalized();
-        //Vector3d fat = normV * (fp.y * friction); //attrito radente terreno
         Vector3d fat = normV * terrainNorm.dot(fp) * friction;
         
         //calcolo forza peso parallela

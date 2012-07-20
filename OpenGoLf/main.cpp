@@ -67,6 +67,5 @@ void init(){
     glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
-    //glEnable(GL_FOG);                   // Enables GL_FOG
 }
 

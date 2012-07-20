@@ -24,6 +24,7 @@ using namespace std;
 
 struct OGHole{
     double x,y,z,radius;
+    Vector3d pos;
 };
 
 class OGTerrain : public OGObject{
