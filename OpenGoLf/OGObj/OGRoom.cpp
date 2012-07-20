@@ -237,25 +237,24 @@ void OGRoom::roomDisplay(){
     glCallList(activeRoom->modelsDL);
 
 
-    /*
-    if(activeRoom->wind){
-        if(activeRoom->fog){
-            renderString("Vento: SI    Nebbia: SI");
+    GLint type;
+    glGetIntegerv(GL_RENDER_MODE, &type);
+    
+    if (type == GL_RENDER){
+        if(activeRoom->wind){
+            if(activeRoom->fog){
+                renderString("Vento: SI    Nebbia: SI");
+            }else{
+                renderString("Vento: SI    Nebbia: NO");
+            }
         }else{
-            renderString("Vento: SI    Nebbia: NO");
+            if(activeRoom->fog){
+                renderString("Vento: NO    Nebbia: SI");
+            }else{
+                renderString("Vento: NO    Nebbia: NO");
+            }
         }
-    }else{
-        if(activeRoom->fog){
-            renderString("Vento: NO    Nebbia: SI");
-        }else{
-            renderString("Vento: NO    Nebbia: NO");
-        }ù
-    }*/
-
-
-    activeRoom->printLoading();
-
-
+    }
 
     glutSwapBuffers();
 }
