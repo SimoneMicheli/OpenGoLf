@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1342678040 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.cpp
+1342724758 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglevel.cpp
 	<iostream>
 	"OGLevel.h"
 
@@ -77,7 +77,7 @@
 1342613483 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogprojection.h
 	"OGObject.h"
 
-1342646858 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.cpp
+1342768220 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\oglight.cpp
 	<iostream>
 	"OGLight.h"
 
@@ -105,7 +105,7 @@
 	"OGRoom.h"
 	"OGLevel.h"
 
-1342713809 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
+1342768851 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.h
 	"OGLevel.h"
 	"OGAmbient.h"
 	"OGProjection.h"
@@ -247,7 +247,7 @@
 
 1342613483 c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\texture\txball.h
 
-1342712611 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
+1342769071 source:c:\users\gianluca\documents\dropbox\università\informatica grafica\opengolf\github\opengolf\opengolf\ogobj\ogroom.cpp
 	<iostream>
 	"OGRoom.h"
 

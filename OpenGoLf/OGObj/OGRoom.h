@@ -43,8 +43,10 @@ private:
     bool locked;
     Vector3d oldMousePos;
     void materialWall();
+    void materialDoor();
+    void materialArmchair();
     void drawRoom();
-    void startPicking(int,int);
+    void startPicking(int,int,int);
     void reinit();
 
 
