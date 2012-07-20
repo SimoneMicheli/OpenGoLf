@@ -23,8 +23,6 @@ public:
     OGRoom();
     ~OGRoom();
     void init();
-    void static mousePassiveMotionFunction(int, int);
-    void static mouseMotionFunction(int,int);
     void static roomDisplay();
     void static resize(int,int);
     void static mouseClickFunction(int, int ,int,int);

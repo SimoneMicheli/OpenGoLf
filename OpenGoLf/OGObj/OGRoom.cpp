@@ -87,6 +87,7 @@ void OGRoom::init(){
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
     glutKeyboardFunc(OGRoom::keyPress);
+    glutReshapeFunc(OGRoom::resize);
 }
 
 void OGRoom::resize(int x, int y){
@@ -95,19 +96,6 @@ void OGRoom::resize(int x, int y){
     float aspect = (float) W_WIDTH/(float) W_HEIGHT;
     activeRoom->projection->setAspect(aspect);
     activeRoom->projection->init();
-    glutPostRedisplay();
-}
-
-
-
-void OGRoom::mouseMotionFunction(int x, int y){
-    if (activeRoom->oldMousePos.x != 0 || activeRoom->oldMousePos.y != 0) {
-        double b = (activeRoom->oldMousePos.x - (double) x) / 1.5;
-        activeRoom->pov->addRotation(0, -b); //disabilito rotazione su giu
-    }
-
-    activeRoom->oldMousePos.x = x;
-    activeRoom->oldMousePos.y = y;
     glutPostRedisplay();
 }
 
@@ -123,6 +111,9 @@ void OGRoom::startPicking(int x, int y){
     GLint hits;
     GLint viewport[4];
     GLuint selectBuf[BUFSIZE];
+    
+    glGetDoublev(GL_PROJECTION_MATRIX, projMat);
+    glGetDoublev(GL_MODELVIEW_MATRIX, modelMat);
 
     glSelectBuffer(BUFSIZE,selectBuf);
     glGetIntegerv(GL_VIEWPORT,viewport);
@@ -154,9 +145,7 @@ void OGRoom::startPicking(int x, int y){
     }
     glMatrixMode(GL_MODELVIEW);
 
-
-    glGetDoublev(GL_PROJECTION, projMat);
-    glGetDoublev(GL_MODELVIEW, modelMat);
+    
     switch(name){
         case 0:
             level = new OGLevel();
@@ -331,15 +320,17 @@ void OGRoom::reInit(){
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
     glutKeyboardFunc(OGRoom::keyPress);
+    glutReshapeFunc(OGRoom::resize);
     
     glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
     glLoadMatrixd(projMat);
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
     glLoadMatrixd(modelMat);
     
     delete level;
+    
+    init();
+
     glutPostRedisplay();
 }
 
