@@ -181,10 +181,12 @@ void OGRoom::startPicking(int x, int y){
         case 5:
             activeRoom->wind=!activeRoom->wind;
             printf("wind: %s\n",(activeRoom->wind)?"true":"false");
+            glutPostRedisplay();
             break;
         case 6:
             activeRoom->fog=!activeRoom->fog;
             printf("fog: %s\n",(activeRoom->fog)?"true":"false");
+            glutPostRedisplay();
             break;
         case 8:{
             GLboolean status;

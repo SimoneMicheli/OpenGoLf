@@ -20,9 +20,8 @@ OGLevel::OGLevel(){
     fogColor[2] = 0.8;
     fogColor[3] = 1.0;
 
-    GLboolean fogEnabled;
-    glGetBooleanv(GL_FOG, &fogEnabled);
-    if (fogEnabled) {
+    glGetBooleanv(GL_FOG, &fogStatus);
+    if (fogStatus) {
         skyColor = fogColor;
     }else {
         skyColor = new GLfloat[4];
@@ -396,7 +395,6 @@ void OGLevel::restoreLaunch(){
 //----------------eagle view-----------------------
 void OGLevel::toggleEagleView(){
     if (!enabledEagleView) {
-        glGetBooleanv(GL_FOG, &fogStatus);
         glDisable(GL_FOG);
         enabledEagleView = true;
         glutMouseFunc(NULL);
