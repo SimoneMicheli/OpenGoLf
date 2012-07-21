@@ -10,7 +10,9 @@ struct timeval OGLevel::before,OGLevel::now,OGLevel::launchTime;
 bool OGLevel::shooting=false;
 
 OGLevel::OGLevel(){
-    //glEnable(GL_FOG);                   // Enables GL_FOG
+    if (OGRoom::activeRoom->getFogStatus()){
+        glEnable(GL_FOG);                   // Enables GL_FOG
+    }
     glutSetCursor(GLUT_CURSOR_NONE);    //hide mouse pointer
     activeLevel = this;
     oldMousePos = Vector3d();
@@ -263,46 +265,6 @@ void OGLevel::drawPower(float power, const char* str){
         glEnable(GL_LIGHTING);
     if (texture)
         glEnable(GL_TEXTURE_2D);
-}
-
-//-------------------display map viewport----------------------
-void OGLevel::drawMap(){
-    GLdouble modelMatrix[16], projMatrix[16];
-
-    glGetDoublev(GL_PROJECTION_MATRIX, projMatrix);
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelMatrix);
-
-    //glPushMatrix();
-    glLoadIdentity();
-
-    glMatrixMode(GL_PROJECTION);
-    //glPushMatrix();
-    glLoadIdentity();
-
-    glMatrixMode(GL_MODELVIEW);
-
-    OGProjection *p = new OGProjection();
-    p->setOrtho(0.1f, 100.0f, -8.0f, 8.0f, 8.0f, -8.0f);
-
-    OGPov *povl = new OGPov(8,5,0);
-    povl->setRotation(-90, 0);
-
-    povl->lookAt();
-    glViewport(0, 0, 200, 200);
-
-    terrain->draw();
-
-    glMatrixMode(GL_PROJECTION);
-    //glPopMatrix();
-    glLoadMatrixd(projMatrix);
-
-    glMatrixMode(GL_MODELVIEW);
-    //glPopMatrix();
-    glLoadMatrixd(modelMatrix);
-
-    //!important avoid memory leak
-    delete p;
-    delete povl;
 }
 
 //---------------------time diff function--------------------

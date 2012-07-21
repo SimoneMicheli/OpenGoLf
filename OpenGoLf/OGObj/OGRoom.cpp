@@ -29,12 +29,7 @@ OGRoom::OGRoom(){
 
     activeRoom->loadLamp(100,300,1000,0); //vaso 7
 
-
-
-
     modelsDL = createModelsDL();
-
-    loading = false;
 }
 
 GLuint OGRoom::createModelsDL(){
@@ -267,23 +262,6 @@ void OGRoom::roomDisplay(){
     glutSwapBuffers();
 }
 
-void OGRoom::printLoading(){
-    if (loading) {
-        glDisable(GL_DEPTH_TEST);
-        glPushMatrix();
-        Vector3d pos = activeRoom->pov->getPosition() + (activeRoom->pov->getDirection() * 400);
-        glTranslated(pos.x, 180, pos.z);
-        glLineWidth(5);
-        glScalef(0.5, 0.5, 0.5);
-        double angle = activeRoom->pov->getBeta() * 180 / M_PI;
-        glRotatef(360 - angle - 90, 0, 1, 0);
-        glTranslatef(-350, 0, 0);
-        strokeString("LOADING");
-        glPopMatrix();
-        glEnable(GL_DEPTH_TEST);
-    }
-}
-
 void OGRoom::loadVase(double x, double y, double z, double angle){
 
     OGModel3DS *model = new OGModel3DS(VASE);
@@ -510,4 +488,12 @@ void OGRoom::keyPress(unsigned char key, int x, int y){
         exit(0);
     }
     glutPostRedisplay();
+}
+
+bool OGRoom::getFogStatus(){
+    return fog;
+}
+
+bool OGRoom::getWindStatus(){
+    return wind;
 }

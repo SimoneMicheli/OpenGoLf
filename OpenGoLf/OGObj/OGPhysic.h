@@ -11,6 +11,7 @@
 #include "OGBall.h"
 #include "OGTerrain.h"
 #include "OGPov.h"
+#include "OGRoom.h"
 //#include "OGGlobal.h"
 #include <stdio.h>
 #include <stdlib.h>

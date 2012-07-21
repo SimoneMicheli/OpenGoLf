@@ -28,7 +28,8 @@ public:
     void static mouseClickFunction(int, int ,int,int);
     void static keyPress(unsigned char, int, int);
     void reInit();
-    bool wind, fog;
+    bool getWindStatus();
+    bool getFogStatus();
     static OGRoom* activeRoom;
 
     vector<OGModel3DS*> models;
@@ -40,7 +41,7 @@ private:
     GLuint createModelsDL();
     OGProjection *projection;
     vector<OGLight*> lights;
-    bool loading;
+    bool wind, fog;
     Vector3d oldMousePos;
     void materialWall();
     void materialDoor();
@@ -51,7 +52,6 @@ private:
     void drawRoom();
     void startPicking(int,int);
     GLdouble projMat[16],modelMat[16];
-    void printLoading();
 
 
     //object in room

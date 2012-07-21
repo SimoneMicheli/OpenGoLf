@@ -16,7 +16,11 @@ OGPhysic::OGPhysic(OGBall* ball, OGTerrain* terrain, OGPov* pov){
     elasticity = 0.5;
     srand ( time(NULL) );
     const int MAX_WIND = 10;
-    wind = Vector3d((rand() % MAX_WIND) - (MAX_WIND /2),0,(rand() % MAX_WIND) - (MAX_WIND / 2));
+    if (OGRoom::activeRoom->getWindStatus())
+        wind = Vector3d((rand() % MAX_WIND) - (MAX_WIND /2),0,(rand() % MAX_WIND) - (MAX_WIND / 2));
+    else
+        wind = Vector3d();
+        
     this->ball = ball;
     this->terrain = terrain;
     this->pov = pov;
