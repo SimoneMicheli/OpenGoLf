@@ -468,6 +468,8 @@ void OGRoom::reInit(){
 
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
+    glutPassiveMotionFunc(NULL);
+    glutMotionFunc(NULL);
     glutKeyboardFunc(OGRoom::keyPress);
     glutReshapeFunc(OGRoom::resize);
 
