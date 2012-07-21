@@ -73,6 +73,7 @@ GLuint OGRoom::createModelsDL(){
 }
 
 void OGRoom::init(){
+
     projection = new OGProjection();
     float aspect = (float) W_WIDTH/(float) W_HEIGHT;
     projection->setPerspective(60.0f, aspect, 0.1f, 1500.0f);
@@ -223,23 +224,27 @@ void OGRoom::roomDisplay(){
 
     glLoadIdentity();
 
+    printf("passo 1\n");
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
     activeRoom->pov->lookAt();
     glEnable(GL_LIGHTING);
 
-    double x = activeRoom->pov->getDirection().x;
-    double y = activeRoom->pov->getDirection().y;
-    double z = activeRoom->pov->getDirection().z;
+    //double x = activeRoom->pov->getDirection().x;
+    //double y = activeRoom->pov->getDirection().y;
+    //double z = activeRoom->pov->getDirection().z;
     //printf("po: x:%f y:%f z:%f\n",x,y,z);
     //printf("int: ",activeRoom->pov->getPosition(),activeRoom->pov->getDirection());
     activeRoom->drawRoom();
+
+    printf("passo 2\n");
     glCallList(activeRoom->modelsDL);
 
+    printf("passo 3\n");
 
     GLint type;
     glGetIntegerv(GL_RENDER_MODE, &type);
-    
+
     if (type == GL_RENDER){
         if(activeRoom->wind){
             if(activeRoom->fog){
@@ -256,6 +261,7 @@ void OGRoom::roomDisplay(){
         }
     }
 
+    printf("passo 4\n");
     glutSwapBuffers();
 }
 
@@ -456,6 +462,8 @@ void OGRoom::materialArmchairActived() {
 }
 
 void OGRoom::reInit(){
+
+
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
     glutKeyboardFunc(OGRoom::keyPress);
@@ -467,7 +475,6 @@ void OGRoom::reInit(){
     glLoadMatrixd(modelMat);
 
     delete level;
-
     init();
 
     glutPostRedisplay();

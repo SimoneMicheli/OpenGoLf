@@ -12,26 +12,24 @@
 
 OGModel3DS::OGModel3DS(std::string fileName){
 
-    printf(" .");
+    printf(" 1");
     f=NULL;
-
     f = lib3ds_file_open(fileName.c_str());
-
-    printf(" ...");
+    printf(" 2");
     if (!f) {
         printf("unable to load model: %s",fileName.c_str());
     }
     printf("model: %s",fileName.c_str());
     position = Vector3d();
 
-    printf(" ...");
+    printf(" 3");
     scale = Vector3d(1,1,1);
-    printf(" ....");
+    printf(" 4");
     rotation[0]=0;
     rotation[1]=0;
     rotation[2]=0;
     rotation[3]=0;
-    printf(" .....");
+    printf(" 5\n");
     createDL();
 
 }

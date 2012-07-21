@@ -141,13 +141,13 @@ void OGLevel::launchDisplay(){
     activeLevel->ball->draw();
 
     activeLevel->drawPower(activeLevel->launchPower,activeLevel->club.toString().c_str());
-   
+
     Vector3d holePos = activeLevel->terrain->getHole().pos - activeLevel->pov->getPosition();
     Vector3d dir = activeLevel->pov->getDirection();
     double angle = holePos.beta() - dir.beta();
 
     activeLevel->map->draw(angle);
-    
+
     Vector3d wind = activeLevel->physic->getWind();
     angle = wind.beta() - dir.beta();
     activeLevel->wind->draw((2*M_PI)- angle, wind.length());
@@ -358,6 +358,15 @@ void OGLevel::keyPress(unsigned char key, int x, int y){
         activeLevel->toggleEagleView();
         glutPostRedisplay();
     }
+    //quit game
+    if ((key == 'q' || key == 'Q') && !shooting) {
+        exit(0);
+    }
+    //back to room
+    if ((key == 'r' || key == 'R') && !shooting) {
+        OGRoom::activeRoom->reInit();
+        return;
+    }
 }
 
 //---------------------shoot function----------------
@@ -367,7 +376,7 @@ void OGLevel::shoot(){
     //copy obj
     *oldBall = *ball;
     *oldPov = *pov;
-    
+
     physic->shoot(launchPower * club.getPower(), club.getAngle());
     gettimeofday(&OGLevel::before,NULL);
     glutDisplayFunc(OGLevel::followDisplay);
