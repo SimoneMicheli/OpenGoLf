@@ -486,25 +486,28 @@ void OGRoom::reInit(){
 
 
 void OGRoom::keyPress(unsigned char key, int x, int y){
-    if (key == 'w'){
+    if (key == 'w' || key == 'W'){
         Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*10;
         if(newPos.x<900 && newPos.x>50 && newPos.z>50 && newPos.z<900){
 
         activeRoom->pov->setPosition(newPos);
         }
     }
-    if (key == 's'){
+    if (key == 's' || key == 'S'){
         Vector3d newPos= activeRoom->pov->getPosition()+activeRoom->pov->getDirection()*-10;
         if(newPos.x<900 && newPos.x>50 && newPos.z>50 && newPos.z<900){
 
         activeRoom->pov->setPosition(newPos);
         }
     }
-    if (key == 'a'){
+    if (key == 'a' || key == 'A'){
         activeRoom->pov->addRotation(0, -5);
     }
-    if (key == 'd'){
+    if (key == 'd' || key == 'D'){
         activeRoom->pov->addRotation(0, +5);
+    }
+    if (key == 'q' || key == 'Q') {
+        exit(0);
     }
     glutPostRedisplay();
 }
