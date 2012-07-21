@@ -37,8 +37,8 @@ void OGLight::setDirection(double x, double y, double z){
 void OGLight::set(){
     glLightfv(number, GL_POSITION, position);
     glLightfv(number,GL_SPOT_DIRECTION,direction);
-    glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 90.0);
-    glLightf(GL_LIGHT1, GL_SPOT_EXPONENT, 2.0);
+    glLightf(number, GL_SPOT_CUTOFF, 90.0);
+    glLightf(number, GL_SPOT_EXPONENT, 2.0);
 }
 
 

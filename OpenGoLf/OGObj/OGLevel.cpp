@@ -70,9 +70,11 @@ void OGLevel::init(string path, string modelPath){
     light0->set();
     lights.push_back(light0);
     light0->enable();
+    
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_COLOR_MATERIAL);
 
     //fog
-
     glFogi(GL_FOG_MODE, GL_LINEAR);        // Fog Mode
     glFogfv(GL_FOG_COLOR, fogColor);            // Set Fog Color
     glFogf(GL_FOG_DENSITY, fogDensity);              // How Dense Will The Fog Be
@@ -87,6 +89,7 @@ void OGLevel::init(string path, string modelPath){
     glutMotionFunc(OGLevel::mouseMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
     glutReshapeFunc(OGLevel::resize);
+    glutPostRedisplay();
 }
 
 void OGLevel::resize(int x, int y){
@@ -136,6 +139,7 @@ void OGLevel::launchDisplay(){
 
     glLoadIdentity();
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
+    glColor3f(0.8, 0.8, 0.8);
 
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
@@ -154,7 +158,6 @@ void OGLevel::launchDisplay(){
     activeLevel->wind->draw((2*M_PI)- angle, wind.length());
 
     glutSwapBuffers();
-
 }
 
 //---------------------follow display--------------------------
@@ -165,6 +168,7 @@ void OGLevel::followDisplay(){
 
     glLoadIdentity();
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
+    glColor3f(0.8, 0.8, 0.8);
 
     gettimeofday(&OGLevel::now,NULL);
     double dtime = time_diff(OGLevel::before,OGLevel::now);

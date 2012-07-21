@@ -15,9 +15,10 @@ class OGMaterial : public OGObject{
     
 public:
     float *ambient,*diffuse,*specular,*emission;
-    float shininess;
+    float *shininess;
     
-    OGMaterial(float ambient[],float diffuse[],float specular[],float emission[], float shininess);
+    OGMaterial();
+    OGMaterial(float ambient[],float diffuse[],float specular[],float emission[], float shininess[]);
     void init();
     
 private:

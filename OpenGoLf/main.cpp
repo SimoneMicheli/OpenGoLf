@@ -67,5 +67,6 @@ void init(){
     glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);
     glShadeModel(GL_SMOOTH);
+    glDisable(GL_COLOR_MATERIAL);
 }
 

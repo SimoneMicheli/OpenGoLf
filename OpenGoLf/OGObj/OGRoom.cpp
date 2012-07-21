@@ -14,6 +14,9 @@ OGRoom::OGRoom(){
     oldMousePos = Vector3d();
     activeRoom->wind = false;
     activeRoom->fog = false;
+}
+
+GLuint OGRoom::createModelsDL(){
 
     activeRoom->loadDoor(0,0,800,0); //campo 0
     activeRoom->loadDoor(0,0,600,0); //campo 1
@@ -28,12 +31,7 @@ OGRoom::OGRoom(){
     activeRoom->loadVase(720,0,50,0); //vaso 7
 
     activeRoom->loadLamp(100,300,1000,0); //vaso 7
-
-    modelsDL = createModelsDL();
-}
-
-GLuint OGRoom::createModelsDL(){
-    glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
+    
     //create models DisplayList
     GLuint modelsDL = glGenLists(1);
     glNewList(modelsDL, GL_COMPILE);
@@ -41,9 +39,9 @@ GLuint OGRoom::createModelsDL(){
     for (int i=0; i<models.size(); i++) {
         //printf("name: %i\n",i);
         glPushName(i);
-        activeRoom->materialArmchair(); //predefinito
+        //activeRoom->materialArmchair(); //predefinito
         if(i<4){
-        activeRoom->materialDoor();
+            activeRoom->materialDoor();
         }
         if(i==4 || i==7){ //vaso
             activeRoom->materialVase();
@@ -58,7 +56,7 @@ GLuint OGRoom::createModelsDL(){
             activeRoom->materialVase();
         }
         models[i]->draw();
-        glEnable(GL_LIGHTING);
+        //glEnable(GL_LIGHTING);
         glPopName();
     }
 
@@ -76,7 +74,7 @@ void OGRoom::init(){
     pov = new OGPov(500,180,500); //initial pov
     pov->setRotation(0, 90);
 
-    OGLight *light0 = new OGLight(GL_LIGHT0,500,500,500,1);
+    OGLight *light0 = new OGLight(GL_LIGHT0,500,300,600,1);
     light0->setDirection(-1,0,0);
     light0->set();
     lights.push_back(light0);
@@ -88,6 +86,7 @@ void OGRoom::init(){
     lights.push_back(light1);
     light1->enable();
 
+    modelsDL = createModelsDL();
 
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
@@ -225,13 +224,8 @@ void OGRoom::roomDisplay(){
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
     activeRoom->pov->lookAt();
-    glEnable(GL_LIGHTING);
-
-    //double x = activeRoom->pov->getDirection().x;
-    //double y = activeRoom->pov->getDirection().y;
-    //double z = activeRoom->pov->getDirection().z;
-    //printf("po: x:%f y:%f z:%f\n",x,y,z);
-    //printf("int: ",activeRoom->pov->getPosition(),activeRoom->pov->getDirection());
+    //glEnable(GL_LIGHTING);
+    
     activeRoom->drawRoom();
 
     printf("passo 2\n");
@@ -241,6 +235,11 @@ void OGRoom::roomDisplay(){
 
     GLint type;
     glGetIntegerv(GL_RENDER_MODE, &type);
+    
+    if (type == GL_RENDER) {
+        printf("\n\nrender type: RENDERER");
+    }else
+        printf("\n\nrender type: SELECT");
 
     if (type == GL_RENDER){
         if(activeRoom->wind){
@@ -442,7 +441,7 @@ void OGRoom::materialArmchairActived() {
 }
 
 void OGRoom::reInit(){
-
+    glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
 
     glutDisplayFunc(OGRoom::roomDisplay);
     glutMouseFunc(OGRoom::mouseClickFunction);
@@ -456,8 +455,18 @@ void OGRoom::reInit(){
     glMatrixMode(GL_MODELVIEW);
     glLoadMatrixd(modelMat);
 
+    glDisable(GL_TEXTURE_2D);
     delete level;
-    init();
+    glDisable(GL_COLOR_MATERIAL);
+    //reenable lights
+    for (int i=0; i<lights.size(); i++) {
+        lights[i]->set();
+        if (lights[i]->getStatus()) {
+            lights[i]->enable();
+        }else
+            lights[i]->disable();
+        
+    }
 
     glutPostRedisplay();
 }
