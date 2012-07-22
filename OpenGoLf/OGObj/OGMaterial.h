@@ -17,7 +17,6 @@ public:
     float *ambient,*diffuse,*specular,*emission;
     float *shininess;
     
-    OGMaterial();
     OGMaterial(float ambient[],float diffuse[],float specular[],float emission[], float shininess[]);
     void init();
     

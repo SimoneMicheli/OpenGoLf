@@ -99,7 +99,7 @@ void OGModel3DS::createDL(){
 
     glEndList();
 
-    //destroy memory object
+    //avoid memory leak
     free(normals);
     free(vertex);
 

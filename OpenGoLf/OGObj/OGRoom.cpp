@@ -133,7 +133,6 @@ void OGRoom::startPicking(int x, int y){
     roomDisplay();
 
 
-
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();
     hits = glRenderMode(GL_RENDER);
@@ -148,66 +147,54 @@ void OGRoom::startPicking(int x, int y){
     }
     glMatrixMode(GL_MODELVIEW);
 
-    printf("Clicked name: %i\n",name);
     switch(name){
         case 0:{
             //load level 0
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
-            glutPostRedisplay();
             break;
         }
         case 1:
             //load level 1
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
-            glutPostRedisplay();
             break;
         case 2:
             //load level 2
             level = new OGLevel();
             level->init(TERRAIN_PATH,MODELS);
-            glutPostRedisplay();
             break;
         case 3:
             exit(0);
             break;
         case 5:
             activeRoom->wind=!activeRoom->wind;
-            printf("wind: %s\n",(activeRoom->wind)?"true":"false");
-            glutPostRedisplay();
             break;
         case 6:
             activeRoom->fog=!activeRoom->fog;
-            printf("fog: %s\n",(activeRoom->fog)?"true":"false");
-            glutPostRedisplay();
             break;
         case 8:{
             GLboolean status;
             glGetBooleanv(GL_LIGHT0, &status);
-            if(!status){
+            if(!status)
                 glEnable(GL_LIGHT0);
-            }else{
+            else
                 glDisable(GL_LIGHT0);
-            }
-            glutPostRedisplay();
             break;
         }
         case 9:{
             GLboolean status;
             glGetBooleanv(GL_LIGHT1, &status);
-            if(!status){
+            if(!status)
                 glEnable(GL_LIGHT1);
-            }else{
+            else
                 glDisable(GL_LIGHT1);
-            }
-            glutPostRedisplay();
             break;
         }
         default:
             break;
     }
-
+    glutPostRedisplay();
 }
 
 

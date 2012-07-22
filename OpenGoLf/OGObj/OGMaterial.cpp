@@ -18,15 +18,6 @@ OGMaterial::OGMaterial(float ambient[],float diffuse[],float specular[],float em
     init();
 }
 
-OGMaterial::OGMaterial(){
-    ambient = new float[4]{0.2,0.2,0.2,1.0};
-    diffuse = new float[4]{0.8,0.8,0.8,1.0};
-    specular = new float[4]{0.0,0.0,0.0,1.0};
-    emission = new float[4]{0.0,0.0,0.0,1.0};
-    shininess = new float[1]{0};
-    init();
-}
-
 void OGMaterial::init(){
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
