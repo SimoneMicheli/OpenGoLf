@@ -60,8 +60,6 @@ void OGPhysic::update(double time){
         ball->setSpeed(speed);
     }
     
-    
-    
     ball->setPosition(pos.x, pos.y, pos.z);
     //update pov
     pov->setPosition(pos.x, pos.y , pos.z);

@@ -191,6 +191,7 @@ void OGLevel::followDisplay(){
 
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
+    
     activeLevel->ball->draw();
 
     OGLevel::before = OGLevel::now;
@@ -248,7 +249,7 @@ void OGLevel::drawPower(float power, const char* str){
 
         //draw arrow
         glTranslated(2, power, 0);
-        glColor3f(0,0,0);
+        glColor3f(1,1,1);
         glBegin(GL_TRIANGLES);
         glVertex2d(0, 0);
         glVertex2d(1, -0.5);

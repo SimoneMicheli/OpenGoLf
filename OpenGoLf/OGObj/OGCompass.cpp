@@ -25,8 +25,8 @@ OGCompass::OGCompass(int x, int y, int width, int height){
     this->height = height;
     
     circleDL = createCircleDL(0.3, 10);
+    directionDL = createDirectionDL();
     arrowDL = createArrowDL();
-    
 }
 
 void OGCompass::setPosition(int x, int y){
@@ -71,7 +71,7 @@ GLuint OGCompass::createCircleDL(float r, int num_segments)
     return list;
 }
 
-GLuint OGCompass::createArrowDL(){
+GLuint OGCompass::createDirectionDL(){
     GLuint list = glGenLists(1);
     
     glNewList(list, GL_COMPILE);
@@ -86,6 +86,41 @@ GLuint OGCompass::createArrowDL(){
     glVertex2d(-0.5,0);
     glVertex2d(0,-2);
     glVertex2d(0.5,0);
+    
+    glEnd();
+    
+    glEndList();
+    
+    return list;
+}
+
+GLuint OGCompass::createArrowDL(){
+    GLuint list = glGenLists(1);
+    
+    glNewList(list, GL_COMPILE);
+    
+    glColor3f(1, 1, 1);
+    
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-0.5, 1);
+    glVertex2f(0.5, 1);
+    glVertex2f(0, 2);
+    glEnd();
+    
+    glLineWidth(2);
+    glBegin(GL_LINES);
+    
+    glVertex2f(0, 1);
+    glVertex2f(0, -2);
+    
+    glVertex2f(0, -1);
+    glVertex2f(-1,-1.5);
+    
+    glVertex2f(0, -1.5);
+    glVertex2f(-1, -2);
+    
+    glVertex2f(0, -2);
+    glVertex2f(-1, -2.5);
     
     glEnd();
     
@@ -136,8 +171,7 @@ void OGCompass::draw(float angle, float speed){
     //draw map
     if (speed == -1) {
         string="Map";
-        //draw arrow
-        glCallList(arrowDL);
+        glCallList(directionDL);
         
         //drow circle
         glRotated(angle, 0, 0, 1);
@@ -147,7 +181,6 @@ void OGCompass::draw(float angle, float speed){
         glCallList(circleDL);
     }else{
         string=std::string("wind ").append(NumberToString<float>(speed)).c_str();
-        //draw arrow
         glPushMatrix();
         glRotated(-angle, 0, 0, 1);
         glCallList(arrowDL);

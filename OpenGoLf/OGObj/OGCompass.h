@@ -20,11 +20,12 @@ public:
     
 private:
     int width, height, x,y;
-    GLuint circleDL, arrowDL;
+    GLuint circleDL, arrowDL, directionDL;
     GLboolean depth, light, texture;
     
     GLuint createCircleDL(float r, int num_segments);
     GLuint createArrowDL();
+    GLuint createDirectionDL();
 };
 
 #endif

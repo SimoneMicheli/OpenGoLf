@@ -63,7 +63,7 @@ void OGBall::initTexture(){
 }
 
 void OGBall::setPosition(double x, double y, double z){
-    position = Vector3d(x,y,z);
+    this->setPosition(Vector3d(x,y,z));
 }
 
 void OGBall::setPosition(Vector3d v){
