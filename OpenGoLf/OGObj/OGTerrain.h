@@ -66,7 +66,6 @@ private:
     void initWaterTexture();
     void initModelsTexture();
     void loadModel(char type, double x, double z, double angle);
-    Vector3d modelInitPosition(double x, double z, double offset);
     float yOffset;
 
 public:
@@ -80,6 +79,7 @@ public:
     OGHole getHole();
     Vector3d *vertex, *normals;
     vector<OGModel3DS*> models;
+    Vector3d modelInitPosition(double x, double z, double offset);
 };
 
 

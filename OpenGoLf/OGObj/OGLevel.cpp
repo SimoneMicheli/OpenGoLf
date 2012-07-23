@@ -46,9 +46,15 @@ void OGLevel::init(string path, string modelPath){
     projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
     terrain = new OGTerrain(path, modelPath);
-    ball = new OGBall(30.5,6.14,30);
+    
+    double x=30.5,z=30.0; //initial ball position
+    
+    Vector3d pos = terrain->modelInitPosition(x, z, 0);
+    
+    ball = new OGBall(pos);
     oldBall = new OGBall();
-    pov = new OGPov(30,6.14,30); //initial pov
+    
+    pov = new OGPov(pos); //initial pov
     oldPov = new OGPov();
     pov->setRotation(-10, -45);
 
@@ -59,7 +65,6 @@ void OGLevel::init(string path, string modelPath){
     //create physics
     physic = new OGPhysic(ball, terrain, pov);
 
-    //
     map = new OGCompass(0, W_HEIGHT- 130, 150, 150);
     wind = new OGCompass(W_WIDTH - 150, W_HEIGHT-130, 150, 150);
 
