@@ -181,17 +181,18 @@ void OGLevel::followDisplay(){
     if (activeLevel->physic->edgeCollision()){
         *activeLevel->ball = *activeLevel->oldBall;
         *activeLevel->pov = *activeLevel->oldPov;
-    }
+        activeLevel->restoreLaunch();
+    }else{
+        activeLevel->physic->update(dtime);
 
-    activeLevel->physic->update(dtime);
-
-    if (activeLevel->ball->getSpeed().length() < 0.1){
-        if (activeLevel->physic->holeCollision()) {
-            //back to room
-            OGRoom::activeRoom->reInit();
-            return;
-        }else
-            activeLevel->restoreLaunch();
+        if (activeLevel->ball->getSpeed().length() < 0.1){
+            if (activeLevel->physic->holeCollision()) {
+                //back to room
+                OGRoom::activeRoom->reInit();
+                return;
+            }else
+                activeLevel->restoreLaunch();
+        }
     }
 
     activeLevel->pov->lookAt();
