@@ -37,7 +37,6 @@ GLuint OGRoom::createModelsDL(){
     glNewList(modelsDL, GL_COMPILE);
 
     for (int i=0; i<models.size(); i++) {
-        //printf("name: %i\n",i);
         glPushName(i);
         //activeRoom->materialArmchair(); //predefinito
         if(i<4){
@@ -207,7 +206,6 @@ void OGRoom::roomDisplay(){
 
     glLoadIdentity();
 
-    printf("passo 1\n");
     glViewport(0, 0, W_WIDTH, W_HEIGHT);
 
     activeRoom->pov->lookAt();
@@ -215,18 +213,10 @@ void OGRoom::roomDisplay(){
 
     activeRoom->drawRoom();
 
-    printf("passo 2\n");
     glCallList(activeRoom->modelsDL);
-
-    printf("passo 3\n");
 
     GLint type;
     glGetIntegerv(GL_RENDER_MODE, &type);
-
-    if (type == GL_RENDER) {
-        printf("\n\nrender type: RENDERER");
-    }else
-        printf("\n\nrender type: SELECT");
 
     if (type == GL_RENDER){
         if(activeRoom->wind){
@@ -244,7 +234,6 @@ void OGRoom::roomDisplay(){
         }
     }
 
-    printf("passo 4\n");
     glutSwapBuffers();
 }
 
