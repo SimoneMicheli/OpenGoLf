@@ -90,7 +90,7 @@ void OGLevel::init(string path, string modelPath){
     //set event function
     glutKeyboardFunc(OGLevel::keyPress);
     glutDisplayFunc(OGLevel::launchDisplay);
-    glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+    glutPassiveMotionFunc(OGLevel::mouseMotionFunction);
     glutMotionFunc(OGLevel::mouseMotionFunction);
     glutMouseFunc(OGLevel::mouseClickFunction);
     glutReshapeFunc(OGLevel::resize);
@@ -109,19 +109,6 @@ void OGLevel::resize(int x, int y){
 }
 
 //-----------------------mouse functions-----------------------
-void OGLevel::mousePassiveMotionFunction(int x, int y){
-    //recupera la posizione del mouse all'inizo dopo il primo movimento
-    if (activeLevel->oldMousePos.x != 0 || activeLevel->oldMousePos.y != 0) {
-        //double a = (activeLevel->oldMousePos.y - (double) y) / 1;
-        double b = (activeLevel->oldMousePos.x - (double) x) / 1;
-        activeLevel->pov->addRotation(0, b);//disabilito rotazione su giu
-    }
-
-    activeLevel->oldMousePos.x = x;
-    activeLevel->oldMousePos.y = y;
-    glutPostRedisplay();
-}
-
 void OGLevel::mouseMotionFunction(int x, int y){
     //recupera la posizione del mouse all'inizo dopo il primo movimento
     if (activeLevel->oldMousePos.x != 0 || activeLevel->oldMousePos.y != 0) {
@@ -361,7 +348,7 @@ void OGLevel::restoreLaunch(){
     shooting = false;
     activeLevel->launchPower = 0;
     glutDisplayFunc(OGLevel::launchDisplay);
-    glutPassiveMotionFunc(OGLevel::mousePassiveMotionFunction);
+    glutPassiveMotionFunc(OGLevel::mouseMotionFunction);
     glutMotionFunc(OGLevel::mouseMotionFunction);
 }
 
