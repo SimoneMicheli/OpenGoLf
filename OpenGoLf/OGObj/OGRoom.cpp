@@ -31,7 +31,7 @@ GLuint OGRoom::createModelsDL(){
     activeRoom->loadVase(720,0,50,0); //vaso 7
 
     activeRoom->loadLamp(100,300,1000,0); //vaso 7
-    
+
     //create models DisplayList
     GLuint modelsDL = glGenLists(1);
     glNewList(modelsDL, GL_COMPILE);
@@ -151,18 +151,18 @@ void OGRoom::startPicking(int x, int y){
         case 0:{
             //load level 0
             level = new OGLevel();
-            level->init(TERRAIN_PATH,MODELS);
+            level->init(TERRAIN0,MODELS0);
             break;
         }
         case 1:
             //load level 1
             level = new OGLevel();
-            level->init(TERRAIN_PATH,MODELS);
+            level->init(TERRAIN1,MODELS1);
             break;
         case 2:
             //load level 2
             level = new OGLevel();
-            level->init(TERRAIN_PATH,MODELS);
+            level->init(TERRAIN2,MODELS2);
             break;
         case 3:
             exit(0);
@@ -212,7 +212,7 @@ void OGRoom::roomDisplay(){
 
     activeRoom->pov->lookAt();
     //glEnable(GL_LIGHTING);
-    
+
     activeRoom->drawRoom();
 
     printf("passo 2\n");
@@ -222,7 +222,7 @@ void OGRoom::roomDisplay(){
 
     GLint type;
     glGetIntegerv(GL_RENDER_MODE, &type);
-    
+
     if (type == GL_RENDER) {
         printf("\n\nrender type: RENDERER");
     }else
@@ -452,7 +452,7 @@ void OGRoom::reInit(){
             lights[i]->enable();
         }else
             lights[i]->disable();
-        
+
     }
 
     glutPostRedisplay();
