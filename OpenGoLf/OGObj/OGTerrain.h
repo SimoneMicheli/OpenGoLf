@@ -23,7 +23,7 @@
 using namespace std;
 
 struct OGHole{
-    double x,y,z,radius;
+    double radius;
     Vector3d pos;
 };
 

@@ -118,8 +118,8 @@ bool OGPhysic::waterCollision(){
 bool OGPhysic::holeCollision(){
     OGHole hole = terrain->getHole();
     Vector3d pos = ball->getPosition();
-    bool dist = (pow(pos.x - hole.x,2) + pow(pos.z - hole.z , 2)) <= pow(hole.radius, 2);    
-    if (pos.y - ball->getRadius() < hole.y +0.2 && dist) {
+    bool dist = (pow(pos.x - hole.pos.x,2) + pow(pos.z - hole.pos.z , 2)) <= pow(hole.radius, 2); 
+    if (pos.y - ball->getRadius() <= hole.pos.y +0.2 && dist) {
         return true;
     }
     return false;
