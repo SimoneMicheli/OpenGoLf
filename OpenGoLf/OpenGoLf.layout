@@ -19,8 +19,8 @@
 	<File name="OGObj\OGGlobal.h" open="0" top="0" tabpos="3">
 		<Cursor position="1697" topLine="48" />
 	</File>
-	<File name="OGObj\OGLevel.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1221" topLine="73" />
+	<File name="OGObj\OGLevel.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="1270" topLine="38" />
 	</File>
 	<File name="OGObj\OGLevel.h" open="0" top="0" tabpos="3">
 		<Cursor position="965" topLine="34" />
@@ -31,8 +31,8 @@
 	<File name="OGObj\OGLight.h" open="0" top="0" tabpos="0">
 		<Cursor position="584" topLine="12" />
 	</File>
-	<File name="OGObj\OGModel3DS.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="432" topLine="9" />
+	<File name="OGObj\OGModel3DS.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="3635" topLine="129" />
 	</File>
 	<File name="OGObj\OGModel3DS.h" open="0" top="0" tabpos="0">
 		<Cursor position="879" topLine="18" />

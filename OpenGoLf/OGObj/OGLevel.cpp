@@ -46,14 +46,14 @@ void OGLevel::init(string path, string modelPath){
     projection->setPerspective(60.0f, aspect, 0.1f, 150.0f);
 
     terrain = new OGTerrain(path, modelPath);
-    
-    double x=30.5,z=30.0; //initial ball position
-    
+
+    double x=10.5,z=30.0; //initial ball position
+
     Vector3d pos = terrain->modelInitPosition(x, z, 0);
-    
+
     ball = new OGBall(pos);
     oldBall = new OGBall();
-    
+
     pov = new OGPov(pos); //initial pov
     oldPov = new OGPov();
     pov->setRotation(-10, -45);
@@ -75,7 +75,7 @@ void OGLevel::init(string path, string modelPath){
     light0->set();
     lights.push_back(light0);
     light0->enable();
-    
+
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_COLOR_MATERIAL);
 
@@ -184,7 +184,7 @@ void OGLevel::followDisplay(){
 
     activeLevel->pov->lookAt();
     activeLevel->terrain->draw();
-    
+
     activeLevel->ball->draw();
 
     OGLevel::before = OGLevel::now;
