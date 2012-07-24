@@ -17,6 +17,7 @@ OGModel3DS::OGModel3DS(std::string fileName){
     if (!f) {
         printf("unable to load model: %s",fileName.c_str());
     }
+    printf("Model: %s\n",fileName.c_str());
     position = Vector3d();
     scale = Vector3d(1,1,1);
     rotation[0]=0;
