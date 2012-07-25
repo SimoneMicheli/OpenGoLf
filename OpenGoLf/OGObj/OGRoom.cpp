@@ -434,6 +434,7 @@ void OGRoom::reInit(){
     glDisable(GL_TEXTURE_2D);
     delete level;
     glDisable(GL_COLOR_MATERIAL);
+    glDisable(GL_FOG);
     //reenable lights
     for (int i=0; i<lights.size(); i++) {
         lights[i]->set();
