@@ -47,7 +47,7 @@ void OGLevel::init(string path, string modelPath){
 
     terrain = new OGTerrain(path, modelPath);
 
-    double x=10.5,z=30.0; //initial ball position
+    double x=15.5,z=15.0; //initial ball position
 
     Vector3d pos = terrain->modelInitPosition(x, z, 0);
 
